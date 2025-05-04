@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/04 17:04:58 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/04 21:35:41 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,10 +42,25 @@ OBJ				:= \
 # **************************************************************************** #
 # LIBRARIES & FRAMEWORKS
 
+UNAME				:= $(shell uname)
 
-MLX_DIR			:= minilibx
+MLX_DIR				:= minilibx
+LIBMLX				:= $(MLX_DIR)/libmlx.a
 
-LFLAGS			:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+ifeq ($(UNAME), Darwin)
+	BREW_PREFIX		:= $(shell brew --prefix)
+	X11_LIB_DIRS	:= \
+					-L$(BREW_PREFIX)/opt/libx11/lib \
+					-L$(BREW_PREFIX)/opt/libxext/lib \
+					-L$(BREW_PREFIX)/opt/libbsd/lib
+	X11_INC_DIRS	:= \
+					-I$(BREW_PREFIX)/opt/libx11/include \
+					-I$(BREW_PREFIX)/opt/libxext/include \
+					-I$(BREW_PREFIX)/opt/libbsd/include
+	LFLAGS			:= -L$(MLX_DIR) -lmlx $(X11_LIB_DIRS) -lXext -lX11 -lbsd -lm
+else
+	LFLAGS			:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+endif
 
 
 # **************************************************************************** #
@@ -54,6 +69,9 @@ LFLAGS			:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 
 INC_DIR			:= includes
 INCLUDES		:= -I$(INC_DIR) -I$(MLX_DIR)
+ifeq ($(UNAME), Darwin)
+	INCLUDES	+= $(X11_INC_DIRS)
+endif
 
 
 # **************************************************************************** #
@@ -62,9 +80,11 @@ INCLUDES		:= -I$(INC_DIR) -I$(MLX_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) $^ -o $(NAME) $(LFLAGS)
+$(NAME): $(OBJ) $(LIBMLX)
+	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LFLAGS)
+
+$(LIBMLX):
+	$(MAKE) -C $(MLX_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
