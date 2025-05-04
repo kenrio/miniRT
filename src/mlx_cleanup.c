@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   mlx_cleanup.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:29:41 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 17:10:13 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/04 17:01:39 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/04 17:03:36 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	close_window(t_mlx *m)
+void	mlx_cleanup(t_mlx *m)
 {
-	mlx_cleanup(m);
-	exit(0);
+	if (m->img.ptr)
+		mlx_destroy_image(m->ptr, m->img.ptr);
+	if (m->win)
+		mlx_destroy_window(m->ptr, m->win);
+	if (m->ptr)
+	{
+		mlx_destroy_display(m->ptr);
+		free(m->ptr);
+	}
 }

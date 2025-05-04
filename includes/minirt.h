@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 16:47:42 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/04 17:15:13 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-int	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
-int	check_key_input(int key);
-int	close_window(void);
+int		mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
+void	mlx_cleanup(t_mlx *m);
+int		check_key_input(int key, t_mlx *m);
+int		close_window(t_mlx *m);
 
 #endif
