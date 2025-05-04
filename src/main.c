@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 14:40:11 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/04 16:46:19 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
+	t_mlx	mlx;
 
-	void	*mlx;
-	void	*win;
-	void	*img;
-	mlx = mlx_init();
-	if (!mlx)
+	(void)argv;
+	// if (argc != 2)
+	// 	return (1);
+	// if (parse_rt(argv[1], &scene))
+	// 	return (error("Invalid .rt file"));
+	if (mlx_setup(&mlx, WIN_W, WIN_H, "miniRT"))
 		return (1);
-	win = mlx_new_window(mlx, WIN_W, WIN_H, "miniRT");
-	img = mlx_new_image(mlx, WIN_W, WIN_H);
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
-	mlx_hook(win, 17, 0, &close_window, mlx);
-	mlx_key_hook(win, &check_key_input, mlx);
-	mlx_loop(mlx);
+	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img.ptr, 0, 0);
+	mlx_hook(mlx.win, 17, 0, &close_window, mlx.ptr);
+	mlx_key_hook(mlx.win, &check_key_input, mlx.ptr);
+	mlx_loop(mlx.ptr);
 	return (0);
 }

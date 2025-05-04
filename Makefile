@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/04 14:40:30 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/04 16:38:58 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ OBJ_DIR			:= obj
 
 SRC				:= \
 				main.c \
+				mlx_setup.c \
 				check_key_input.c \
 				close_window.c \
 
@@ -61,7 +62,7 @@ INCLUDES		:= -I$(INC_DIR) -I$(MLX_DIR)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C $(MLX_DIR)/
+	make -C $(MLX_DIR)
 	$(CC) $(CFLAGS) $^ -o $(NAME) $(LFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
