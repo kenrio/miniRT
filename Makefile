@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/04 21:35:41 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/04 22:07:02 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ ifeq ($(UNAME), Darwin)
 					-I$(BREW_PREFIX)/opt/libbsd/include
 	LFLAGS			:= -L$(MLX_DIR) -lmlx $(X11_LIB_DIRS) -lXext -lX11 -lbsd -lm
 else
-	LFLAGS			:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+	LFLAGS			:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lbsd -lm
 endif
 
 
