@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/05 00:26:02 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/05 22:02:39 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,29 @@ OBJ_DIR			:= obj
 # SOURCES
 
 
+SRC_VEC			:= \
+				v_add.c \
+				v_sub.c \
+				v_scale.c \
+				v_dot.c \
+				v_cross.c \
+				v_len.c \
+				v_norm.c \
+
+SRC_RENDER		:= \
+				cam_setup.c \
+				make_ray.c \
+				render_scene.c \
+				hit_sphere.c \
+
 SRC				:= \
 				main.c \
 				mlx_setup.c \
 				mlx_cleanup.c \
 				check_key_input.c \
 				close_window.c \
+				$(addprefix vector/, $(SRC_VEC)) \
+				$(addprefix render/, $(SRC_RENDER)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
