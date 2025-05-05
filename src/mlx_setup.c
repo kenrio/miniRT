@@ -3,31 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:13:06 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 16:45:52 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/05 21:58:26 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title)
+// setup mlx 4 elements.
+bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title)
 {
+	// mlx_ptr
 	m->ptr = mlx_init();
 	if (!m->ptr)
-		return (1);
+		return (false);
+
+	// mlx_window
 	m->win = mlx_new_window(m->ptr, win_w, win_h, win_title);
 	if (!m->win)
-		return (mlx_destroy_display(m->ptr), free(m->ptr), 1);
+		return (mlx_destroy_display(m->ptr), free(m->ptr), false);
+
+	// mlx_img_ptr
 	m->img.ptr = mlx_new_image(m->ptr, win_w, win_h);
 	if (!m->img.ptr)
-		return (mlx_destroy_window(m->ptr, m->win),
-			mlx_destroy_display(m->ptr),
-			free(m->ptr), 1);
-	m->img.addr = mlx_get_data_addr(m->img.ptr, &m->img.bpp, &m->img.line_len,
-			&m->img.endian);
-	m->img.w = win_w;
-	m->img.h = win_h;
-	return (0);
+	{
+		mlx_destroy_window(m->ptr, m->win);
+		mlx_destroy_display(m->ptr);
+		free(m->ptr);
+		return (false);
+	}
+
+	// mlx_img_address
+	m->img.addr = \
+		(int *)mlx_get_data_addr(m->img.ptr, &m->img.bpp, &m->img.line_len, &m->img.endian);
+	return (true);
 }
+

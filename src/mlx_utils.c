@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_cleanup.c                                      :+:      :+:    :+:   */
+/*   mlx_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 17:01:39 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 17:03:36 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/05 19:21:48 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/05 21:26:54 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	mlx_cleanup(t_mlx *m)
 	if (m->win)
 		mlx_destroy_window(m->ptr, m->win);
 	if (m->ptr)
-	{
 		mlx_destroy_display(m->ptr);
-		free(m->ptr);
-	}
+	free(m->ptr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 17:09:06 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/05 22:11:49 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	main(int argc, char **argv)
 {
-	t_mlx	mlx;
+	t_info	info;
+	
 
-	(void)argc;
-	(void)argv;
-	// if (argc != 2)
-	// 	return (1);
-	// if (parse_rt(argv[1], &scene))
-	// 	return (error("Invalid .rt file"));
-	if (mlx_setup(&mlx, WIN_W, WIN_H, "miniRT"))
+	if (argc != 2)
+		return (perror("Argument is missing"), 1);
+	if (init_project(&info, argv[1]) == false)
 		return (1);
-	mlx_put_image_to_window(mlx.ptr, mlx.win, mlx.img.ptr, 0, 0);
-	mlx_hook(mlx.win, 17, 0, &close_window, &mlx);
-	mlx_key_hook(mlx.win, &check_key_input, &mlx);
-	mlx_loop(mlx.ptr);
+	// 実行
+	// ここまではOK
+	mlx_put_image_to_window(&info.mlx, info.mlx.win, info.mlx.img.ptr, 0, 0);
+
+
+	mlx_handle_hook(&info);
+	mlx_loop(&info.mlx);
 	return (0);
 }

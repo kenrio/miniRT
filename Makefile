@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/05 00:26:02 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/05 21:31:43 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,10 @@ OBJ_DIR			:= obj
 
 SRC				:= \
 				main.c \
+				mlx_hook.c \
 				mlx_setup.c \
-				mlx_cleanup.c \
-				check_key_input.c \
-				close_window.c \
+				mlx_utils.c \
+				project_init.c \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
