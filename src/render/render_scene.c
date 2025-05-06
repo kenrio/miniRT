@@ -6,13 +6,13 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 14:43:10 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 20:04:09 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	render_scene(t_mlx *m, t_cam *cam)
+void	render_scene(t_img *img, t_cam *cam)
 {
     for (int y = 0; y < WIN_H; ++y)
     {
@@ -26,8 +26,8 @@ void	render_scene(t_mlx *m, t_cam *cam)
             double t;
             if (hit_sphere(ray, (t_vec3){0.0 , 0.0, 20.6}, 6.3, &t))
                 color = 0x00FF0000;             // 赤い球
-
-            char *dst = m->img.addr + y * m->img.line_len + x * (m->img.bpp/8);
+			unsigned char *base = (unsigned char *)img->addr;
+            unsigned char *dst = base + y * img->line_len + x * (img->bpp / 8);
             *(unsigned int *)dst = color;
         }
     }

@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 16:55:00 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 20:07:37 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ typedef struct s_vec3
     double    z;
 }    t_vec3;
 
-typedef struct s_pos3
-{
-	double    x;
-    double    y;
-    double    z;
-}	t_pos3;
+typedef t_vec3 t_pos3;
+
+// typedef struct s_pos3
+// {
+// 	double    x;
+//     double    y;
+//     double    z;
+// }	t_pos3;
 
 typedef struct s_rgb3
 {
@@ -132,20 +134,21 @@ bool	init_project(t_info *info, char *file_name);
 void	destroy_project(t_info *info);
 bool	set_info(t_info *info, char *file_name);
 
-
 // mlx
+bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
+void	mlx_cleanup(t_mlx *m);
 void	mlx_handle_hook(t_info *info);
 
 // utils
 char	*get_next_line(int fd);
 
-/*render functions*/
+// render functions
 void	cam_setup(t_cam *c);
 t_ray	make_ray(t_cam *c, double u, double v);
 bool	hit_sphere(t_ray r, t_vec3 center, double radius, double *t_out);
-void	render_scene(t_mlx *m, t_cam *cam);
+void	render_scene(t_img *img, t_cam *cam);
 
-/*vector calculation*/
+// vector calculation
 t_vec3	v_add(t_vec3 a, t_vec3 b);
 t_vec3	v_sub(t_vec3 a, t_vec3 b);
 t_vec3	v_scale(t_vec3 v, double k);

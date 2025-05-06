@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   info_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:45:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 15:37:30 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:07:58 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ bool	set_info(t_info *info, char *file_name)
 		
 	// セットアップ
 
-	
-	if (set_amb(info) == false)
-		return (close(file_fd), false);
-	if (set_cam(info) == false)
-		return (close(file_fd), false);
-	if (set_light() == false)
-		return (close(file_fd), false);
+	// if (set_amb(info) == false)
+	// 	return (close(file_fd), false);
+	// if (set_cam(info) == false)
+	// 	return (close(file_fd), false);
+	// if (set_light() == false)
+	// 	return (close(file_fd), false);
 	// ここまで
 	close(file_fd);
 	return (true);
