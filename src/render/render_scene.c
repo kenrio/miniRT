@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 22:12:33 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:43:10 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	render_scene(t_mlx *m, t_cam *cam)
 
             unsigned int color = 0x000000;      // 背景
             double t;
-            if (hit_sphere(ray, (t_vec3){0.0 , 1.0, 3.0}, 1.0, &t))
+            if (hit_sphere(ray, (t_vec3){0.0 , 0.0, 20.6}, 6.3, &t))
                 color = 0x00FF0000;             // 赤い球
 
             char *dst = m->img.addr + y * m->img.line_len + x * (m->img.bpp/8);

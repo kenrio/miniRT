@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 22:15:53 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:28:26 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	main(int argc, char **argv)
 		.pos = {0.0, 0.0, 0.0},
 		.forward = {0.0, 0.0, 1.0},
 		.fov = 70.0,
-		.aspect = (double)WIN_W / WIN_H
 	};
 	cam_setup(&cam);
 	render_scene(&mlx, &cam);

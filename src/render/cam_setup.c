@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:52:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 21:56:07 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 14:28:19 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	cam_setup(t_cam *c)
 		world_up = (t_vec3){0.0, 0.0, 1.0};
 	c->right = v_norm(v_cross(c->forward, world_up));
 	c->up = v_cross(c->right, c->forward);
+	c->aspect = (double)(WIN_W / WIN_H);
 	fov_rad = c->fov * M_PI / 180.0;
 	c->half_h = tan(fov_rad / 2.0);
 	c->half_w = c->half_h * c->aspect;
