@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:45:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 16:58:01 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 17:49:37 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,16 @@ bool	set_info(t_info *info, char *file_name)
 			set_cam(info, line);
 		else if (type == E_LIGHT)
 			set_light(info, line);
-		else if (type == E_SPHERE)
-			set_sphere(info, line);
-		else if (type == E_PLANE)
-			set_plane(info, line);
-		else if (type == E_CYLINDER)
-			set_cylinder(info, line);
+
+		// 個々からは未対応	
+		// else if (type == E_SPHERE)
+		// 	set_sphere(info, line);
+		// else if (type == E_PLANE)
+		// 	set_plane(info, line);
+		// else if (type == E_CYLINDER)
+		// 	set_cylinder(info, line);
 		else if (type == E_INVALID)
 		{
-			// ここはパースエラー起きてるので、
-			// ここの関数内で作ったすべてのものを開放して終了//TODO
 			perror("find invalid element type.");
 			return (free(line) ,close(file_fd), false);
 		}
