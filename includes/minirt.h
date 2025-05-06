@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 15:51:54 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:56:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,16 @@ typedef struct s_rgb3
 }	t_rgb3;
 
 // info
+typedef enum e_elem {
+    E_AMBIENT,
+	E_CAMERA,
+	E_LIGHT,
+    E_SPHERE, 
+	E_PLANE, 
+	E_CYLINDER,
+    E_INVALID
+}   t_elem;
+
 typedef struct s_amb
 {
 	double	intensity;
