@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 14:59:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:19:23 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 bool init_project(t_info *info, char *file_name)
 {
+	
+
+
 	if (mlx_setup(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
 		return (perror("mlx setup failed."), false);
 	if (init_info(info, file_name) == false)

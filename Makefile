@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 14:47:15 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/06 15:29:12 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,9 @@ OBJ				:= \
 # **************************************************************************** #
 # LIBRARIES & FRAMEWORKS
 
+LIBFT_DIR		:= libft
+LIBFT_INC_DIR	:= $(LIBFT_DIR)
+LIBFT			:= ${LIBFT_DIR}/libft.a
 
 MLX_DIR				:= minilibx
 LIBMLX				:= $(MLX_DIR)/libmlx.a
@@ -72,7 +75,7 @@ endif
 
 
 INC_DIR				:= includes
-INCLUDES			:= -I$(INC_DIR) -I$(MLX_DIR)
+INCLUDES			:= -I$(INC_DIR) -I$(MLX_DIR) -I$(LIBFT_DIR)
 
 ifeq ($(UNAME), Darwin)
 	X11_INC_DIRS	:= \
@@ -90,11 +93,14 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBMLX)
+$(NAME): $(OBJ) $(LIBMLX) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LFLAGS)
 
 $(LIBMLX):
 	$(MAKE) -C $(MLX_DIR)
+
+$(LIBFT):
+	${MAKE} -C ${LIBFT_DIR}	
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
@@ -103,6 +109,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	rm -rf $(OBJ_DIR)
 	$(MAKE) -C $(MLX_DIR) clean
+	${MAKE} -C ${LIBFT_DIR} fclean
 
 fclean: clean
 	rm -f $(NAME)
