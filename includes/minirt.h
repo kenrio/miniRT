@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 15:20:34 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:51:54 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include <stdint.h>
 
 # include "mlx.h"
 # include "libft.h"
@@ -27,6 +28,10 @@
 # define WIN_W 1024
 # define WIN_H 1024
 # define ESC 65307
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 //  --- structure ---
 // mlx
@@ -118,12 +123,15 @@ typedef struct s_info
 // init
 bool	init_project(t_info *info, char *file_name);
 void	destroy_project(t_info *info);
-bool	init_info(t_info *info, char *file_name);
+bool	set_info(t_info *info, char *file_name);
 
 
 // mlx
 bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
 void	mlx_cleanup(t_mlx *m);
 void	mlx_handle_hook(t_info *info);
+
+// utils
+char	*get_next_line(int fd);
 
 #endif
