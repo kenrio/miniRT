@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 14:39:16 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/06 14:43:56 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,13 @@ MLX_SRC			:= \
 				mlx_setup.c \
 				mlx_utils.c \
 
+INIT_SRC			:= \
+				project_init.c \
 
 SRC				:= \
 				main.c \
-				project_init.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
+				$(addprefix init/, $(INIT_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
