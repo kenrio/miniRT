@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 15:37:52 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/06 16:54:22 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,10 @@ INIT_SRC			:= \
 				project_init.c \
 				info_init.c \
 
+UTILS_SRC			:= \
+				get_next_line.c \
+
+
 SRC_VEC			:= \
 				v_add.c \
 				v_sub.c \
@@ -56,6 +60,7 @@ SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
+				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix vector/, $(SRC_VEC)) \
 				$(addprefix render/, $(SRC_RENDER)) \
 
@@ -68,13 +73,12 @@ OBJ				:= \
 # LIBRARIES & FRAMEWORKS
 
 LIBFT_DIR		:= libft
-LIBFT_INC_DIR	:= $(LIBFT_DIR)
 LIBFT			:= ${LIBFT_DIR}/libft.a
 
 MLX_DIR				:= minilibx
-LIBMLX				:= $(MLX_DIR)/libmlx.a
+MLX_LIB				:= $(MLX_DIR)/libmlx.a
 
-LFLAGS				:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lbsd -lm
+LFLAGS				:= -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -lXext -lX11 -lbsd -lm
 
 UNAME				:= $(shell uname)
 
@@ -112,10 +116,10 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBMLX) $(LIBFT)
+$(NAME): $(OBJ) $(MLX_LIB) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LFLAGS)
 
-$(LIBMLX):
+$(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 $(LIBFT):
