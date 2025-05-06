@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 14:43:56 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/06 14:47:15 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ MLX_SRC			:= \
 
 INIT_SRC			:= \
 				project_init.c \
+				info_init.c \
 
 SRC				:= \
 				main.c \
