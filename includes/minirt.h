@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 14:47:23 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/06 15:09:59 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define ESC 65307
 
 //  --- structure ---
+// mlx
 typedef struct s_img
 {
 	void	*ptr;
@@ -44,8 +45,71 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
+// utils
+typedef struct s_vec3
+{
+    double    x;
+    double    y;
+    double    z;
+}    t_vec3;
+
+typedef struct s_pos3
+{
+	double    x;
+    double    y;
+    double    z;
+}	t_pos3;
+
+typedef struct s_rgb3
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb3;
+
+// info
+typedef struct s_amb
+{
+	double	intensity;
+	t_rgb3	rgb;
+}	t_amb;
+
+typedef	struct s_light
+{
+	t_pos3	pos;
+	double	intensity;
+	t_rgb3	rgb;
+}	t_light;
+
+/*
+// pos     – camera position (ray origin)
+// forward – unit vector pointing straight ahead from the camera
+// right   – unit vector pointing to the camera’s right
+// up      – unit vector pointing upward from the camera
+// fov     – vertical field-of-view in degrees
+// aspect  – viewport aspect ratio (width / height)
+// half_w  – half of the viewport’s width in world units
+// half_h  – half of the viewport’s height in world units
+// llc     – world-space coordinates of the viewport’s lower-left corner
+*/
+typedef struct s_cam
+{
+    t_pos3    pos;
+    t_vec3    forward;
+    double    fov;
+    t_vec3    right;
+    t_vec3    up;
+    double    aspect;
+    double    half_w;
+    double    half_h;
+    t_pos3    llc;
+}    t_cam;
+
 typedef struct s_info
 {
+	t_amb	amb;
+	t_cam	cam;
+	t_light	light;
 	t_mlx	mlx;
 }	t_info;
 
