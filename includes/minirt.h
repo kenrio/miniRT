@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 15:38:23 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 15:47:00 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-typedef struct s_ray
-{
-	t_vec3	orig;
-	t_vec3	dir;
-}	t_ray;
-
 // utils
 typedef struct s_vec3
 {
@@ -74,6 +68,12 @@ typedef struct s_rgb3
 	int	g;
 	int	b;
 }	t_rgb3;
+
+typedef struct s_ray
+{
+	t_vec3	orig;
+	t_vec3	dir;
+}	t_ray;
 
 // info
 typedef struct s_amb
