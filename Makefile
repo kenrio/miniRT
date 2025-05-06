@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
+#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 15:50:03 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/06 16:37:14 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
-				$(addprefix init/, $(UTILS_SRC)) \
+				$(addprefix utils/, $(UTILS_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
@@ -54,13 +54,12 @@ OBJ				:= \
 # LIBRARIES & FRAMEWORKS
 
 LIBFT_DIR		:= libft
-LIBFT_INC_DIR	:= $(LIBFT_DIR)
 LIBFT			:= ${LIBFT_DIR}/libft.a
 
 MLX_DIR				:= minilibx
-LIBMLX				:= $(MLX_DIR)/libmlx.a
+MLX_LIB				:= $(MLX_DIR)/libmlx.a
 
-LFLAGS				:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lbsd -lm
+LFLAGS				:= -L$(MLX_DIR) -lmlx -L$(LIBFT_DIR) -lft -lXext -lX11 -lbsd -lm
 
 UNAME				:= $(shell uname)
 
@@ -98,10 +97,10 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBMLX) $(LIBFT)
+$(NAME): $(OBJ) $(MLX_LIB) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJ) -o $@ $(LFLAGS)
 
-$(LIBMLX):
+$(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 $(LIBFT):
