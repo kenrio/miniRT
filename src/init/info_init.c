@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   info_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 14:29:41 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/04 17:10:13 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/06 14:45:46 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/06 14:46:05 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	close_window(t_mlx *m)
+bool	init_info(t_info *info, char *file_name)
 {
-	mlx_cleanup(m);
-	exit(0);
+	int		file_fd;
+
+	(void) info;
+
+	file_fd = open(file_name, O_RDONLY);
+	if (file_fd == -1)
+		return (false);
+
+	// ここにファイルから読み取った内容をかきこむ
+
+	close(file_fd);
+	return (true);
 }

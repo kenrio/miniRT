@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 22:02:12 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/06 15:34:32 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,28 @@
 
 # include <stdlib.h>
 # include <stdbool.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <unistd.h>
 # include <math.h>
 
 # include "mlx.h"
 
+
+//  --- macro ---
 # define WIN_W 1024
 # define WIN_H 1024
-
 # define ESC 65307
 
+//  --- structure ---
+// mlx
 typedef struct s_img
 {
 	void	*ptr;
-	char	*addr;
+	int		*addr;
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		w;
-	int		h;
 }	t_img;
 
 typedef struct s_mlx
@@ -42,47 +46,89 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-typedef struct s_vec3
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_vec3;
-
-/*
-pos: カメラ位置（レイの始点）
-forward: カメラ方向（レイの進行方向？）
-right: 右方向ベクトル
-up: 上方向ベクトル
-fov: 視野角
-aspect: ウィンドウのアスペクト比
-half_w: ウィンドウ幅の半分
-half_h: ウィンドウ高の半分
-llc (lower-left-corner): ビューボート左下の3D座標
-*/
-typedef struct s_cam
-{
-	t_vec3	pos;
-	t_vec3	forward;
-	t_vec3	right;
-	t_vec3	up;
-	double	fov;
-	double	aspect;
-	double	half_w;
-	double	half_h;
-	t_vec3	llc;
-}	t_cam;
-
 typedef struct s_ray
 {
 	t_vec3	orig;
 	t_vec3	dir;
 }	t_ray;
 
-int		mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
-void	mlx_cleanup(t_mlx *m);
-int		check_key_input(int key, t_mlx *m);
-int		close_window(t_mlx *m);
+// utils
+typedef struct s_vec3
+{
+    double    x;
+    double    y;
+    double    z;
+}    t_vec3;
+
+typedef struct s_pos3
+{
+	double    x;
+    double    y;
+    double    z;
+}	t_pos3;
+
+typedef struct s_rgb3
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb3;
+
+// info
+typedef struct s_amb
+{
+	double	intensity;
+	t_rgb3	rgb;
+}	t_amb;
+
+typedef	struct s_light
+{
+	t_pos3	pos;
+	double	intensity;
+	t_rgb3	rgb;
+}	t_light;
+
+/*
+// pos     – camera position (ray origin)
+// forward – unit vector pointing straight ahead from the camera
+// right   – unit vector pointing to the camera’s right
+// up      – unit vector pointing upward from the camera
+// fov     – vertical field-of-view in degrees
+// aspect  – viewport aspect ratio (width / height)
+// half_w  – half of the viewport’s width in world units
+// half_h  – half of the viewport’s height in world units
+// llc     – world-space coordinates of the viewport’s lower-left corner
+*/
+typedef struct s_cam
+{
+    t_pos3    pos;
+    t_vec3    forward;
+    double    fov;
+    t_vec3    right;
+    t_vec3    up;
+    double    aspect;
+    double    half_w;
+    double    half_h;
+    t_pos3    llc;
+}    t_cam;
+
+typedef struct s_info
+{
+	t_amb	amb;
+	t_cam	cam;
+	t_light	light;
+	t_mlx	mlx;
+}	t_info;
+
+// ---functions---
+// init
+bool	init_project(t_info *info, char *file_name);
+void	destroy_project(t_info *info);
+bool	init_info(t_info *info, char *file_name);
+
+
+// mlx
+void	mlx_handle_hook(t_info *info);
 
 /*render functions*/
 void	cam_setup(t_cam *c);

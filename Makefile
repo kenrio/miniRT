@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/05 22:02:39 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/06 15:29:18 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,14 @@ OBJ_DIR			:= obj
 # **************************************************************************** #
 # SOURCES
 
+MLX_SRC			:= \
+				mlx_hook.c \
+				mlx_setup.c \
+				mlx_utils.c \
+
+INIT_SRC			:= \
+				project_init.c \
+				info_init.c \
 
 SRC_VEC			:= \
 				v_add.c \
@@ -42,12 +50,12 @@ SRC_RENDER		:= \
 				render_scene.c \
 				hit_sphere.c \
 
+
+
 SRC				:= \
 				main.c \
-				mlx_setup.c \
-				mlx_cleanup.c \
-				check_key_input.c \
-				close_window.c \
+				$(addprefix mlx_series/, $(MLX_SRC)) \
+				$(addprefix init/, $(INIT_SRC)) \
 				$(addprefix vector/, $(SRC_VEC)) \
 				$(addprefix render/, $(SRC_RENDER)) \
 
