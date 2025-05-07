@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 21:59:17 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/08 01:46:04 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ bool	hit_sphere(t_ray r, t_vec3 center, double radius, double *t_out)
     *t_out = t;
     return (true);
 }
-

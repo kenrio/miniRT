@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 20:04:09 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/08 01:42:26 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 void	render_scene(t_img *img, t_cam *cam)
 {
-    for (int y = 0; y < WIN_H; ++y)
+	int		x;
+	int		y;
+	double	u;
+	double	v;
+
+	x = 0;
+	y = 0;
+    while (++y < WIN_H)
     {
-        for (int x = 0; x < WIN_W; ++x)
+        while (++x < WIN_W)
         {
-            double u = (double)x / (WIN_W-1);
-            double v = 1.0 - (double)y / (WIN_H-1);
+            u = (double)x / (WIN_W - 1);
+            v = 1.0 - (double)y / (WIN_H - 1);
             t_ray ray = make_ray(cam, u, v);
 
             unsigned int color = 0x000000;      // 背景
@@ -30,6 +37,7 @@ void	render_scene(t_img *img, t_cam *cam)
             unsigned char *dst = base + y * img->line_len + x * (img->bpp / 8);
             *(unsigned int *)dst = color;
         }
+		x = 0;
     }
 }
 
