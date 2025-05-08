@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 16:37:14 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/08 15:22:06 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ INIT_SRC			:= \
 				info_init.c \
 
 UTILS_SRC			:= \
+				ft_atof.c \
 				get_next_line.c \
 
 

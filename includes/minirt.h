@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 16:56:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:22:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ void	mlx_handle_hook(t_info *info);
 
 // utils
 char	*get_next_line(int fd);
+double	ft_atof(char str);
 
 #endif
