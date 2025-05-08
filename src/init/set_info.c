@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 15:27:13 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 15:35:30 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ bool	set_info(t_info *info, char *file_name)
 	return (true);
 }
 
-static bool is_space(char c)
+static bool	is_space(char c)
 {
-    return (c == ' ' || c == '\t');
+	return (c == ' ' || c == '\t');
 }
 
 static t_elem get_elem_type(char *s)
