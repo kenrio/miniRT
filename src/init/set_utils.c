@@ -6,10 +6,15 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:47:12 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 15:48:02 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:06:59 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-
+// double_set
+// スペースか塗る終端が終わりなことに注意
+double	parse_d(char *elem)
+{
+	return (ft_atof(elem));
+}
