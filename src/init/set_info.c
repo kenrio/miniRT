@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info_init.c                                        :+:      :+:    :+:   */
+/*   set_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 14:45:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 17:49:37 by tishihar         ###   ########.fr       */
+/*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/08 15:27:13 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ bool	set_info(t_info *info, char *file_name)
 	while (line)
 	{
 		type = get_elem_type(line);
+		
 		if (type == E_AMBIENT)
 			set_amb(info, line);
 		else if (type == E_CAMERA)
