@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:44:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 16:21:03 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 16:23:45 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char	*get_token(char *elem, int idx)
 //   次の空白までの間に有効文字以外が入ってこないか
 bool	validate_token(char *elem)
 {
+	if (!elem)
+		return (false);
 	while (*elem && !ft_isspace(*elem))
 	{
 		if (is_valid_token(*elem) == false)
