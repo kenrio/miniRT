@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/08 17:15:29 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/08 20:05:15 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,11 +32,12 @@ MLX_SRC			:= \
 				mlx_utils.c \
 
 INIT_SRC		:= \
-				project_init.c \
+				init_info.c \
 				elements_token.c \
 				set_info_conf.c \
 				set_info.c \
 				set_utils.c \
+				validate.c \
 
 UTILS_SRC		:= \
 				ft_atof.c \

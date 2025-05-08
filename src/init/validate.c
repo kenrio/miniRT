@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/08 21:14:11 by tishihar         ###   ########.fr       */
+/*   Created: 2025/05/08 19:53:15 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/08 21:07:27 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+bool validate_rgb(int n)
 {
-	t_info	info;
-	
-	if (argc != 2)
-		return (perror("Argument is missing"), 1);
-	if (init_info(&info, argv[1]) == false)
-		return (1);
-	// ここまではOK
-	//TODO 実行部分の実装
-	mlx_put_image_to_window(info.mlx.ptr, info.mlx.win, info.mlx.img.ptr, 0, 0);
+	return (0 <= n && n <=255);
+}
 
+bool validate_unit(double n)
+{
+	return (0.0 <= n && n <= 1.0);
+}
 
-	// ここから下もOK
-	mlx_handle_hook(&info);
-	mlx_loop(info.mlx.ptr);
-	return (0);
+bool validate_unit_range(double n)
+{
+	return (-1.0 <= n && n <= 1.0);
+}
+
+bool validate_rad(double n)
+{
+	return (0.0 <= n && n <= 180.0);
 }

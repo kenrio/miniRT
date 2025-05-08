@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 15:35:30 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:20:42 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ bool	set_info(t_info *info, char *file_name)
 	while (line)
 	{
 		type = get_elem_type(line);
-		
 		if (type == E_AMBIENT)
-			set_amb(info, line);
+		{
+			if (set_amb(info, line) == false)
+				return (false);
+		}
 		else if (type == E_CAMERA)
-			set_cam(info, line);
+		{
+			if (set_cam(info, line) == false)
+				return (false);
+		}
 		else if (type == E_LIGHT)
-			set_light(info, line);
-
-		// 個々からは未対応	
-		// else if (type == E_SPHERE)
-		// 	set_sphere(info, line);
-		// else if (type == E_PLANE)
-		// 	set_plane(info, line);
-		// else if (type == E_CYLINDER)
-		// 	set_cylinder(info, line);
+		{
+			if (set_light(info, line) == false)
+				return (false);
+		}
 		else if (type == E_INVALID)
 		{
 			perror("find invalid element type.");
@@ -56,6 +56,14 @@ bool	set_info(t_info *info, char *file_name)
 	close(file_fd);
 	return (true);
 }
+
+// 個々からは未対応	
+		// else if (type == E_SPHERE)
+		// 	set_sphere(info, line);
+		// else if (type == E_PLANE)
+		// 	set_plane(info, line);
+		// else if (type == E_CYLINDER)
+		// 	set_cylinder(info, line);
 
 static bool	is_space(char c)
 {

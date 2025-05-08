@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:47:12 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 16:52:13 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 20:20:01 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,50 @@
 
 // double_set
 // スペースか塗る終端が終わりなことに注意
-double	parse_d(char *elem)
+double	parse_double(char *token)
 {
-	return (ft_atof(elem));
+	if (!token)
+		return (0.0);
+	return (ft_atof(token));
+}
+
+// 255, shn255, 255
+int	parse_3int(char *token, int idx)
+{
+	if (!token)
+		return (0);
+	while (*token && idx > 0)
+	{
+		while (*token && !(*token == ','))
+			token++;
+		while (*token == ',')
+			token++;
+		idx--;
+	}
+	if (is_valid_start(*token) == false)
+	{
+		perror("invalid input. 3 integer demand.");
+		return (0);
+	}
+	return (ft_atoi(token));
+}
+
+double	parse_3double(char *token, int idx)
+{
+	if (!token)
+		return (0.0);
+	while (*token && idx > 0)
+	{
+		while (*token && !(*token == ','))
+			token++;
+		while (*token == ',')
+			token++;
+		idx--;
+	}
+	if (is_valid_start(*token) == false)
+	{
+		perror("invalid input. 3 double demand.");
+		return (0.0);
+	}
+	return (ft_atof(token));
 }

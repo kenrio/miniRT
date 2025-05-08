@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:44:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 17:13:00 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:16:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static bool	validate_token(char *elem);
 static int 	ft_isspace(char c);
-static bool is_valid_start(char c);
 static bool is_valid_token(char c);
 
 // tokenize part.
@@ -36,15 +35,23 @@ char	*get_valid_token(char *elem, int idx)
 	if (*elem == '\0')
 		return (NULL);
 	if (validate_token(elem) == false)
+	{
+		perror("invalid input.");
 		return (NULL);
+	}
 	return (elem);
+}
+
+bool is_valid_start(char c)
+{
+	return (c == '+' || c == '-' || ft_isdigit(c));
 }
 
 static bool	validate_token(char *elem)
 {
 	if (!elem)
 		return (false);
-	if (is_valid_start(elem) == false)
+	if (is_valid_start(*elem) == false)
 		return (false);
 	while (*elem && !ft_isspace(*elem))
 	{
@@ -53,11 +60,6 @@ static bool	validate_token(char *elem)
 		elem++;
 	}
 	return (true);
-}
-
-static bool is_valid_start(char c)
-{
-	return (c == '+' || c == '-' || ft_isdigit(c));
 }
 
 static bool is_valid_token(char c)
