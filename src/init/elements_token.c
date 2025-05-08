@@ -6,16 +6,20 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:44:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 16:49:47 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:13:00 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int ft_isspace(char c);
+static bool	validate_token(char *elem);
+static int 	ft_isspace(char c);
+static bool is_valid_start(char c);
+static bool is_valid_token(char c);
 
 // tokenize part.
-char	*get_token(char *elem, int idx)
+// if invalid token, return NULL;
+char	*get_valid_token(char *elem, int idx)
 {
 	if (!elem || idx < 0)
 		return (NULL);
@@ -31,13 +35,16 @@ char	*get_token(char *elem, int idx)
 	}
 	if (*elem == '\0')
 		return (NULL);
+	if (validate_token(elem) == false)
+		return (NULL);
 	return (elem);
 }
 
-//   次の空白までの間に有効文字以外が入ってこないか
-bool	validate_token(char *elem)
+static bool	validate_token(char *elem)
 {
 	if (!elem)
+		return (false);
+	if (is_valid_start(elem) == false)
 		return (false);
 	while (*elem && !ft_isspace(*elem))
 	{
@@ -46,6 +53,11 @@ bool	validate_token(char *elem)
 		elem++;
 	}
 	return (true);
+}
+
+static bool is_valid_start(char c)
+{
+	return (c == '+' || c == '-' || ft_isdigit(c));
 }
 
 static bool is_valid_token(char c)

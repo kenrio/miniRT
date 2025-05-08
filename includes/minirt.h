@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/08 15:22:44 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 17:13:38 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ typedef struct s_info
 bool	init_project(t_info *info, char *file_name);
 void	destroy_project(t_info *info);
 bool	set_info(t_info *info, char *file_name);
+
+// token
+char	*get_valid_token(char *elem, int idx);
 
 
 // mlx

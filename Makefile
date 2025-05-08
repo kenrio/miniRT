@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/08 15:22:06 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/08 17:15:29 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,14 @@ MLX_SRC			:= \
 				mlx_setup.c \
 				mlx_utils.c \
 
-INIT_SRC			:= \
+INIT_SRC		:= \
 				project_init.c \
-				info_init.c \
+				elements_token.c \
+				set_info_conf.c \
+				set_info.c \
+				set_utils.c \
 
-UTILS_SRC			:= \
+UTILS_SRC		:= \
 				ft_atof.c \
 				get_next_line.c \
 
