@@ -6,13 +6,13 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/08 01:46:04 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/09 18:31:50 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	hit_sphere(t_ray r, t_vec3 center, double radius, double *t_out)
+bool	hit_sphere(t_ray r, t_vec3 center, double radius)
 {
     t_vec3 oc = v_sub(r.orig, center);
     double a = v_dot(r.dir, r.dir);
@@ -23,6 +23,5 @@ bool	hit_sphere(t_ray r, t_vec3 center, double radius, double *t_out)
     double t = (-b - sqrt(disc)) / (2*a);
     if (t < 1e-4) t = (-b + sqrt(disc)) / (2*a);
     if (t < 1e-4) return false;
-    *t_out = t;
     return (true);
 }

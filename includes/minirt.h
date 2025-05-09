@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 20:07:37 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/09 18:32:14 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ char	*get_next_line(int fd);
 // render functions
 void	cam_setup(t_cam *c);
 t_ray	make_ray(t_cam *c, double u, double v);
-bool	hit_sphere(t_ray r, t_vec3 center, double radius, double *t_out);
+bool	hit_sphere(t_ray r, t_vec3 center, double radius);
 void	render_scene(t_img *img, t_cam *cam);
 
 // vector calculation
