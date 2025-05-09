@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 18:52:46 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:26:28 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ void	set_amb(t_info *info, char *elem)
 		|| !validate_rgb(info->amb.rgb.r)
 		|| !validate_rgb(info->amb.rgb.g)
 		|| !validate_rgb(info->amb.rgb.g))
+	{
+		perror("amb validate failed.");
 		info->is_init_success = false;
+	}
 }
 
 void	set_cam(t_info *info, char *elem)

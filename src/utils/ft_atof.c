@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:53 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 21:22:22 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:17:49 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ double	ft_atof(char *str)
 		while (ft_isdigit(*str))
 		{
 			val = 10 * val + (*str - '0');
-			frac_scale= 10.0;
+			frac_scale *= 10.0;
 			str++;
 		}
 	}

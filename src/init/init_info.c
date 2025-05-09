@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 18:51:14 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:01:57 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ bool init_info(t_info *info, char *file_name)
 	if (mlx_setup(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
 		return (perror("mlx setup failed."), false);
 	if (set_info(info, file_name) == false)
-	{
-		perror("initialization info failed.");
-		mlx_cleanup(&info->mlx);
-		return (false);
-	}
+		return (mlx_cleanup(&info->mlx), false);
 	return (true);
 }
 

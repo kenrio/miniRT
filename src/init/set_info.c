@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 18:50:33 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:00:57 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool	set_info(t_info *info, char *file_name)
 	// check
 	if (info->is_init_success == false)
 	{
-		perror("だめでした");
+		perror("initialization info failed...");
 		return (false);
 	}
 	return (true);
