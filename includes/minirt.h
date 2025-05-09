@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/09 18:52:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:30:47 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ typedef enum e_elem {
     E_SPHERE, 
 	E_PLANE, 
 	E_CYLINDER,
-    E_INVALID
+    E_INVALID,
+	E_SPACE,
 }   t_elem;
 
 typedef struct s_amb

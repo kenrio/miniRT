@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 19:00:57 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:46:50 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,19 @@ bool	set_info(t_info *info, char *file_name)
 	while (line)
 	{
 		type = get_elem_type(line);
-		if (type == E_AMBIENT)
-			set_amb(info, line);
-		else if (type == E_CAMERA)
-			set_cam(info, line);
-		else if (type == E_LIGHT)
-			set_light(info, line);
-		else if (type == E_INVALID)
+		if (type != E_SPACE)
 		{
-			perror("find invalid element type.");
-			info->is_init_success = false;
+			if (type == E_AMBIENT)
+				set_amb(info, line);
+			else if (type == E_CAMERA)
+				set_cam(info, line);
+			else if (type == E_LIGHT)
+				set_light(info, line);
+			else if (type == E_INVALID)
+			{
+				perror("find invalid element type.");
+				info->is_init_success = false;
+			}
 		}
 		free(line);
 		line = get_next_line(file_fd);
@@ -72,17 +75,19 @@ static t_elem get_elem_type(char *s)
 {
 	while (is_space(*s))
 		++s;
+	if (*s == '\n')
+		return (E_SPACE);
 	if (*s == 'A' && is_space(s[1]))
-		return E_AMBIENT;
+		return (E_AMBIENT);
 	if (*s == 'C' && is_space(s[1]))
-		return E_CAMERA;
+		return (E_CAMERA);
 	if (*s == 'L' && is_space(s[1]))
-		return E_LIGHT;
+		return (E_LIGHT);
 	if (*s == 's' && s[1] == 'p' && is_space(s[2]))
-		return E_SPHERE;
+		return (E_SPHERE);
 	if (*s == 'p' && s[1] == 'l' && is_space(s[2]))
-		return E_PLANE;
+		return (E_PLANE);
 	if (*s == 'c' && s[1] == 'y' && is_space(s[2]))
-		return E_CYLINDER;
+		return (E_CYLINDER);
 	return E_INVALID;
 }
