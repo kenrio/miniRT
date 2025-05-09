@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 19:46:50 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:51:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static t_elem get_elem_type(char *s)
 {
 	while (is_space(*s))
 		++s;
-	if (*s == '\n')
+	if (*s == '\n' || *s == '#')
 		return (E_SPACE);
 	if (*s == 'A' && is_space(s[1]))
 		return (E_AMBIENT);
