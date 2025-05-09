@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:25:34 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 19:51:44 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 19:59:09 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,8 @@ bool	set_info(t_info *info, char *file_name)
 		line = get_next_line(file_fd);
 	}
 	close(file_fd);
-
-	// check
 	if (info->is_init_success == false)
-	{
-		perror("initialization info failed...");
-		return (false);
-	}
+		return (perror("initialization info failed..."), false);
 	return (true);
 }
 

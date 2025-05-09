@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/09 19:30:47 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:18:31 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,9 @@ void	set_light(t_info *info, char *elem);
 double	parse_double(char *token);
 int		parse_3int(char *token, int idx);
 double	parse_3double(char *token, int idx);
+t_pos3	parse_pos3(char *token);
+t_vec3	parse_vec3(char *token);
+t_rgb3	parse_rgb3(char *token);
 
 // token
 char	*get_valid_token(char *elem, int idx);

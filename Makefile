@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/08 21:48:56 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/09 20:25:15 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ INIT_SRC		:= \
 				elements_token.c \
 				set_info_conf.c \
 				set_info.c \
+				set_utils_ver3.c \
 				set_utils.c \
 				validate.c \
 

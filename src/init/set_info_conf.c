@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 19:26:28 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 20:24:39 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	set_amb(t_info *info, char *elem)
 		return ;
 	}
 	info->amb.intensity = parse_double(get_valid_token(elem, 1));
-	info->amb.rgb.r = parse_3int(get_valid_token(elem, 2), 0);
-	info->amb.rgb.g = parse_3int(get_valid_token(elem, 2), 1);
-	info->amb.rgb.b = parse_3int(get_valid_token(elem, 2), 2);
+	info->amb.rgb = parse_rgb3(get_valid_token(elem, 2));
 	if (!validate_unit(info->amb.intensity)
 		|| !validate_rgb(info->amb.rgb.r)
 		|| !validate_rgb(info->amb.rgb.g)
@@ -41,15 +39,22 @@ void	set_cam(t_info *info, char *elem)
 		info->is_init_success = false;
 		return ;
 	}
-	info->cam.pos.x = parse_3double(get_valid_token(elem, 1), 0);
-	info->cam.pos.y = parse_3double(get_valid_token(elem, 1), 1);
-	info->cam.pos.z = parse_3double(get_valid_token(elem, 1), 2);
-	info->cam.forward.x = parse_3double(get_valid_token(elem, 2), 0);
-	info->cam.forward.y = parse_3double(get_valid_token(elem, 2), 1);
-	info->cam.forward.z = parse_3double(get_valid_token(elem, 2), 2);
+	info->cam.pos = parse_pos3(get_valid_token(elem, 1));
+	info->cam.forward = parse_vec3(get_valid_token(elem, 2));
 	info->cam.fov = parse_double(get_valid_token(elem, 3));
 	// TODO:他の要素も計算して入れる
-
+	// info->cam.right.x =
+	// info->cam.right.y =
+	// info->cam.right.z =
+	// info->cam.up.x =
+	// info->cam.up.y =
+	// info->cam.up.z =
+	// info->cam.aspect =
+	// info->cam.half_w =
+	// info->cam.half_h =
+	// info->cam.llc.x =
+	// info->cam.llc.y =
+	// info->cam.llc.z =
 	if (!validate_unit_range(info->cam.forward.x)
 		|| !validate_unit_range(info->cam.forward.y)
 		|| !validate_unit_range(info->cam.forward.z)
