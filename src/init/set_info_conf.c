@@ -6,17 +6,20 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 21:17:47 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:52:46 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// elementは　"A 0.2 255,255,255"みたいな感じ
-bool	set_amb(t_info *info, char *elem)
+// element is formated, "A 0.2 255,255,255"
+void	set_amb(t_info *info, char *elem)
 {
 	if (!info || !elem)
-		return (false);
+	{
+		info->is_init_success = false;
+		return ;
+	}
 	info->amb.intensity = parse_double(get_valid_token(elem, 1));
 	info->amb.rgb.r = parse_3int(get_valid_token(elem, 2), 0);
 	info->amb.rgb.g = parse_3int(get_valid_token(elem, 2), 1);
@@ -25,14 +28,16 @@ bool	set_amb(t_info *info, char *elem)
 		|| !validate_rgb(info->amb.rgb.r)
 		|| !validate_rgb(info->amb.rgb.g)
 		|| !validate_rgb(info->amb.rgb.g))
-		return (false);
-	return (true);
+		info->is_init_success = false;
 }
 
-bool	set_cam(t_info *info, char *elem)
+void	set_cam(t_info *info, char *elem)
 {
 	if (!info || !elem)
-		return (false);
+	{
+		info->is_init_success = false;
+		return ;
+	}
 	info->cam.pos.x = parse_3double(get_valid_token(elem, 1), 0);
 	info->cam.pos.y = parse_3double(get_valid_token(elem, 1), 1);
 	info->cam.pos.z = parse_3double(get_valid_token(elem, 1), 2);
@@ -46,15 +51,17 @@ bool	set_cam(t_info *info, char *elem)
 		|| !validate_unit_range(info->cam.forward.y)
 		|| !validate_unit_range(info->cam.forward.z)
 		|| !validate_rad(info->cam.fov))
-		return (false);
-	return (true);
+		info->is_init_success = false;
 }
 
 // L -40.0,50.0,20.0 0.6 255,255,255
-bool	set_light(t_info *info, char *elem)
+void	set_light(t_info *info, char *elem)
 {
 	if (!info || !elem)
-		return (false);
+	{
+		info->is_init_success = false;
+		return ;
+	}
 	info->light.pos.x = parse_3double(get_valid_token(elem, 1), 0);
 	info->light.pos.y = parse_3double(get_valid_token(elem, 1), 1);
 	info->light.pos.z = parse_3double(get_valid_token(elem, 1), 2);
@@ -74,8 +81,6 @@ bool	set_light(t_info *info, char *elem)
 	if (!validate_unit(info->light.intensity)
 		|| !validate_rgb(info->light.rgb.r)
 		|| !validate_rgb(info->light.rgb.g)
-		|| !validate_rgb(info->light.rgb.b)
-	)
-		return (false);
-	return (true);
+		|| !validate_rgb(info->light.rgb.b))
+		info->is_init_success = false;
 }

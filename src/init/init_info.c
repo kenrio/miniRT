@@ -6,20 +6,22 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 20:13:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:51:14 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+static void	set_info_start(t_info *info);
+
 bool init_info(t_info *info, char *file_name)
 {
-	ft_bzero(info, sizeof(t_info));
+	set_info_start(info);
 	if (mlx_setup(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
 		return (perror("mlx setup failed."), false);
 	if (set_info(info, file_name) == false)
 	{
-		perror("init info failed.");
+		perror("initialization info failed.");
 		mlx_cleanup(&info->mlx);
 		return (false);
 	}
@@ -30,4 +32,10 @@ void	clean_info(t_info *info)
 {
 	// mlxの開放
 	mlx_cleanup(&info->mlx);
+}
+
+static void	set_info_start(t_info *info)
+{
+	ft_bzero(info, sizeof(t_info));
+	info->is_init_success = true;
 }

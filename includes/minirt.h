@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/08 21:18:17 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/09 18:52:16 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ typedef struct s_info
 	t_cam	cam;
 	t_light	light;
 	t_mlx	mlx;
+	bool	is_init_success;
 }	t_info;
 
 // ---functions---
@@ -134,9 +135,9 @@ typedef struct s_info
 bool 	init_info(t_info *info, char *file_name);
 void	clean_info(t_info *info);
 bool	set_info(t_info *info, char *file_name);
-bool	set_amb(t_info *info, char *elem);
-bool	set_cam(t_info *info, char *elem);
-bool	set_light(t_info *info, char *elem);
+void	set_amb(t_info *info, char *elem);
+void	set_cam(t_info *info, char *elem);
+void	set_light(t_info *info, char *elem);
 
 // init_utils
 double	parse_double(char *token);
@@ -161,5 +162,8 @@ void	mlx_handle_hook(t_info *info);
 // utils
 char	*get_next_line(int fd);
 double	ft_atof(char *str);
+
+// debug
+void	print_info(const t_info *info);
 
 #endif

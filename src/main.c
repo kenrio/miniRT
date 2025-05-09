@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/08 21:14:11 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/08 21:49:47 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	main(int argc, char **argv)
 		return (perror("Argument is missing"), 1);
 	if (init_info(&info, argv[1]) == false)
 		return (1);
+
+	print_info(&info);
+
 	// ここまではOK
 	//TODO 実行部分の実装
 	mlx_put_image_to_window(info.mlx.ptr, info.mlx.win, info.mlx.img.ptr, 0, 0);

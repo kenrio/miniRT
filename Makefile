@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/08 20:05:15 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/08 21:48:56 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,12 +43,15 @@ UTILS_SRC		:= \
 				ft_atof.c \
 				get_next_line.c \
 
+TEST_SRC		:= \
+				print_info.c \
 
 SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
+				$(addprefix test/, $(TEST_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
