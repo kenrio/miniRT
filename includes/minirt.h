@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/09 20:18:31 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/10 15:40:20 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,17 @@ bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
 void	mlx_cleanup(t_mlx *m);
 void	mlx_handle_hook(t_info *info);
 
+// math
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
+double	vec_dot(t_vec3 a, t_vec3 b);
+double	vec_len(t_vec3 v);
+t_vec3	vec_normalize(t_vec3 v);
+
 // utils
 char	*get_next_line(int fd);
 double	ft_atof(char *str);
+t_vec3	calc_right_vec(t_vec3 forward);
+t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward);
 
 // debug
 void	print_info(const t_info *info);

@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/09 20:25:15 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/10 15:07:05 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,11 @@ INIT_SRC		:= \
 				set_utils.c \
 				validate.c \
 
+MATH_SRC		:= \
+				cross.c \
+
 UTILS_SRC		:= \
+				calc_screen_vec.c \
 				ft_atof.c \
 				get_next_line.c \
 
@@ -51,6 +55,7 @@ SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
+				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix test/, $(TEST_SRC)) \
 
