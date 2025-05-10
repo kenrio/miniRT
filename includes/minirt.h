@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/10 15:40:20 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/10 15:57:24 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <math.h>
 
 # include "mlx.h"
 # include "libft.h"
 
+// --- memo ---
+// world_up vector define (x, y, z) = (0, 0, 1)
+// in calc_screen_vec.c
 
 //  --- macro ---
 # define WIN_W 1024

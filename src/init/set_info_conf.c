@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/10 15:43:33 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/10 16:40:39 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ void	set_cam(t_info *info, char *elem)
 	info->cam.pos = parse_pos3(get_valid_token(elem, 1));
 	info->cam.forward = parse_vec3(get_valid_token(elem, 2));
 	info->cam.fov = parse_double(get_valid_token(elem, 3));
-	info->cam.right = calc_right_vec(info->cam.forward);
+	info->cam.right = vec_normalize(calc_right_vec(info->cam.forward));
 	info->cam.up = calc_up_vec(info->cam.right, info->cam.forward);
+	info->cam.aspect = (WIN_W / WIN_H);
+	
+
+
 	// TODO:他の要素も計算して入れる
 
-	// info->cam.aspect =
 	// info->cam.half_w =
 	// info->cam.half_h =
 	// info->cam.llc.x =

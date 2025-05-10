@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/10 15:07:05 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/10 15:53:44 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ INIT_SRC		:= \
 				validate.c \
 
 MATH_SRC		:= \
-				cross.c \
+				vector.c \
 
 UTILS_SRC		:= \
 				calc_screen_vec.c \
