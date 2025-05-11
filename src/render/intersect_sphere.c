@@ -6,13 +6,13 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/10 17:13:57 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 09:40:24 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	hit_sphere(t_ray r, t_vec3 center, double radius)
+bool	intersect_sphere(t_ray r, t_vec3 center, double radius)
 {
 	t_vec3	oc;
 	double	a;

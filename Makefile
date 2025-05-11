@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 16:54:22 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/11 09:40:57 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ SRC_RENDER		:= \
 				cam_setup.c \
 				make_ray.c \
 				render_scene.c \
-				hit_sphere.c \
+				intersect_sphere.c \
 
 
 
