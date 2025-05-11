@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 09:41:23 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 12:15:22 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	render_scene(t_img *img, t_cam *cam)
             ray = make_ray(cam, u, v);
 
             color = 0x000000;
-            if (intersect_sphere(ray, (t_vec3){0.0 , 0.0, 20.6}, 6.3))
+            if (intersect_sphere(ray, (t_pos3){0.0 , 0.0, 20.6}, 6.3))
                 color = 0x00FF0000;
 			base = (unsigned char *)img->addr;
             dst = base + y * img->line_len + x * (img->bpp / 8);

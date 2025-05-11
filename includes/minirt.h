@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 09:40:35 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 12:15:52 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ typedef struct s_mlx
 // utils
 typedef struct s_vec3
 {
-    double    x;
-    double    y;
-    double    z;
+    double	x;
+    double	y;
+    double	z;
 }    t_vec3;
 
-typedef t_vec3 t_pos3;
+// typedef t_vec3	t_pos3;
 
-// typedef struct s_pos3
-// {
-// 	double    x;
-//     double    y;
-//     double    z;
-// }	t_pos3;
+typedef struct s_pos3
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_pos3;
 
 typedef struct s_rgb3
 {
@@ -78,8 +78,8 @@ typedef struct s_rgb3
 
 typedef struct s_ray
 {
-	t_vec3	orig;
-	t_vec3	dir;
+	t_pos3	origin;
+	t_vec3	direction;
 }	t_ray;
 
 // info
@@ -145,8 +145,12 @@ char	*get_next_line(int fd);
 // render functions
 void	cam_setup(t_cam *c);
 t_ray	make_ray(t_cam *c, double u, double v);
-bool	intersect_sphere(t_ray r, t_vec3 center, double radius);
+bool	intersect_sphere(t_ray r, t_pos3 center, double radius);
 void	render_scene(t_img *img, t_cam *cam);
+t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
+t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
+t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
+void	print_cam_info(t_cam *c);
 
 // vector calculation
 t_vec3	v_add(t_vec3 a, t_vec3 b);

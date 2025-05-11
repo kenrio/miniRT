@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:52:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 14:28:19 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 11:51:17 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	cam_setup(t_cam *c)
 	fov_rad = c->fov * M_PI / 180.0;
 	c->half_h = tan(fov_rad / 2.0);
 	c->half_w = c->half_h * c->aspect;
-	c->llc = v_add(
-			v_sub(
-				v_sub(c->pos, v_scale(c->right, c->half_w)),
-				v_scale(c->up, c->half_h)),
-			c->forward);
+	c->llc = pos_add_vec(
+		pos_sub_vec(
+			pos_sub_vec(c->pos, v_scale(c->right, c->half_w)),
+			v_scale(c->up, c->half_h)),
+		c->forward);
 }
