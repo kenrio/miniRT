@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 12:15:52 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 13:33:46 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ typedef struct s_vec3
     double	y;
     double	z;
 }    t_vec3;
-
-// typedef t_vec3	t_pos3;
 
 typedef struct s_pos3
 {
