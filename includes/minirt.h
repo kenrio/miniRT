@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 13:33:46 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/11 14:27:07 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,16 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 
+typedef struct s_quad_eq
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	t1;
+	double	t2;
+}	t_quad_eq;
+
 // info
 typedef struct s_amb
 {
@@ -149,6 +159,8 @@ t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
 t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
 t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
 void	print_cam_info(t_cam *c);
+double	calc_quad_discriminant(t_quad_eq *q);
+bool	solve_quad_eq(t_quad_eq *q);
 
 // vector calculation
 t_vec3	v_add(t_vec3 a, t_vec3 b);
