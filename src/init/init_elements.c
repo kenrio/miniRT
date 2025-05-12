@@ -6,14 +6,14 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:16:37 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 18:03:37 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:06:02 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static bool is_space(char c);
-static t_elem get_elem_type(char *s);
+static bool		is_space(char c);
+static t_elem	get_elem_type(char *s);
 
 bool	init_elements(t_info *info, char *file_name)
 {
@@ -64,7 +64,7 @@ static bool	is_space(char c)
 	return (c == ' ' || c == '\t');
 }
 
-static t_elem get_elem_type(char *s)
+static t_elem	get_elem_type(char *s)
 {
 	while (is_space(*s))
 		++s;
@@ -82,5 +82,5 @@ static t_elem get_elem_type(char *s)
 		return (E_PLANE);
 	if (*s == 'c' && s[1] == 'y' && is_space(s[2]))
 		return (E_CYLINDER);
-	return E_INVALID;
+	return (E_INVALID);
 }

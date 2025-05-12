@@ -6,15 +6,15 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:44:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/08 21:16:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:02:16 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static bool	validate_token(char *elem);
-static int 	ft_isspace(char c);
-static bool is_valid_token(char c);
+static int	ft_isspace(char c);
+static bool	is_valid_token(char c);
 
 // tokenize part.
 // if invalid token, return NULL;
@@ -42,7 +42,7 @@ char	*get_valid_token(char *elem, int idx)
 	return (elem);
 }
 
-bool is_valid_start(char c)
+bool	is_valid_start(char c)
 {
 	return (c == '+' || c == '-' || ft_isdigit(c));
 }
@@ -62,7 +62,7 @@ static bool	validate_token(char *elem)
 	return (true);
 }
 
-static bool is_valid_token(char c)
+static bool	is_valid_token(char c)
 {
 	return (c == '+' || c == '-' || ft_isdigit(c) || c == '.' || c == ',');
 }

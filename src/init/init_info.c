@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 18:47:51 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:03:25 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_info_start(t_info *info);
 
-bool init_info(t_info *info, char *file_name)
+bool	init_info(t_info *info, char *file_name)
 {
 	set_info_start(info);
 	if (init_mlx(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
@@ -26,10 +26,7 @@ bool init_info(t_info *info, char *file_name)
 
 void	clean_info(t_info *info)
 {
-	// mlxの開放
 	mlx_cleanup(&info->mlx);
-
-	// lights
 	clean_light_nodes(info->lights);
 }
 

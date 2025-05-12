@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 18:33:24 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:10:16 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	init_lights(t_info *info, char *elem)
 {
 	t_light_node	*node;
 	t_rgb3			rgb;
-	
+
 	if (!info || !elem)
 	{
 		info->is_init_success = false;
@@ -76,8 +76,8 @@ void	init_lights(t_info *info, char *elem)
 		parse_pos3(get_valid_token(elem, 1)),
 		parse_double(get_valid_token(elem, 2)),
 		rgb);
-	if (!node 
-		|| !validate_unit(node->value.intensity) 
+	if (!node
+		|| !validate_unit(node->value.intensity)
 		|| !validate_rgb(node->value.rgb))
 	{
 		info->is_init_success = false;

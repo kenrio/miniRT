@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:00:48 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 18:18:57 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:09:20 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	init_cylinder(t_info *info, char *elem)
 	info->cy.diameter = parse_double(get_valid_token(elem, 3));
 	info->cy.height = parse_double(get_valid_token(elem, 4));
 	info->cy.rgb = parse_rgb3(get_valid_token(elem, 5));
-	if (!validate_unit_range(info->cy.vec.x) 
-		|| !validate_unit_range(info->cy.vec.y) 
-		|| !validate_unit_range(info->cy.vec.z) 
+	if (!validate_unit_range(info->cy.vec.x)
+		|| !validate_unit_range(info->cy.vec.y)
+		|| !validate_unit_range(info->cy.vec.z)
 		|| !validate_rgb(info->cy.rgb))
 		info->is_init_success = false;
 }

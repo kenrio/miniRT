@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:13:06 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 13:16:20 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:11:43 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ bool	init_mlx(t_mlx *m, int win_w, int win_h, char *win_title)
 	}
 	return (true);
 }
-

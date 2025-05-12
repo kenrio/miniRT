@@ -6,11 +6,11 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:53 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 19:17:49 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:12:50 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"minirt.h"
+#include "minirt.h"
 
 static int	ft_isspace(int c);
 
@@ -18,15 +18,15 @@ static int	ft_isspace(int c);
 // support format: [-]123.45;
 double	ft_atof(char *str)
 {
-	int					sign;
-	long	double		val;
-	long	double		frac_scale;
-	long	double		result;
+	int	 		sign;
+	long double	val;
+	long double	frac_scale;
+	long double	result;
 
 	while (ft_isspace(*str))
 		str++;
 	sign = -2 * (*str == '-') + 1;
-	str += (*str == '-' ||  *str == '+');
+	str += (*str == '-' || *str == '+');
 	val = 0.0;
 	while (ft_isdigit(*str))
 		val = 10.0 * val + (*(str++) - '0');
