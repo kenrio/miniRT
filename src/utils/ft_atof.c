@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:14:53 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:12:50 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:15:25 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_isspace(int c);
 // support format: [-]123.45;
 double	ft_atof(char *str)
 {
-	int	 		sign;
+	int			sign;
 	long double	val;
 	long double	frac_scale;
 	long double	result;
