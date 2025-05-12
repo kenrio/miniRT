@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 14:00:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:01:04 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ typedef struct s_info
 {
 	t_amb			amb;
 	t_cam			cam;
-	t_light_node	lights;
+	t_light_node	*lights;
 	t_sphere		sp;
 	t_plane			pl;
 	t_cylinder		cy;
