@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/06 16:37:14 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/10 15:53:44 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,19 +31,33 @@ MLX_SRC			:= \
 				mlx_setup.c \
 				mlx_utils.c \
 
-INIT_SRC			:= \
-				project_init.c \
-				info_init.c \
+INIT_SRC		:= \
+				init_info.c \
+				elements_token.c \
+				set_info_conf.c \
+				set_info.c \
+				set_utils_ver3.c \
+				set_utils.c \
+				validate.c \
 
-UTILS_SRC			:= \
+MATH_SRC		:= \
+				vector.c \
+
+UTILS_SRC		:= \
+				calc_screen_vec.c \
+				ft_atof.c \
 				get_next_line.c \
 
+TEST_SRC		:= \
+				print_info.c \
 
 SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
+				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
+				$(addprefix test/, $(TEST_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \

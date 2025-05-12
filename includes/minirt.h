@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 15:51:54 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/10 15:57:24 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdint.h>
+# include <math.h>
 
 # include "mlx.h"
 # include "libft.h"
 
+// --- memo ---
+// world_up vector define (x, y, z) = (0, 0, 1)
+// in calc_screen_vec.c
 
 //  --- macro ---
 # define WIN_W 1024
@@ -74,6 +78,17 @@ typedef struct s_rgb3
 }	t_rgb3;
 
 // info
+typedef enum e_elem {
+    E_AMBIENT,
+	E_CAMERA,
+	E_LIGHT,
+    E_SPHERE, 
+	E_PLANE, 
+	E_CYLINDER,
+    E_INVALID,
+	E_SPACE,
+}   t_elem;
+
 typedef struct s_amb
 {
 	double	intensity;
@@ -117,21 +132,54 @@ typedef struct s_info
 	t_cam	cam;
 	t_light	light;
 	t_mlx	mlx;
+	bool	is_init_success;
 }	t_info;
 
 // ---functions---
 // init
-bool	init_project(t_info *info, char *file_name);
-void	destroy_project(t_info *info);
+bool 	init_info(t_info *info, char *file_name);
+void	clean_info(t_info *info);
 bool	set_info(t_info *info, char *file_name);
+void	set_amb(t_info *info, char *elem);
+void	set_cam(t_info *info, char *elem);
+void	set_light(t_info *info, char *elem);
 
+// init_utils
+double	parse_double(char *token);
+int		parse_3int(char *token, int idx);
+double	parse_3double(char *token, int idx);
+t_pos3	parse_pos3(char *token);
+t_vec3	parse_vec3(char *token);
+t_rgb3	parse_rgb3(char *token);
+
+// token
+char	*get_valid_token(char *elem, int idx);
+
+// validate
+bool	is_valid_start(char c);
+bool	validate_rgb(int n);
+bool	validate_unit(double n);
+bool	validate_unit_range(double n);
+bool	validate_rad(double n);
 
 // mlx
 bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
 void	mlx_cleanup(t_mlx *m);
 void	mlx_handle_hook(t_info *info);
 
+// math
+t_vec3	vec_cross(t_vec3 a, t_vec3 b);
+double	vec_dot(t_vec3 a, t_vec3 b);
+double	vec_len(t_vec3 v);
+t_vec3	vec_normalize(t_vec3 v);
+
 // utils
 char	*get_next_line(int fd);
+double	ft_atof(char *str);
+t_vec3	calc_right_vec(t_vec3 forward);
+t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward);
+
+// debug
+void	print_info(const t_info *info);
 
 #endif

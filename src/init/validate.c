@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   info_init.c                                        :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/06 14:45:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 15:37:30 by tishihar         ###   ########.fr       */
+/*   Created: 2025/05/08 19:53:15 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/08 21:07:27 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	set_info(t_info *info, char *file_name)
+bool validate_rgb(int n)
 {
-	int		file_fd;
+	return (0 <= n && n <=255);
+}
 
-	(void) info;
+bool validate_unit(double n)
+{
+	return (0.0 <= n && n <= 1.0);
+}
 
-	file_fd = open(file_name, O_RDONLY);
-	if (file_fd == -1)
-		return (false);
-		
-	// セットアップ
+bool validate_unit_range(double n)
+{
+	return (-1.0 <= n && n <= 1.0);
+}
 
-	
-	if (set_amb(info) == false)
-		return (close(file_fd), false);
-	if (set_cam(info) == false)
-		return (close(file_fd), false);
-	if (set_light() == false)
-		return (close(file_fd), false);
-	// ここまで
-	close(file_fd);
-	return (true);
+bool validate_rad(double n)
+{
+	return (0.0 <= n && n <= 180.0);
 }
