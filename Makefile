@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 14:03:22 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/12 18:27:29 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ_DIR			:= obj
 
 MLX_SRC			:= \
 				mlx_hook.c \
-				mlx_setup.c \
+				mlx_init.c \
 				mlx_utils.c \
 
 INIT_SRC		:= \
@@ -37,6 +37,7 @@ INIT_SRC		:= \
 				init_element2.c \
 				init_elements.c \
 				init_info.c \
+				light_node.c \
 				set_utils_ver3.c \
 				set_utils.c \
 				validate.c \
