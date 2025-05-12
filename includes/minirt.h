@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 15:01:04 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 17:52:04 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 //  --- macro ---
 # define WIN_W 1024
 # define WIN_H 1024
+
+# define PIE 3.14159265358979
+
 # define ESC 65307
 
 # ifndef BUFFER_SIZE
@@ -115,15 +118,16 @@ typedef	struct s_light
 */
 typedef struct s_cam
 {
-    t_pos3    pos;
-    t_vec3    forward;
-    double    fov;
-    t_vec3    right;
-    t_vec3    up;
-    double    aspect;
-    double    half_w;
-    double    half_h;
-    t_pos3    llc;
+    t_pos3	pos;
+    t_vec3	forward;
+	double	fov;
+    t_vec3	right;
+    t_vec3	up;
+    double	fov_rad;
+    double	aspect;
+    double	half_w;
+    double	half_h;
+    t_pos3	llc;
 }    t_cam;
 
 typedef struct s_sphere
@@ -187,13 +191,15 @@ double	parse_3double(char *token, int idx);
 t_pos3	parse_pos3(char *token);
 t_vec3	parse_vec3(char *token);
 t_rgb3	parse_rgb3(char *token);
+t_light_node	*new_light_node(t_pos3 pos, double intensity, t_rgb3 rgb);
+void	clean_light_nodes(t_light_node *head_node);
 
 // token
 char	*get_valid_token(char *elem, int idx);
 
 // validate
 bool	is_valid_start(char c);
-bool	validate_rgb(int n);
+bool	validate_rgb(t_rgb3	rgb);
 bool	validate_unit(double n);
 bool	validate_unit_range(double n);
 bool	validate_rad(double n);
