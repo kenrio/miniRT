@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/10 15:53:44 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/12 14:03:22 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,10 +32,11 @@ MLX_SRC			:= \
 				mlx_utils.c \
 
 INIT_SRC		:= \
-				init_info.c \
 				elements_token.c \
-				set_info_conf.c \
-				set_info.c \
+				init_element1.c \
+				init_element2.c \
+				init_elements.c \
+				init_info.c \
 				set_utils_ver3.c \
 				set_utils.c \
 				validate.c \
