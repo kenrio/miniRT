@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 20:54:34 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/05 20:55:17 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:24:38 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 t_vec3	v_norm(t_vec3 v)
 {
 	return (
-		v_scale(v, 1.0 / v_len(v))
+		vec_scale(v, 1.0 / v_len(v))
 	);
 }

@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 14:27:07 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 18:18:57 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,24 +151,22 @@ void	mlx_handle_hook(t_info *info);
 char	*get_next_line(int fd);
 
 // render functions
-void	cam_setup(t_cam *c);
 t_ray	make_ray(t_cam *c, double u, double v);
 bool	intersect_sphere(t_ray r, t_pos3 center, double radius);
 void	render_scene(t_img *img, t_cam *cam);
-t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
-t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
-t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
-void	print_cam_info(t_cam *c);
-double	calc_quad_discriminant(t_quad_eq *q);
-bool	solve_quad_eq(t_quad_eq *q);
 
-// vector calculation
-t_vec3	v_add(t_vec3 a, t_vec3 b);
-t_vec3	v_sub(t_vec3 a, t_vec3 b);
-t_vec3	v_scale(t_vec3 v, double k);
+// math calculation
+t_vec3	vec_add(t_vec3 a, t_vec3 b);
+t_vec3	vec_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec_scale(t_vec3 v, double k);
 double	v_dot(t_vec3 a, t_vec3 b);
 t_vec3	v_cross(t_vec3 a, t_vec3 b);
 double	v_len(t_vec3 v);
 t_vec3	v_norm(t_vec3 v);
+t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
+t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
+t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
+double	calc_quad_discriminant(t_quad_eq *q);
+bool	solve_quad_eq(t_quad_eq *q);
 
 #endif

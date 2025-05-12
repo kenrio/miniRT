@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/11 14:03:39 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/12 18:25:13 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,36 +35,34 @@ INIT_SRC			:= \
 				project_init.c \
 				info_init.c \
 
+MATH_SRC		:= \
+				vector2.c \
+				pos_add_vec.c \
+				pos_sub_vec.c \
+				pos_sub.c \
+				quadratic_eq.c \
+
 UTILS_SRC			:= \
 				get_next_line.c \
 
 
 SRC_VEC			:= \
-				v_add.c \
-				v_sub.c \
-				v_scale.c \
 				v_dot.c \
 				v_cross.c \
 				v_len.c \
 				v_norm.c \
 
 SRC_RENDER		:= \
-				cam_setup.c \
 				make_ray.c \
 				render_scene.c \
 				intersect_sphere.c \
-				pos_sub.c \
-				pos_sub_vec.c \
-				pos_add_vec.c \
-				print_cam_info.c \
-				quadratic_eq.c \
-
 
 
 SRC				:= \
 				main.c \
 				$(addprefix mlx_series/, $(MLX_SRC)) \
 				$(addprefix init/, $(INIT_SRC)) \
+				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix vector/, $(SRC_VEC)) \
 				$(addprefix render/, $(SRC_RENDER)) \
