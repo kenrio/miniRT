@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 17:44:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:33:24 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	init_cam(t_info *info, char *elem)
 	info->cam.up = calc_up_vec(info->cam.right, info->cam.forward);
 	info->cam.fov_rad = (info->cam.fov * PIE) / 180;
 	info->cam.aspect = (WIN_W / WIN_H);
-	info->cam.half_w = tan(info->cam.fov_rad / 2.0);
-	info->cam.half_h = info->cam.half_h * info->cam.aspect;
+	info->cam.half_h = tan(info->cam.fov_rad / 2.0);
+	info->cam.half_w = info->cam.half_h * info->cam.aspect;
 	// TODO:他の要素も計算して入れる
 
 	// info->cam.llc.x =
