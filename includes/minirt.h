@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 19:57:29 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:04:13 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ char			*get_next_line(int fd);
 // render functions
 t_ray	make_ray(t_cam *c, double u, double v);
 bool	intersect_sphere(t_ray r, t_pos3 center, double radius);
-void	render_scene(t_img *img, t_cam *cam);
+void	render_scene(t_info *info);
 
 // math calculation
 t_vec3	vec_add(t_vec3 a, t_vec3 b);
