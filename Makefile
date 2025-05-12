@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 19:45:58 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/12 19:57:37 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,6 @@ UTILS_SRC			:= \
 
 TEST_SRC		:= \
 				print_info.c \
-
-SRC_VEC			:= \
-				v_dot.c \
-				v_cross.c \
-				v_len.c \
-				v_norm.c \
 
 SRC_RENDER		:= \
 				make_ray.c \

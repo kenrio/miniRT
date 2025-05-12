@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:30:58 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 19:38:47 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 19:48:58 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ int	main(int argc, char **argv)
 
 	// ここまではOK
 	//TODO 実行部分の実装
-	info.cam.pos = (t_pos3){0.0, 0.0, 0.0};
-	info.cam.forward = (t_vec3){0.0, 0.0, 1.0};
-	info.cam.fov = 70.0;
-	// cam_setup(&info.cam);
 	render_scene(&info.mlx.img, &info.cam);
 	mlx_put_image_to_window(info.mlx.ptr, info.mlx.win, info.mlx.img.ptr, 0, 0);
 
