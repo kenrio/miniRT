@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 17:52:04 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:21:06 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,10 +176,11 @@ typedef struct s_info
 // ---functions---
 // init
 bool 	init_info(t_info *info, char *file_name);
+void	clean_info(t_info *info);
 bool	init_elements(t_info *info, char *file_name);
 void	init_amb(t_info *info, char *elem);
 void	init_cam(t_info *info, char *elem);
-void	init_light(t_info *info, char *elem);
+void	init_lights(t_info *info, char *elem);
 void	init_sphere(t_info *info, char *elem);
 void	init_plane(t_info *info, char *elem);
 void	init_cylinder(t_info *info, char *elem);

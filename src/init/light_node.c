@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:43:31 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 17:50:21 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 18:01:39 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	clean_light_nodes(t_light_node *head_node)
 {
 	t_light_node	*curr;
 	t_light_node	*next;
-	
+
 	curr = head_node;
 	while (!curr)
 	{
