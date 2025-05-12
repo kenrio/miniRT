@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 18:59:58 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:04:13 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,22 @@ typedef struct s_rgb3
 	int	g;
 	int	b;
 }	t_rgb3;
+
+typedef struct s_ray
+{
+	t_pos3	origin;
+	t_vec3	direction;
+}	t_ray;
+
+typedef struct s_quad_eq
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	t1;
+	double	t2;
+}	t_quad_eq;
 
 // --- info elem ---
 typedef enum e_elem
@@ -219,6 +235,21 @@ t_vec3			vec_normalize(t_vec3 v);
 
 // utils
 char			*get_next_line(int fd);
+
+// render functions
+t_ray	make_ray(t_cam *c, double u, double v);
+bool	intersect_sphere(t_ray r, t_pos3 center, double radius);
+void	render_scene(t_info *info);
+
+// math calculation
+t_vec3	vec_add(t_vec3 a, t_vec3 b);
+t_vec3	vec_sub(t_vec3 a, t_vec3 b);
+t_vec3	vec_scale(t_vec3 v, double k);
+t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
+t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
+t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
+double	calc_quad_discriminant(t_quad_eq *q);
+bool	solve_quad_eq(t_quad_eq *q);
 double			ft_atof(char *str);
 t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);

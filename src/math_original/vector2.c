@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_screen_vec.c                                  :+:      :+:    :+:   */
+/*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:24:35 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/12 18:07:30 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/12 18:12:54 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// if dot of forward_vec. & world_up_vec. is ~= 1,
-// use {1,0,0}
-t_vec3	calc_right_vec(t_vec3 forward)
+t_vec3	vec_add(t_vec3 a, t_vec3 b)
 {
-	t_vec3	world_up;
-
-	world_up = (t_vec3){0, 1, 0};
-	if (fabs(vec_dot(forward, world_up)) > 0.999)
-		world_up = (t_vec3){1, 0, 0};
-	return (vec_cross(world_up, forward));
+	return (
+		(t_vec3){a.x + b.x, a.y + b.y, a.z + b.z}
+	);
 }
 
-t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward)
+t_vec3	vec_sub(t_vec3 a, t_vec3 b)
 {
-	return (vec_cross(right, forward));
+	return (
+		(t_vec3){a.x - b.x, a.y - b.y, a.z - b.z}
+	);
+}
+
+t_vec3	vec_scale(t_vec3 v, double k)
+{
+	return (
+		(t_vec3){v.x * k, v.y * k, v.z * k}
+	);
 }

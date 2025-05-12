@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
+#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 18:27:29 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/12 19:57:37 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,14 +44,25 @@ INIT_SRC		:= \
 
 MATH_SRC		:= \
 				vector.c \
+				vector2.c \
+				pos_add_vec.c \
+				pos_sub_vec.c \
+				pos_sub.c \
+				quadratic_eq.c \
 
-UTILS_SRC		:= \
+UTILS_SRC			:= \
 				calc_screen_vec.c \
 				ft_atof.c \
 				get_next_line.c \
 
 TEST_SRC		:= \
 				print_info.c \
+
+SRC_RENDER		:= \
+				make_ray.c \
+				render_scene.c \
+				intersect_sphere.c \
+
 
 SRC				:= \
 				main.c \
@@ -60,6 +71,8 @@ SRC				:= \
 				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix test/, $(TEST_SRC)) \
+				$(addprefix vector/, $(SRC_VEC)) \
+				$(addprefix render/, $(SRC_RENDER)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \

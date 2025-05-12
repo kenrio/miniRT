@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_screen_vec.c                                  :+:      :+:    :+:   */
+/*   pos_sub.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:24:35 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/11 10:13:19 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/11 10:57:33 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// if dot of forward_vec. & world_up_vec. is ~= 1,
-// use {1,0,0}
-t_vec3	calc_right_vec(t_vec3 forward)
+t_vec3	pos_sub(t_pos3 p1, t_pos3 p2)
 {
-	t_vec3	world_up;
-
-	world_up = (t_vec3){0, 1, 0};
-	if (fabs(vec_dot(forward, world_up)) > 0.999)
-		world_up = (t_vec3){1, 0, 0};
-	return (vec_cross(world_up, forward));
-}
-
-t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward)
-{
-	return (vec_cross(right, forward));
+	return (
+		(t_vec3){p1.x - p2.x, p1.y - p2.y, p1.z - p2.z}
+	);
 }

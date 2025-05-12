@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_screen_vec.c                                  :+:      :+:    :+:   */
+/*   make_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:24:35 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/05 21:35:22 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/12 19:54:31 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// if dot of forward_vec. & world_up_vec. is ~= 1,
-// use {1,0,0}
-t_vec3	calc_right_vec(t_vec3 forward)
+t_ray	make_ray(t_cam *c, double u, double v)
 {
-	t_vec3	world_up;
+	t_pos3	ray_target;
 
-	world_up = (t_vec3){0, 1, 0};
-	if (fabs(vec_dot(forward, world_up)) > 0.999)
-		world_up = (t_vec3){1, 0, 0};
-	return (vec_cross(world_up, forward));
-}
-
-t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward)
-{
-	return (vec_cross(right, forward));
+	ray_target = pos_add_vec(
+		c->llc,
+		vec_add(
+			vec_scale(c->right, u * 2.0 * c->half_w),
+			vec_scale(c->up, v * 2.0 * c->half_h)));
+	return ((t_ray){c->pos, vec_normalize(pos_sub(ray_target, c->pos))});
 }

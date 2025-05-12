@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:10:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 20:16:51 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@ void	init_cam(t_info *info, char *elem)
 	// info->cam.llc.x =
 	// info->cam.llc.y =
 	// info->cam.llc.z =
+
+	info->cam.llc = pos_add_vec(
+        pos_sub_vec(
+            pos_sub_vec(info->cam.pos, vec_scale(info->cam.right, info->cam.half_w)),
+            vec_scale(info->cam.up, info->cam.half_h)),
+        info->cam.forward);
 
 	if (!validate_unit_range(info->cam.forward.x)
 		|| !validate_unit_range(info->cam.forward.y)

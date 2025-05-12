@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_screen_vec.c                                  :+:      :+:    :+:   */
+/*   quadratic_eq.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:24:35 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/11 13:47:30 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/11 14:26:20 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// if dot of forward_vec. & world_up_vec. is ~= 1,
-// use {1,0,0}
-t_vec3	calc_right_vec(t_vec3 forward)
+double	calc_quad_discriminant(t_quad_eq *q)
 {
-	t_vec3	world_up;
-
-	world_up = (t_vec3){0, 1, 0};
-	if (fabs(vec_dot(forward, world_up)) > 0.999)
-		world_up = (t_vec3){1, 0, 0};
-	return (vec_cross(world_up, forward));
+	q->discriminant = q->b * q->b - 4 * q->a * q->c;
+	return (q->discriminant);
 }
 
-t_vec3	calc_up_vec(t_vec3 right, t_vec3 forward)
+bool	solve_quad_eq(t_quad_eq *q)
 {
-	return (vec_cross(right, forward));
+	double	sqrt_discriminant;
+
+	if (q->discriminant < 0)
+		return (false);
+	sqrt_discriminant = sqrt(q->discriminant);
+	q->t1 = (-q->b - sqrt_discriminant) / (2 * q->a);
+	q->t2 = (-q->b + sqrt_discriminant) / (2 * q->a);
+	return (true);
 }
