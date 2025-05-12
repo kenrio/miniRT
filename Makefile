@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 18:25:13 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/12 19:45:58 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,22 @@ OBJ_DIR			:= obj
 
 MLX_SRC			:= \
 				mlx_hook.c \
-				mlx_setup.c \
+				mlx_init.c \
 				mlx_utils.c \
 
-INIT_SRC			:= \
-				project_init.c \
-				info_init.c \
+INIT_SRC		:= \
+				elements_token.c \
+				init_element1.c \
+				init_element2.c \
+				init_elements.c \
+				init_info.c \
+				light_node.c \
+				set_utils_ver3.c \
+				set_utils.c \
+				validate.c \
 
 MATH_SRC		:= \
+				vector.c \
 				vector2.c \
 				pos_add_vec.c \
 				pos_sub_vec.c \
@@ -43,8 +51,12 @@ MATH_SRC		:= \
 				quadratic_eq.c \
 
 UTILS_SRC			:= \
+				calc_screen_vec.c \
+				ft_atof.c \
 				get_next_line.c \
 
+TEST_SRC		:= \
+				print_info.c \
 
 SRC_VEC			:= \
 				v_dot.c \
@@ -64,6 +76,7 @@ SRC				:= \
 				$(addprefix init/, $(INIT_SRC)) \
 				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
+				$(addprefix test/, $(TEST_SRC)) \
 				$(addprefix vector/, $(SRC_VEC)) \
 				$(addprefix render/, $(SRC_RENDER)) \
 

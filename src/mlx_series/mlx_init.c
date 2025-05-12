@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_setup.c                                        :+:      :+:    :+:   */
+/*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:13:06 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/06 14:28:18 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 19:11:43 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 // setup mlx 4 elements.
-bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title)
+bool	init_mlx(t_mlx *m, int win_w, int win_h, char *win_title)
 {
 	m->ptr = mlx_init();
 	if (!m->ptr)
@@ -41,4 +41,3 @@ bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title)
 	}
 	return (true);
 }
-

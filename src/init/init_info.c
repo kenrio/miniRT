@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   project_init.c                                     :+:      :+:    :+:   */
+/*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/06 20:08:13 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 19:45:07 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool init_project(t_info *info, char *file_name)
+static void	set_info_start(t_info *info);
+
+bool	init_info(t_info *info, char *file_name)
 {
-	// ヌル初期化
-	ft_bzero(info, sizeof(t_info));
-
-	(void)file_name;
-	// 初期化
-	if (mlx_setup(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
-		return (perror("mlx setup failed."), false);
-
-	// if (set_info(info, file_name) == false)
-	// {
-	// 	perror("init info failed.");
-	// 	mlx_cleanup(&info->mlx);
-	// 	return (false);
-	// }
-
+	set_info_start(info);
+	if (init_mlx(&info->mlx, WIN_W, WIN_H, "miniRT") == false)
+		return (perror("initialization mlx failed."), false);
+	if (init_elements(info, file_name) == false)
+		return (clean_info(info), false);
 	return (true);
 }
 
-void	destroy_project(t_info *info)
+void	clean_info(t_info *info)
 {
-	// mlxの開放
 	mlx_cleanup(&info->mlx);
+	clean_light_nodes(info->lights);
+}
+
+static void	set_info_start(t_info *info)
+{
+	ft_bzero(info, sizeof(t_info));
+	info->is_init_success = true;
 }
