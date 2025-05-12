@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/10 15:57:24 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:01:04 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # endif
 
 //  --- structure ---
-// mlx
+// --- mlx ---
 typedef struct s_img
 {
 	void	*ptr;
@@ -55,7 +55,7 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-// utils
+// --- element ---
 typedef struct s_vec3
 {
     double    x;
@@ -77,7 +77,7 @@ typedef struct s_rgb3
 	int	b;
 }	t_rgb3;
 
-// info
+// --- info elem ---
 typedef enum e_elem {
     E_AMBIENT,
 	E_CAMERA,
@@ -126,23 +126,59 @@ typedef struct s_cam
     t_pos3    llc;
 }    t_cam;
 
+typedef struct s_sphere
+{
+	t_pos3	pos;
+	double	diameter;
+	t_rgb3	rgb;
+}	t_sphere;
+
+typedef	struct s_plane
+{
+	t_pos3	pos;
+	t_vec3	vec;
+	t_rgb3	rgb;
+}	t_plane;
+
+typedef	struct	s_cylinder
+{
+	t_pos3	pos;
+	t_vec3	vec;
+	double	diameter;
+	double	height;
+	t_rgb3	rgb;
+}	t_cylinder;
+
+// --- element node ---
+typedef	struct s_light_node
+{
+	t_light					value;
+	struct	s_light_node	*next;
+}	t_light_node;
+
+// --- element ---
 typedef struct s_info
 {
-	t_amb	amb;
-	t_cam	cam;
-	t_light	light;
-	t_mlx	mlx;
-	bool	is_init_success;
+	t_amb			amb;
+	t_cam			cam;
+	t_light_node	*lights;
+	t_sphere		sp;
+	t_plane			pl;
+	t_cylinder		cy;
+	bool			is_init_success;
+	t_mlx			mlx;
 }	t_info;
 
 // ---functions---
 // init
 bool 	init_info(t_info *info, char *file_name);
-void	clean_info(t_info *info);
-bool	set_info(t_info *info, char *file_name);
-void	set_amb(t_info *info, char *elem);
-void	set_cam(t_info *info, char *elem);
-void	set_light(t_info *info, char *elem);
+bool	init_elements(t_info *info, char *file_name);
+void	init_amb(t_info *info, char *elem);
+void	init_cam(t_info *info, char *elem);
+void	init_light(t_info *info, char *elem);
+void	init_sphere(t_info *info, char *elem);
+void	init_plane(t_info *info, char *elem);
+void	init_cylinder(t_info *info, char *elem);
 
 // init_utils
 double	parse_double(char *token);
@@ -163,7 +199,7 @@ bool	validate_unit_range(double n);
 bool	validate_rad(double n);
 
 // mlx
-bool	mlx_setup(t_mlx *m, int win_w, int win_h, char *win_title);
+bool	init_mlx(t_mlx *m, int win_w, int win_h, char *win_title);
 void	mlx_cleanup(t_mlx *m);
 void	mlx_handle_hook(t_info *info);
 
