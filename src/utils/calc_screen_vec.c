@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:47:20 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/12 20:24:35 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_vec3	calc_right_vec(t_vec3 forward)
 {
 	t_vec3	world_up;
 
-	world_up = (t_vec3){0, 0, 1};
+	world_up = (t_vec3){0, 1, 0};
 	if (fabs(vec_dot(forward, world_up)) > 0.999)
 		world_up = (t_vec3){1, 0, 0};
 	return (vec_cross(world_up, forward));
