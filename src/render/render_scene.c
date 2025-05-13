@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/13 23:51:59 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 00:56:19 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	render_scene(t_info *info)
 	unsigned char	*base;
 	unsigned char	*dst;
 
-	x = 0;
 	y = 0;
     while (++y < WIN_H)
     {
+		x = 0;
         while (++x < WIN_W)
         {
             u = (double)x / (WIN_W - 1);
@@ -40,6 +40,5 @@ void	render_scene(t_info *info)
             dst = base + y * info->mlx.img.line_len + x * (info->mlx.img.bpp / 8);
             *(unsigned int *)dst = color;
         }
-		x = 0;
     }
 }
