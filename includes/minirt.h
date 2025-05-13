@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/13 18:49:11 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/13 23:59:53 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define PIE 3.14159265358979
 
 # define ESC 65307
+
+# define BG_COLOR 0x000000
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
@@ -246,10 +248,11 @@ t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 char			*get_next_line(int fd);
 double			ft_atof(char *str);
 
-// render functions
+// rendering
 void			render_scene(t_info *info);
 t_ray			make_ray(t_cam *c, double u, double v);
 bool			intersect_sphere(t_ray r, t_pos3 center, double radius);
+unsigned int	rgb_to_uint(t_rgb3 color);
 
 // debug
 void			print_info(const t_info *info);
