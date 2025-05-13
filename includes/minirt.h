@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 20:04:13 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:49:11 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ typedef struct s_light
 	t_rgb3	rgb;
 }	t_light;
 
-/*
+
 // pos     – camera position (ray origin)
 // forward – unit vector pointing straight ahead from the camera
 // right   – unit vector pointing to the camera’s right
@@ -132,7 +132,6 @@ typedef struct s_light
 // half_w  – half of the viewport’s width in world units
 // half_h  – half of the viewport’s height in world units
 // llc     – world-space coordinates of the viewport’s lower-left corner
-*/
 typedef struct s_cam
 {
 	t_pos3	pos;
@@ -228,31 +227,29 @@ void			mlx_cleanup(t_mlx *m);
 void			mlx_handle_hook(t_info *info);
 
 // math
-t_vec3			vec_cross(t_vec3 a, t_vec3 b);
+t_vec3			vec_add(t_vec3 a, t_vec3 b);
+t_vec3			vec_sub(t_vec3 a, t_vec3 b);
+t_vec3			vec_scale(t_vec3 v, double k);
 double			vec_dot(t_vec3 a, t_vec3 b);
+t_vec3			vec_cross(t_vec3 a, t_vec3 b);
 double			vec_len(t_vec3 v);
 t_vec3			vec_normalize(t_vec3 v);
+t_vec3			pos_sub(t_pos3 p1, t_pos3 p2);
+t_pos3			pos_sub_vec(t_pos3 p, t_vec3 v);
+t_pos3			pos_add_vec(t_pos3 p, t_vec3 v);
+double			calc_quad_discriminant(t_quad_eq *q);
+bool			solve_quad_eq(t_quad_eq *q);
+t_vec3			calc_right_vec(t_vec3 forward);
+t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 
 // utils
 char			*get_next_line(int fd);
+double			ft_atof(char *str);
 
 // render functions
-t_ray	make_ray(t_cam *c, double u, double v);
-bool	intersect_sphere(t_ray r, t_pos3 center, double radius);
-void	render_scene(t_info *info);
-
-// math calculation
-t_vec3	vec_add(t_vec3 a, t_vec3 b);
-t_vec3	vec_sub(t_vec3 a, t_vec3 b);
-t_vec3	vec_scale(t_vec3 v, double k);
-t_vec3	pos_sub(t_pos3 p1, t_pos3 p2);
-t_pos3	pos_sub_vec(t_pos3 p, t_vec3 v);
-t_pos3	pos_add_vec(t_pos3 p, t_vec3 v);
-double	calc_quad_discriminant(t_quad_eq *q);
-bool	solve_quad_eq(t_quad_eq *q);
-double			ft_atof(char *str);
-t_vec3			calc_right_vec(t_vec3 forward);
-t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
+void			render_scene(t_info *info);
+t_ray			make_ray(t_cam *c, double u, double v);
+bool			intersect_sphere(t_ray r, t_pos3 center, double radius);
 
 // debug
 void			print_info(const t_info *info);

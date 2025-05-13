@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 19:57:37 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/13 18:44:14 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,6 @@ SRC				:= \
 				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix test/, $(TEST_SRC)) \
-				$(addprefix vector/, $(SRC_VEC)) \
 				$(addprefix render/, $(SRC_RENDER)) \
 
 OBJ				:= \
