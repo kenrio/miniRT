@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/13 23:59:10 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/14 15:45:45 by anya_stella      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ INIT_SRC		:= \
 				init_element2.c \
 				init_elements.c \
 				init_info.c \
-				light_node.c \
+				list_light.c \
+				list_obj.c \
 				set_utils_ver3.c \
 				set_utils.c \
 				validate.c \

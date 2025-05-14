@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 15:06:31 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/14 15:46:51 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,6 +242,8 @@ t_vec3			parse_vec3(char *token);
 t_rgb3			parse_rgb3(char *token);
 t_light_node	*new_light_node(t_pos3 pos, double intensity, t_rgb3 rgb);
 void			clean_light_nodes(t_light_node *head_node);
+t_obj			*add_obj_front(t_obj *head, t_obj *new);
+void			clean_obj_nodes(t_obj *head);
 
 // token
 char			*get_valid_token(char *elem, int idx);
