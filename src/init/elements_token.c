@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   elements_token.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:44:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:02:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:37:30 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*get_valid_token(char *elem, int idx)
 		return (NULL);
 	if (validate_token(elem) == false)
 	{
-		perror("invalid input.");
+		perror("invalid or custom input.");
 		return (NULL);
 	}
 	return (elem);
