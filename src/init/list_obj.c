@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:12:57 by anya_stella       #+#    #+#             */
-/*   Updated: 2025/05/14 15:44:07 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/14 16:05:53 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	clean_obj_nodes(t_obj *head)
 	}
 }
 
-static t_obj	*new_obj_sp(t_sphere sp)
+t_obj	*new_obj_sp(t_sphere sp)
 {
 	t_obj	*node;
 
@@ -50,7 +50,7 @@ static t_obj	*new_obj_sp(t_sphere sp)
 	return (node);
 }
 
-static t_obj	*new_obj_pl(t_plane pl)
+t_obj	*new_obj_pl(t_plane pl)
 {
 	t_obj	*node;
 	node = (t_obj *)ft_calloc(1, sizeof(t_obj));
@@ -62,7 +62,7 @@ static t_obj	*new_obj_pl(t_plane pl)
 	return (node);
 }
 
-static t_obj	*new_obj_cy(t_cylinder cy)
+t_obj	*new_obj_cy(t_cylinder cy)
 {
 	t_obj	*node;
 	node = (t_obj *)ft_calloc(1, sizeof(t_obj));

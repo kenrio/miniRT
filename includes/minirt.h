@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 15:46:51 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/14 16:38:56 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,9 +229,7 @@ bool			init_elements(t_info *info, char *file_name);
 void			init_amb(t_info *info, char *elem);
 void			init_cam(t_info *info, char *elem);
 void			init_lights(t_info *info, char *elem);
-void			init_sphere(t_info *info, char *elem);
-void			init_plane(t_info *info, char *elem);
-void			init_cylinder(t_info *info, char *elem);
+void			init_objs(t_info *info, char *elem, t_elem type);
 
 // init_utils
 double			parse_double(char *token);
@@ -244,6 +242,9 @@ t_light_node	*new_light_node(t_pos3 pos, double intensity, t_rgb3 rgb);
 void			clean_light_nodes(t_light_node *head_node);
 t_obj			*add_obj_front(t_obj *head, t_obj *new);
 void			clean_obj_nodes(t_obj *head);
+t_obj			*new_obj_sp(t_sphere sp);
+t_obj			*new_obj_pl(t_plane pl);
+t_obj			*new_obj_cy(t_cylinder cy);
 
 // token
 char			*get_valid_token(char *elem, int idx);
