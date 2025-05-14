@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 19:28:46 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:45:07 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 20:45:02 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	clean_info(t_info *info)
 {
 	mlx_cleanup(&info->mlx);
 	clean_light_nodes(info->lights);
+	clean_obj_nodes(info->objs);
 }
 
 static void	set_info_start(t_info *info)

@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 14:16:07 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/14 20:43:37 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,14 @@ void	render_scene(t_info *info)
 
 
 			// ここから描画始まる
-			if (intersect_sphere(ray, info->sp.pos, info->sp.diameter / 2.0))
-				color = rgb_to_uint(info->sp.rgb);
+
+
+			if (intersect_sphere(ray, info->objs->data.sp.pos, info->objs->data.sp.diameter / 2.0))
+				color = rgb_to_uint(info->objs->data.sp.rgb);
+
+
+			// if (intersect_sphere(ray, info->sp.pos, info->sp.diameter / 2.0))
+			// 	color = rgb_to_uint(info->sp.rgb);
 			base = (unsigned char *)info->mlx.img.addr;
 			dst
 				= base + y * info->mlx.img.line_len
