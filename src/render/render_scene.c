@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 00:56:19 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 13:54:02 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,22 @@ void	render_scene(t_info *info)
 	unsigned char	*dst;
 
 	y = 0;
-    while (++y < WIN_H)
-    {
+	while (++y < WIN_H)
+	{
 		x = 0;
-        while (++x < WIN_W)
-        {
-            u = (double)x / (WIN_W - 1);
-            v = 1.0 - (double)y / (WIN_H - 1);
-            ray = make_ray(&info->cam, u, v);
-
-            color = BG_COLOR;
-            if (intersect_sphere(ray, info->sp.pos, info->sp.diameter / 2.0))
-                color = rgb_to_uint(info->sp.rgb);
+		while (++x < WIN_W)
+		{
+			u = (double)x / (WIN_W - 1);
+			v = 1.0 - (double)y / (WIN_H - 1);
+			ray = make_ray(&info->cam, u, v);
+			color = BG_COLOR;
+			if (intersect_sphere(ray, info->sp.pos, info->sp.diameter / 2.0))
+				color = rgb_to_uint(info->sp.rgb);
 			base = (unsigned char *)info->mlx.img.addr;
-            dst = base + y * info->mlx.img.line_len + x * (info->mlx.img.bpp / 8);
-            *(unsigned int *)dst = color;
-        }
-    }
+			dst
+				= base + y * info->mlx.img.line_len
+				+ x * (info->mlx.img.bpp / 8);
+			*(unsigned int *)dst = color;
+		}
+	}
 }
