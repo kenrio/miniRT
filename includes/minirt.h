@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 05:58:42 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/15 08:25:34 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@
 # include "libft.h"
 
 // --- memo ---
-// world_up vector define (x, y, z) = (0, 0, 1)
-// in calc_screen_vec.c
 
+
+// t_min, t_max: distance camera to obj
 //  --- macro ---
 # define WIN_W 1024
 # define WIN_H 1024
-
 # define PIE 3.14159265358979
+# define T_MIN  1e-4
+# define T_MAX  INFINITY
+# define BG_COLOR 0x000000
 
 # define ESC 65307
-
-# define BG_COLOR 0x000000
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100
@@ -60,7 +60,7 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
-// --- element ---
+// --- utils ---
 typedef struct s_vec3
 {
 	double	x;
@@ -88,7 +88,19 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 
-// --- info elem ---
+// t   : distance of camera to obj
+// pos : hit_point
+// n   : normal vector
+// rgb : hit point color
+typedef struct s_hit
+{
+	double	t;
+	t_pos3	pos;
+	t_vec3	n;
+	t_rgb3	rgb;
+}	t_hit;
+
+// --- elements ---
 typedef enum e_elem
 {
 	E_AMBIENT,
@@ -138,6 +150,11 @@ typedef struct s_cam
 	t_pos3	llc;
 }	t_cam;
 
+typedef struct s_light_node
+{
+	t_light					value;
+	struct s_light_node		*next;
+}	t_light_node;
 
 
 
@@ -166,7 +183,6 @@ typedef struct s_cylinder
 	t_rgb3	rgb;
 }	t_cylinder;
 
-
 typedef	enum e_obj_kind
 {
 	OBJ_SPHERE,
@@ -188,22 +204,6 @@ typedef struct s_obj
 	struct s_obj	*next;
 }	t_obj;
 
-// --- element ---
-typedef struct s_light_node
-{
-	t_light					value;
-	struct s_light_node		*next;
-}	t_light_node;
-
-typedef struct s_info
-{
-	t_amb			amb;
-	t_cam			cam;
-	t_light_node	*lights;
-	t_obj			*objs;
-	bool			is_init_success;
-	t_mlx			mlx;
-}	t_info;
 
 // --- math ---
 typedef struct s_quad_eq
@@ -215,6 +215,20 @@ typedef struct s_quad_eq
 	double	t1;
 	double	t2;
 }	t_quad_eq;
+
+
+// --- info ---
+typedef struct s_info
+{
+	t_amb			amb;
+	t_cam			cam;
+	t_light_node	*lights;
+	t_obj			*objs;
+	bool			is_init_success;
+	t_mlx			mlx;
+}	t_info;
+
+
 
 
 
@@ -271,7 +285,7 @@ t_vec3			pos_sub(t_pos3 p1, t_pos3 p2);
 t_pos3			pos_sub_vec(t_pos3 p, t_vec3 v);
 t_pos3			pos_add_vec(t_pos3 p, t_vec3 v);
 double			calc_quad_discriminant(t_quad_eq *q);
-bool			solve_quad_eq(t_quad_eq *q);
+void			solve_quad_eq(t_quad_eq *q);
 t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 
@@ -282,8 +296,9 @@ double			ft_atof(char *str);
 // rendering
 void			render_scene(t_info *info);
 t_ray			make_ray(t_cam *c, double u, double v);
-bool			intersect_sphere(t_ray r, t_pos3 center, double radius);
+t_pos3			ray_at(t_ray *ray, double distance);
 unsigned int	rgb_to_uint(t_rgb3 color);
+bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 
 // debug
 void			print_info(const t_info *info);
