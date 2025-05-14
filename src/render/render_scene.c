@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 13:54:02 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:16:07 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	render_scene(t_info *info)
 			v = 1.0 - (double)y / (WIN_H - 1);
 			ray = make_ray(&info->cam, u, v);
 			color = BG_COLOR;
+
+
+			// ここから描画始まる
 			if (intersect_sphere(ray, info->sp.pos, info->sp.diameter / 2.0))
 				color = rgb_to_uint(info->sp.rgb);
 			base = (unsigned char *)info->mlx.img.addr;

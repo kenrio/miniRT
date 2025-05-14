@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/13 23:59:53 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:06:31 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,6 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 
-typedef struct s_quad_eq
-{
-	double	a;
-	double	b;
-	double	c;
-	double	discriminant;
-	double	t1;
-	double	t2;
-}	t_quad_eq;
-
 // --- info elem ---
 typedef enum e_elem
 {
@@ -148,6 +138,11 @@ typedef struct s_cam
 	t_pos3	llc;
 }	t_cam;
 
+
+
+
+// --- objs ---
+
 typedef struct s_sphere
 {
 	t_pos3	pos;
@@ -171,25 +166,60 @@ typedef struct s_cylinder
 	t_rgb3	rgb;
 }	t_cylinder;
 
-// --- element node ---
+
+typedef	enum e_obj_kind
+{
+	OBJ_SPHERE,
+	OBJ_PLANE,
+	OBJ_CYLINDER
+}	t_obj_kind;
+
+typedef union u_shape
+{
+	t_sphere	sp;
+	t_plane		pl;
+	t_cylinder	cy;
+}	t_shape;
+
+typedef struct s_obj
+{
+	t_obj_kind		kind;
+	t_shape			data;
+	struct s_obj	*next;
+}	t_obj;
+
+// --- element ---
 typedef struct s_light_node
 {
 	t_light					value;
 	struct s_light_node		*next;
 }	t_light_node;
 
-// --- element ---
 typedef struct s_info
 {
 	t_amb			amb;
 	t_cam			cam;
 	t_light_node	*lights;
-	t_sphere		sp;
-	t_plane			pl;
-	t_cylinder		cy;
+	// t_sphere		sp;
+	// t_plane			pl;
+	// t_cylinder		cy;
+	t_obj			*objs;
 	bool			is_init_success;
 	t_mlx			mlx;
 }	t_info;
+
+// --- math ---
+typedef struct s_quad_eq
+{
+	double	a;
+	double	b;
+	double	c;
+	double	discriminant;
+	double	t1;
+	double	t2;
+}	t_quad_eq;
+
+
 
 // ---functions---
 // init
