@@ -6,7 +6,7 @@
 #    By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/14 15:45:45 by anya_stella      ###   ########.fr        #
+#    Updated: 2025/05/15 05:28:44 by anya_stella      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ MLX_SRC			:= \
 				mlx_hook.c \
 				mlx_init.c \
 				mlx_utils.c \
+				mlx_put_pixel.c \
 
 INIT_SRC		:= \
 				elements_token.c \

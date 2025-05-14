@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 16:38:56 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/15 05:35:45 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,7 @@ bool			validate_rad(double n);
 bool			init_mlx(t_mlx *m, int win_w, int win_h, char *win_title);
 void			mlx_cleanup(t_mlx *m);
 void			mlx_handle_hook(t_info *info);
+void			put_pixel(int x, int y, unsigned int color, t_img *img);
 
 // math
 t_vec3			vec_add(t_vec3 a, t_vec3 b);
