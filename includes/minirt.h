@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 08:25:34 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/15 08:46:00 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,15 @@ t_obj			*new_obj_cy(t_cylinder cy);
 // token
 char			*get_valid_token(char *elem, int idx);
 
+// rendering
+void			render_scene(t_info *info);
+t_ray			make_ray(t_cam *c, double u, double v);
+t_pos3			ray_at(t_ray *ray, double distance);
+unsigned int	rgb_to_uint(t_rgb3 color);
+bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
+bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
+bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
+
 // validate
 bool			is_valid_start(char c);
 bool			validate_rgb(t_rgb3	rgb);
@@ -292,13 +301,6 @@ t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 // utils
 char			*get_next_line(int fd);
 double			ft_atof(char *str);
-
-// rendering
-void			render_scene(t_info *info);
-t_ray			make_ray(t_cam *c, double u, double v);
-t_pos3			ray_at(t_ray *ray, double distance);
-unsigned int	rgb_to_uint(t_rgb3 color);
-bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 
 // debug
 void			print_info(const t_info *info);
