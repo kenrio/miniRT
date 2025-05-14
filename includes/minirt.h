@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 05:35:45 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/15 05:58:42 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,9 +200,6 @@ typedef struct s_info
 	t_amb			amb;
 	t_cam			cam;
 	t_light_node	*lights;
-	// t_sphere		sp;
-	// t_plane			pl;
-	// t_cylinder		cy;
 	t_obj			*objs;
 	bool			is_init_success;
 	t_mlx			mlx;
