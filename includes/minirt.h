@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/13 23:59:53 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/14 15:35:51 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ double			ft_atof(char *str);
 // rendering
 void			render_scene(t_info *info);
 t_ray			make_ray(t_cam *c, double u, double v);
-bool			intersect_sphere(t_ray r, t_pos3 center, double radius);
+bool			intersect_sphere(t_ray r, t_pos3 center, double radius, double *t);
 unsigned int	rgb_to_uint(t_rgb3 color);
 
 // debug
