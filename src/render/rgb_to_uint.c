@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_ray.c                                         :+:      :+:    :+:   */
+/*   rgb_to_uint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 21:35:22 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 13:50:33 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/13 19:09:16 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/13 19:11:56 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_ray	make_ray(t_cam *c, double u, double v)
+unsigned int	rgb_to_uint(t_rgb3 color)
 {
-	t_pos3	ray_target;
-
-	ray_target = pos_add_vec(
-			c->llc,
-			vec_add(
-				vec_scale(c->right, u * 2.0 * c->half_w),
-				vec_scale(c->up, v * 2.0 * c->half_h)));
-	return ((t_ray){c->pos, vec_normalize(pos_sub(ray_target, c->pos))});
+	return (
+		color.r << 16 | color.g << 8 | color.b
+	);
 }

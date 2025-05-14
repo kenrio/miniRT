@@ -6,7 +6,7 @@
 #    By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/12 19:57:37 by keishii          ###   ########.fr        #
+#    Updated: 2025/05/13 23:59:10 by keishii          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ OBJ_DIR			:= obj
 
 # **************************************************************************** #
 # SOURCES
+
 
 MLX_SRC			:= \
 				mlx_hook.c \
@@ -50,7 +51,7 @@ MATH_SRC		:= \
 				pos_sub.c \
 				quadratic_eq.c \
 
-UTILS_SRC			:= \
+UTILS_SRC		:= \
 				calc_screen_vec.c \
 				ft_atof.c \
 				get_next_line.c \
@@ -58,10 +59,11 @@ UTILS_SRC			:= \
 TEST_SRC		:= \
 				print_info.c \
 
-SRC_RENDER		:= \
+RENDER_SRC		:= \
 				make_ray.c \
 				render_scene.c \
 				intersect_sphere.c \
+				rgb_to_uint.c \
 
 
 SRC				:= \
@@ -71,8 +73,7 @@ SRC				:= \
 				$(addprefix math_original/, $(MATH_SRC)) \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix test/, $(TEST_SRC)) \
-				$(addprefix vector/, $(SRC_VEC)) \
-				$(addprefix render/, $(SRC_RENDER)) \
+				$(addprefix render/, $(RENDER_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
@@ -82,8 +83,9 @@ OBJ				:= \
 # **************************************************************************** #
 # LIBRARIES & FRAMEWORKS
 
-LIBFT_DIR		:= libft
-LIBFT			:= ${LIBFT_DIR}/libft.a
+
+LIBFT_DIR			:= libft
+LIBFT				:= ${LIBFT_DIR}/libft.a
 
 MLX_DIR				:= minilibx
 MLX_LIB				:= $(MLX_DIR)/libmlx.a
