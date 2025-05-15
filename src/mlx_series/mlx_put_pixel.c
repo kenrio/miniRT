@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quadratic_eq.c                                     :+:      :+:    :+:   */
+/*   mlx_put_pixel.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 13:47:30 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 07:44:49 by anya_stella      ###   ########.fr       */
+/*   Created: 2025/05/15 05:07:05 by anya_stella       #+#    #+#             */
+/*   Updated: 2025/05/15 05:39:08 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	calc_quad_discriminant(t_quad_eq *q)
+void	put_pixel(int x, int y, unsigned int color, t_img *img)
 {
-	q->discriminant = q->b * q->b - 4 * q->a * q->c;
-	return (q->discriminant);
+	unsigned char *base;
+	unsigned char *dst;
+
+	if (x < 0 || x >= WIN_W || y < 0 || y >= WIN_H)
+		return;
+	base = (unsigned char *)img->addr;
+	dst  = base + y * img->line_len + x * (img->bpp / 8);
+	*(unsigned int *)dst = color;
 }
 
-void	solve_quad_eq(t_quad_eq *q)
-{
-	double	sqrt_discriminant;
-
-	sqrt_discriminant = sqrt(q->discriminant);
-	q->t1 = (-q->b - sqrt_discriminant) / (2 * q->a);
-	q->t2 = (-q->b + sqrt_discriminant) / (2 * q->a);
-}

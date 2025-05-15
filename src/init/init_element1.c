@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:16:51 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/15 05:48:47 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,6 @@ void	init_cam(t_info *info, char *elem)
 	info->cam.aspect = (WIN_W / WIN_H);
 	info->cam.half_h = tan(info->cam.fov_rad / 2.0);
 	info->cam.half_w = info->cam.half_h * info->cam.aspect;
-	// TODO:他の要素も計算して入れる
-
-	// info->cam.llc.x =
-	// info->cam.llc.y =
-	// info->cam.llc.z =
-
 	info->cam.llc = pos_add_vec(
         pos_sub_vec(
             pos_sub_vec(info->cam.pos, vec_scale(info->cam.right, info->cam.half_w)),

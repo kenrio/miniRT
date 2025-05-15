@@ -6,7 +6,7 @@
 #    By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/14 15:45:45 by anya_stella      ###   ########.fr        #
+#    Updated: 2025/05/15 08:18:35 by anya_stella      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ MLX_SRC			:= \
 				mlx_hook.c \
 				mlx_init.c \
 				mlx_utils.c \
+				mlx_put_pixel.c \
 
 INIT_SRC		:= \
 				elements_token.c \
@@ -61,10 +62,10 @@ TEST_SRC		:= \
 				print_info.c \
 
 RENDER_SRC		:= \
-				make_ray.c \
+				ray.c \
 				render_scene.c \
-				intersect_sphere.c \
-				rgb_to_uint.c \
+				intersect.c \
+				render_utils.c \
 
 
 SRC				:= \
