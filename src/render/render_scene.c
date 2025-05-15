@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 17:51:25 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/15 11:37:00 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,27 @@ void	render_scene(t_info *info)
 			{
 				intersection = pos_add_vec(ray.origin, vec_scale(ray.direction, t));
 				normal = vec_normalize(pos_sub(intersection, info->sp.pos));
-				printf("normal length = %.2f\n", vec_len(normal));
-				printf("normal = (%.2f, %.2f, %.2f)\n", normal.x, normal.y, normal.z);
+				// printf("normal length = %.2f\n", vec_len(normal));
+				// printf("normal = (%.2f, %.2f, %.2f)\n", normal.x, normal.y, normal.z);
 				light_direction = vec_normalize(pos_sub(intersection, info->lights->value.pos));
 				brightness = fmax(0, vec_dot(normal, light_direction));
 				ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
 				diffuse = apply_light(info->sp.rgb, info->lights->value.intensity, brightness);
-				(void)ambient;
-				(void)diffuse;
-				// rgb_color.r = fmin(ambient.r + diffuse.r, 255);
-				// rgb_color.g = fmin(ambient.g + diffuse.g, 255);
-				// rgb_color.b = fmin(ambient.b + diffuse.b, 255);
+				// (void)ambient;
+				// (void)diffuse;
+				rgb_color.r = fmin(ambient.r + diffuse.r, 255);
+				rgb_color.g = fmin(ambient.g + diffuse.g, 255);
+				rgb_color.b = fmin(ambient.b + diffuse.b, 255);
 
-				double r = (normal.x + 1) / 2 * 255;
-				double g = (normal.y + 1) / 2 * 255;
-				double b = (normal.z + 1) / 2 * 255;
-				printf("Raw Color: R=%.2f, G=%.2f, B=%.2f\n", r, g, b);
+				// double r = (normal.x + 1) / 2 * 255;
+				// double g = (normal.y + 1) / 2 * 255;
+				// double b = (normal.z + 1) / 2 * 255;
+				// printf("Raw Color: R=%.2f, G=%.2f, B=%.2f\n", r, g, b);
 
-				rgb_color.r = (unsigned char)r;
-				rgb_color.g = (unsigned char)g;
-				rgb_color.b = (unsigned char)b;
-				printf("Normalized Color: R=%d, G=%d, B=%d\n", rgb_color.r, rgb_color.g, rgb_color.b);
+				// rgb_color.r = (unsigned char)r;
+				// rgb_color.g = (unsigned char)g;
+				// rgb_color.b = (unsigned char)b;
+				// printf("Normalized Color: R=%d, G=%d, B=%d\n", rgb_color.r, rgb_color.g, rgb_color.b);
 				color = rgb_to_uint(rgb_color);
 				// color = 0x00FF0000;
 			}
