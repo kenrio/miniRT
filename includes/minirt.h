@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 08:46:00 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/15 23:19:01 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 // t_min, t_max: distance camera to obj
 //  --- macro ---
-# define WIN_W 1024
+# define WIN_W 2048
 # define WIN_H 1024
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
@@ -297,6 +297,7 @@ double			calc_quad_discriminant(t_quad_eq *q);
 void			solve_quad_eq(t_quad_eq *q);
 t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
+t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 
 // utils
 char			*get_next_line(int fd);

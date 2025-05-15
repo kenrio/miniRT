@@ -6,7 +6,7 @@
 #    By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/15 08:18:35 by anya_stella      ###   ########.fr        #
+#    Updated: 2025/05/15 23:18:36 by anya_stella      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ MATH_SRC		:= \
 				pos_sub_vec.c \
 				pos_sub.c \
 				quadratic_eq.c \
+				calc_vec_reject.c \
 
 UTILS_SRC		:= \
 				calc_screen_vec.c \
