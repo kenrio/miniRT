@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:02:59 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 20:27:04 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/16 19:59:18 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@ double	vec_dot(t_vec3 a, t_vec3 b)
 double	vec_len(t_vec3 v)
 {
 	return (sqrt(v.x * v.x + v.y * v.y + v.z * v.z));
+}
+
+double	vec_len2(t_vec3 v)
+{
+	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
 t_vec3	vec_normalize(t_vec3 v)

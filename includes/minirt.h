@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 18:03:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:36:16 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,7 @@ t_vec3			vec_scale(t_vec3 v, double k);
 double			vec_dot(t_vec3 a, t_vec3 b);
 t_vec3			vec_cross(t_vec3 a, t_vec3 b);
 double			vec_len(t_vec3 v);
+double			vec_len2(t_vec3 v);
 t_vec3			vec_normalize(t_vec3 v);
 t_vec3			pos_sub(t_pos3 p1, t_pos3 p2);
 double			distance_pos_to_pos(t_pos3 a, t_pos3 b);

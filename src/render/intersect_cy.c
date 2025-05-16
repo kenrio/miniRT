@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:33:17 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/16 18:38:24 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/16 20:13:32 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ bool	intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 		t_closest = tmp.t;
 		*rec = tmp;
 	}
-	if (hit_cyl_cap_top(r, o, rec, t_max))
+	if (hit_cyl_cap_top(r, o, &tmp, t_closest) && tmp.t < t_closest)
 	{
 		hit_any = true;
 		t_closest = tmp.t;
 		*rec = tmp;
 	}
-	if (hit_cyl_cap_bottom(r, o, rec, t_max))
+	if (hit_cyl_cap_bottom(r, o, &tmp, t_closest) && tmp.t < t_closest)
 	{
 		hit_any = true;
 		t_closest = tmp.t;
@@ -60,7 +60,7 @@ static bool	hit_cyl_side(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	vec_op_reject = vec_reject(pos_sub(o->data.cy.pos, r->origin), axis);
 	quad.a = vec_dot(vec_d_reject, vec_d_reject);
 	quad.b = -2.0 * vec_dot(vec_d_reject, vec_op_reject);
-	quad.c = vec_dot(vec_op_reject, vec_op_reject) - pow(o->data.cy.diameter * 0.5, 2);
+	quad.c = vec_dot(vec_op_reject, vec_op_reject) - (0.25 * o->data.cy.diameter * o->data.cy.diameter);
 	if (calc_quad_discriminant(&quad) < 0.0)
 		return (false);
 	solve_quad_eq(&quad);
@@ -98,8 +98,8 @@ static bool hit_cyl_cap_top(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	if (t < T_MIN ||  t_max < t)
 		return (false);
 	p = ray_at(r, t);
-	if (distance_pos_to_pos(p, cap_c) > (o->data.cy.diameter / 2))
-		return (false);
+	if (vec_len2(pos_sub(p, cap_c)) > (o->data.cy.diameter / 2))
+		return (false);		
 	rec->t   = t;
 	rec->pos = p;
 	rec->rgb = o->data.cy.rgb;
