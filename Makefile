@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+         #
+#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/15 23:18:36 by anya_stella      ###   ########.fr        #
+#    Updated: 2025/05/16 18:39:48 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ MATH_SRC		:= \
 				vector2.c \
 				pos_add_vec.c \
 				pos_sub_vec.c \
-				pos_sub.c \
+				pos.c \
 				quadratic_eq.c \
 				calc_vec_reject.c \
 
@@ -66,6 +66,7 @@ RENDER_SRC		:= \
 				ray.c \
 				render_scene.c \
 				intersect.c \
+				intersect_cy.c \
 				render_utils.c \
 
 

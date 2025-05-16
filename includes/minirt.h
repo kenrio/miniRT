@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 23:19:01 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/16 18:03:12 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -291,8 +291,10 @@ t_vec3			vec_cross(t_vec3 a, t_vec3 b);
 double			vec_len(t_vec3 v);
 t_vec3			vec_normalize(t_vec3 v);
 t_vec3			pos_sub(t_pos3 p1, t_pos3 p2);
+double			distance_pos_to_pos(t_pos3 a, t_pos3 b);
 t_pos3			pos_sub_vec(t_pos3 p, t_vec3 v);
 t_pos3			pos_add_vec(t_pos3 p, t_vec3 v);
+
 double			calc_quad_discriminant(t_quad_eq *q);
 void			solve_quad_eq(t_quad_eq *q);
 t_vec3			calc_right_vec(t_vec3 forward);
