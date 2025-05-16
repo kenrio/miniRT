@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 19:12:23 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/16 19:17:24 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,9 @@ void	render_scene(t_info *info)
 	int				y;
 	double			u;
 	double			v;
-	double			t;
 	double			brightness;
 	t_ray			ray;
-	t_pos3			intersection;
-	t_vec3			normal;
 	t_vec3			light_direction;
-	t_rgb3			rgb_color;
 	t_rgb3			ambient;
 	t_rgb3			diffuse;
 	unsigned int	color;
@@ -56,15 +52,13 @@ void	render_scene(t_info *info)
 			ray = make_ray(&info->cam, u, v);
 			if (hit_scene(&ray, info->objs, &rec) == true)
 			{
-				intersection = pos_add_vec(ray.origin, vec_scale(ray.direction, t));
-				normal = vec_normalize(pos_sub(intersection, rec.pos));
-				light_direction = vec_normalize(pos_sub(intersection, info->lights->value.pos));
-				brightness = fmax(0, vec_dot(normal, light_direction));
+				light_direction = vec_normalize(pos_sub(rec.pos, info->lights->value.pos));
+				brightness = fmax(0, vec_dot(rec.n, light_direction));
 				ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
 				diffuse = apply_light(rec.rgb, info->lights->value.intensity, brightness);
-				rgb_color.r = fmin(ambient.r + diffuse.r, 255);
-				rgb_color.g = fmin(ambient.g + diffuse.g, 255);
-				rgb_color.b = fmin(ambient.b + diffuse.b, 255);
+				rec.rgb.r = fmin(ambient.r + diffuse.r, 255);
+				rec.rgb.g = fmin(ambient.g + diffuse.g, 255);
+				rec.rgb.b = fmin(ambient.b + diffuse.b, 255);
 				color = rgb_to_uint(rec.rgb);
 			}
 			else
