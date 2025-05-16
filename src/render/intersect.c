@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 15:43:48 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/16 17:00:38 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,12 @@ bool	intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 		if (t < T_MIN || t_max < t)
 			return (false);
 	}
-
-	// 高さカット
 	lim = vec_dot(axis, vec_add(pos_sub(r->origin, o->data.cy.pos), vec_scale(r->direction, t)));
 	if (fabs(lim) > (o->data.cy.height / 2))
 		return (false);
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_normalize(pos_sub(rec->pos, o->data.cy.pos)); //TODO
+	rec->n = vec_normalize(pos_sub(rec->pos, pos_add_vec(o->data.cy.pos, vec_scale(axis, lim))));
 	rec->rgb = o->data.cy.rgb;
 	return (true);
 }
