@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:16:37 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/12 19:06:02 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/14 16:40:55 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ bool	init_elements(t_info *info, char *file_name)
 			else if (type == E_LIGHT)
 				init_lights(info, line);
 			else if (type == E_SPHERE)
-				init_sphere(info, line);
+				init_objs(info, line, E_SPHERE);
 			else if (type == E_PLANE)
-				init_plane(info, line);
+				init_objs(info, line, E_PLANE);
 			else if (type == E_CYLINDER)
-				init_cylinder(info, line);
+				init_objs(info, line, E_CYLINDER);
 			else if (type == E_INVALID)
 			{
 				perror("find invalid element type.");

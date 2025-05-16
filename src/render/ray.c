@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_ray.c                                         :+:      :+:    :+:   */
+/*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:35:22 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/14 13:50:33 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/15 08:17:37 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,9 @@ t_ray	make_ray(t_cam *c, double u, double v)
 				vec_scale(c->right, u * 2.0 * c->half_w),
 				vec_scale(c->up, v * 2.0 * c->half_h)));
 	return ((t_ray){c->pos, vec_normalize(pos_sub(ray_target, c->pos))});
+}
+
+t_pos3	ray_at(t_ray *ray, double distance)
+{
+	return pos_add_vec(ray->origin, vec_scale(ray->direction, distance));
 }
