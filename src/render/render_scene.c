@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 19:17:24 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/16 21:09:34 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,25 @@ t_rgb3	apply_light(t_rgb3 obj_color, double light_ratio, double dot_nl)
 	output_color.g = (unsigned char)fmin(obj_color.g * brightness, 255);
 	output_color.b = (unsigned char)fmin(obj_color.b * brightness, 255);
 	return (output_color);
+}
+
+bool	is_in_shadow(t_info *info, t_pos3 point, t_pos3 light_pos)
+{
+	t_ray	shadow_ray;
+	t_hit	rec;
+	t_vec3	shadow_dir;
+	double	light_dist;
+
+	shadow_dir = vec_normalize(pos_sub(point, light_pos));
+	shadow_ray.origin = pos_add_vec(point, vec_scale(shadow_dir, 0.001));
+	shadow_ray.direction = shadow_dir;
+	if (hit_scene(&shadow_ray, info->objs, &rec))
+	{
+		light_dist = vec_len(pos_sub(light_pos, point));
+		if (rec.t < light_dist)
+			return (true);
+	}
+	return (false);
 }
 
 void	render_scene(t_info *info)
@@ -53,12 +72,25 @@ void	render_scene(t_info *info)
 			if (hit_scene(&ray, info->objs, &rec) == true)
 			{
 				light_direction = vec_normalize(pos_sub(rec.pos, info->lights->value.pos));
-				brightness = fmax(0, vec_dot(rec.n, light_direction));
-				ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
-				diffuse = apply_light(rec.rgb, info->lights->value.intensity, brightness);
-				rec.rgb.r = fmin(ambient.r + diffuse.r, 255);
-				rec.rgb.g = fmin(ambient.g + diffuse.g, 255);
-				rec.rgb.b = fmin(ambient.b + diffuse.b, 255);
+				if (is_in_shadow(info, rec.pos, info->lights->value.pos))
+				{
+			        brightness = fmax(0, vec_dot(rec.n, light_direction)) * 0.5;  // 影部分の拡散光は減衰
+			        ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
+			        diffuse = apply_light(rec.rgb, info->lights->value.intensity, brightness);
+			        // 色の合成
+			        rec.rgb.r = fmin(ambient.r + diffuse.r, 255);
+			        rec.rgb.g = fmin(ambient.g + diffuse.g, 255);
+			        rec.rgb.b = fmin(ambient.b + diffuse.b, 255);
+				}
+				else
+				{
+					brightness = fmax(0, vec_dot(rec.n, light_direction));
+					ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
+					diffuse = apply_light(rec.rgb, info->lights->value.intensity, brightness);
+					rec.rgb.r = fmin(ambient.r + diffuse.r, 255);
+					rec.rgb.g = fmin(ambient.g + diffuse.g, 255);
+					rec.rgb.b = fmin(ambient.b + diffuse.b, 255);
+				}
 				color = rgb_to_uint(rec.rgb);
 			}
 			else
