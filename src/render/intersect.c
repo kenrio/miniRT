@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 18:34:00 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/16 21:02:37 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	oc = pos_sub(r->origin, o->data.sp.pos);
 	quad.a = vec_dot(r->direction, r->direction);
 	quad.b = 2.0 * vec_dot(oc, r->direction);
-	quad.c = vec_dot(oc, oc) - pow(o->data.sp.diameter * 0.5, 2);
+	quad.c = vec_dot(oc, oc) - (0.25 * o->data.sp.diameter * o->data.sp.diameter);
 	if (calc_quad_discriminant(&quad) < 0.0)
 		return (false);
 	solve_quad_eq(&quad);
