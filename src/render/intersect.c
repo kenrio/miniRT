@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 23:39:14 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/16 15:43:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,17 @@ bool	intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 {
 	t_vec3		vec_d_reject;
 	t_vec3		vec_op_reject;
+	t_vec3		axis;
 	t_quad_eq	quad;
 	double		t;
-
-	// calc
-	vec_d_reject = vec_reject(r->direction, o->data.cy.vec);
-	vec_op_reject = vec_reject(pos_sub(o->data.cy.pos, r->origin), o->data.cy.vec);
-
-	// val
-	quad.a = vec_dot(vec_d_reject, vec_d_reject);
-	quad.b = 2.0 * vec_dot(vec_d_reject, vec_op_reject);
-	quad.c = pow(o->data.cy.diameter * 0.5, 2) - vec_dot(vec_op_reject, vec_op_reject);
+	double		lim;
 	
-	// solve
+	axis = vec_normalize(o->data.cy.vec);
+	vec_d_reject = vec_reject(r->direction, axis);
+	vec_op_reject = vec_reject(pos_sub(o->data.cy.pos, r->origin), axis);
+	quad.a = vec_dot(vec_d_reject, vec_d_reject);
+	quad.b = -2.0 * vec_dot(vec_d_reject, vec_op_reject);
+	quad.c = vec_dot(vec_op_reject, vec_op_reject) - pow(o->data.cy.diameter * 0.5, 2);
 	if (calc_quad_discriminant(&quad) < 0.0)
 		return (false);
 	solve_quad_eq(&quad);
@@ -88,10 +86,15 @@ bool	intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 		if (t < T_MIN || t_max < t)
 			return (false);
 	}
+
+	// 高さカット
+	lim = vec_dot(axis, vec_add(pos_sub(r->origin, o->data.cy.pos), vec_scale(r->direction, t)));
+	if (fabs(lim) > (o->data.cy.height / 2))
+		return (false);
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_normalize(pos_sub(rec->pos, o->data.cy.pos));//
-	rec->rgb = o->data.sp.rgb;
+	rec->n = vec_normalize(pos_sub(rec->pos, o->data.cy.pos)); //TODO
+	rec->rgb = o->data.cy.rgb;
 	return (true);
 }
 
