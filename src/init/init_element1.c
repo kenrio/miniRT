@@ -6,7 +6,7 @@
 /*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/15 05:48:47 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/17 09:26:49 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	init_cam(t_info *info, char *elem)
 		return ;
 	}
 	info->cam.pos = parse_pos3(get_valid_token(elem, 1));
-	info->cam.forward = parse_vec3(get_valid_token(elem, 2));
 	info->cam.fov = parse_double(get_valid_token(elem, 3));
+	info->cam.forward = vec_normalize(parse_vec3(get_valid_token(elem, 2)));
 	info->cam.right = vec_normalize(calc_right_vec(info->cam.forward));
 	info->cam.up = calc_up_vec(info->cam.right, info->cam.forward);
 	info->cam.fov_rad = (info->cam.fov * PIE) / 180;
