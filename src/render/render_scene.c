@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 21:09:34 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:18:08 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	is_in_shadow(t_info *info, t_pos3 point, t_pos3 light_pos)
 	t_vec3	shadow_dir;
 	double	light_dist;
 
-	shadow_dir = vec_normalize(pos_sub(point, light_pos));
+	shadow_dir = vec_normalize(pos_sub(light_pos, point));
 	shadow_ray.origin = pos_add_vec(point, vec_scale(shadow_dir, 0.001));
 	shadow_ray.direction = shadow_dir;
 	if (hit_scene(&shadow_ray, info->objs, &rec))
@@ -71,13 +71,15 @@ void	render_scene(t_info *info)
 			ray = make_ray(&info->cam, u, v);
 			if (hit_scene(&ray, info->objs, &rec) == true)
 			{
-				light_direction = vec_normalize(pos_sub(rec.pos, info->lights->value.pos));
+				if (info->lights->value.pos.z < rec.pos.z)
+				    light_direction = vec_normalize(pos_sub(info->lights->value.pos, rec.pos));
+				else
+				    light_direction = vec_normalize(pos_sub(rec.pos, info->lights->value.pos));
 				if (is_in_shadow(info, rec.pos, info->lights->value.pos))
 				{
-			        brightness = fmax(0, vec_dot(rec.n, light_direction)) * 0.5;  // 影部分の拡散光は減衰
+			        brightness = fmax(0, vec_dot(rec.n, light_direction)) * 0.5;
 			        ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
 			        diffuse = apply_light(rec.rgb, info->lights->value.intensity, brightness);
-			        // 色の合成
 			        rec.rgb.r = fmin(ambient.r + diffuse.r, 255);
 			        rec.rgb.g = fmin(ambient.g + diffuse.g, 255);
 			        rec.rgb.b = fmin(ambient.b + diffuse.b, 255);
