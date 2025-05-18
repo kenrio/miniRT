@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/18 15:21:18 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/18 15:38:28 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 
 // t_min, t_max: distance camera to obj
 //  --- macro ---
-# define WIN_W 500
-# define WIN_H 500
+# define WIN_W 1024
+# define WIN_H 1024
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
