@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 08:50:46 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/18 20:21:05 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,58 @@
 static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 static bool	hit_obj(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 
+t_rgb3	apply_light(t_rgb3 obj_color, double light_ratio, double dot_nl)
+{
+	t_rgb3	output_color;
+	double	brightness;
+
+	brightness = light_ratio * fmax(0, dot_nl);
+	output_color.r = (unsigned char)fmin(obj_color.r * brightness, 255);
+	output_color.g = (unsigned char)fmin(obj_color.g * brightness, 255);
+	output_color.b = (unsigned char)fmin(obj_color.b * brightness, 255);
+	return (output_color);
+}
+
+bool	is_in_shadow(t_info *info, t_pos3 point, t_pos3 light_pos)
+{
+	t_ray	shadow_ray;
+	t_hit	rec;
+	t_vec3	shadow_dir;
+	double	light_dist;
+
+	shadow_dir = vec_normalize(pos_sub(light_pos, point));
+	shadow_ray.origin = pos_add_vec(point, vec_scale(shadow_dir, 0.001));
+	shadow_ray.direction = shadow_dir;
+	if (hit_scene(&shadow_ray, info->objs, &rec))
+	{
+		light_dist = vec_len(pos_sub(light_pos, point));
+		if (rec.t < light_dist)
+			return (true);
+	}
+	return (false);
+}
+
+t_rgb3	calculate_lighting(t_info *info, t_hit *rec, t_vec3 light_dir)
+{
+	t_rgb3	color_rgb;
+	t_rgb3	ambient;
+	t_rgb3	diffuse;
+	double	brightness;
+
+	ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
+	if (is_in_shadow(info, rec->pos, info->lights->value.pos))
+		diffuse = (t_rgb3){0, 0, 0};
+	else
+	{
+		brightness = fmax(0, vec_dot(rec->n, light_dir));
+		diffuse = apply_light(rec->rgb, info->lights->value.intensity, brightness);
+	}
+	color_rgb.r = fmin(ambient.r + diffuse.r, 255);
+	color_rgb.g = fmin(ambient.g + diffuse.g, 255);
+	color_rgb.b = fmin(ambient.b + diffuse.b, 255);
+	return (color_rgb);
+}
+
 void	render_scene(t_info *info)
 {
 	int				x;
@@ -22,6 +74,7 @@ void	render_scene(t_info *info)
 	double			u;
 	double			v;
 	t_ray			ray;
+	t_vec3			light_direction;
 	unsigned int	color;
 	t_hit			rec;
 
@@ -35,7 +88,14 @@ void	render_scene(t_info *info)
 			v = 1.0 - (double)y / (WIN_H - 1);
 			ray = make_ray(&info->cam, u, v);
 			if (hit_scene(&ray, info->objs, &rec) == true)
-				color = rgb_to_uint(rec.rgb);
+			{
+				light_direction
+					= vec_normalize(
+						pos_sub(info->lights->value.pos, rec.pos));
+				color
+					= rgb_to_uint(
+						calculate_lighting(info, &rec, light_direction));
+			}
 			else
 				color = BG_COLOR;
 			put_pixel(x, y, color, &info->mlx.img);
