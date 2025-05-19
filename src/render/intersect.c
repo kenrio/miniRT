@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 21:02:37 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:35:39 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	oc = pos_sub(r->origin, o->data.sp.pos);
 	quad.a = vec_dot(r->direction, r->direction);
 	quad.b = 2.0 * vec_dot(oc, r->direction);
-	quad.c = vec_dot(oc, oc) - (0.25 * o->data.sp.diameter * o->data.sp.diameter);
+	quad.c = vec_dot(oc, oc)
+		- (0.25 * o->data.sp.diameter * o->data.sp.diameter);
 	if (calc_quad_discriminant(&quad) < 0.0)
 		return (false);
 	solve_quad_eq(&quad);
@@ -35,7 +36,7 @@ bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	}
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_normalize(pos_sub(rec->pos, o->data.sp.pos));
+	rec->n = vec_div(pos_sub(rec->pos, o->data.sp.pos), o->data.sp.diameter);
 	rec->rgb = o->data.sp.rgb;
 	return (true);
 }
@@ -52,8 +53,8 @@ bool	intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	if (fabs(denom) < 1e-6)
 		return (false);
 	t = vec_dot(pos_sub(pl.pos, r->origin), pl.vec) / denom;
-	if (t < T_MIN ||  t_max < t)
-        return (false);
+	if (t < T_MIN || t_max < t)
+		return (false);
 	rec->t = t;
 	rec->pos = ray_at(r, t);
 	rec->rgb = o->data.pl.rgb;

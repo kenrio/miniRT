@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 16:30:48 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:33:29 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,20 @@
 
 // t_min, t_max: distance camera to obj
 //  --- macro ---
+// # define WIN_W 4096
+// # define WIN_H 2048
 # define WIN_W 2048
 # define WIN_H 1024
+
+
+
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
 # define BG_COLOR 0x000000
+
+#define SPP 4            // Samples Per Pixel
+#define SQRT_SPP 2       // √SPP
 
 # define ESC 65307
 
@@ -177,7 +185,7 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_pos3	pos;
-	t_vec3	vec;
+	t_vec3	axis;
 	double	diameter;
 	double	height;
 	t_rgb3	rgb;
@@ -286,6 +294,7 @@ void			put_pixel(int x, int y, unsigned int color, t_img *img);
 t_vec3			vec_add(t_vec3 a, t_vec3 b);
 t_vec3			vec_sub(t_vec3 a, t_vec3 b);
 t_vec3			vec_scale(t_vec3 v, double k);
+t_vec3			vec_div(t_vec3 v, double k);
 double			vec_dot(t_vec3 a, t_vec3 b);
 t_vec3			vec_cross(t_vec3 a, t_vec3 b);
 double			vec_len(t_vec3 v);
@@ -305,6 +314,7 @@ t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 // utils
 char			*get_next_line(int fd);
 double			ft_atof(char *str);
+t_pos3			calc_llc(t_cam *cam);
 
 // debug
 void			print_info(const t_info *info);

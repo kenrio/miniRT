@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:16:37 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/14 16:40:55 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/19 12:30:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static bool		is_space(char c);
 static t_elem	get_elem_type(char *s);
+static void		dispatch_init(char *line, t_info *info);
 
 bool	init_elements(t_info *info, char *file_name)
 {
 	int		file_fd;
 	char	*line;
-	t_elem	type;
 
 	file_fd = open(file_name, O_RDONLY);
 	if (file_fd == -1)
@@ -29,27 +29,7 @@ bool	init_elements(t_info *info, char *file_name)
 		return (perror("read line failed."), close(file_fd), false);
 	while (line)
 	{
-		type = get_elem_type(line);
-		if (type != E_SPACE)
-		{
-			if (type == E_AMBIENT)
-				init_amb(info, line);
-			else if (type == E_CAMERA)
-				init_cam(info, line);
-			else if (type == E_LIGHT)
-				init_lights(info, line);
-			else if (type == E_SPHERE)
-				init_objs(info, line, E_SPHERE);
-			else if (type == E_PLANE)
-				init_objs(info, line, E_PLANE);
-			else if (type == E_CYLINDER)
-				init_objs(info, line, E_CYLINDER);
-			else if (type == E_INVALID)
-			{
-				perror("find invalid element type.");
-				info->is_init_success = false;
-			}
-		}
+		dispatch_init(line, info);
 		free(line);
 		line = get_next_line(file_fd);
 	}
@@ -57,6 +37,33 @@ bool	init_elements(t_info *info, char *file_name)
 	if (info->is_init_success == false)
 		return (perror("initialization info failed..."), false);
 	return (true);
+}
+
+static void	dispatch_init(char *line, t_info *info)
+{
+	t_elem	type;
+
+	type = get_elem_type(line);
+	if (type != E_SPACE)
+	{
+		if (type == E_AMBIENT)
+			init_amb(info, line);
+		else if (type == E_CAMERA)
+			init_cam(info, line);
+		else if (type == E_LIGHT)
+			init_lights(info, line);
+		else if (type == E_SPHERE)
+			init_objs(info, line, E_SPHERE);
+		else if (type == E_PLANE)
+			init_objs(info, line, E_PLANE);
+		else if (type == E_CYLINDER)
+			init_objs(info, line, E_CYLINDER);
+		else if (type == E_INVALID)
+		{
+			perror("find invalid element type.");
+			info->is_init_success = false;
+		}
+	}
 }
 
 static bool	is_space(char c)

@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:13:06 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 19:11:43 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:18:53 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,17 @@ bool	init_mlx(t_mlx *m, int win_w, int win_h, char *win_title)
 	{
 		mlx_destroy_window(m->ptr, m->win);
 		mlx_destroy_display(m->ptr);
-		free(m->ptr);
-		return (false);
+		return (free(m->ptr), false);
 	}
 	m->img.addr = \
-		(int *)mlx_get_data_addr(m->img.ptr, &m->img.bpp, &m->img.line_len, &m->img.endian);
+		(int *)mlx_get_data_addr(
+			m->img.ptr, &m->img.bpp, &m->img.line_len, &m->img.endian);
 	if (!m->img.addr)
 	{
 		mlx_destroy_image(m->ptr, m->img.ptr);
 		mlx_destroy_window(m->ptr, m->win);
 		mlx_destroy_display(m->ptr);
-		free(m->ptr);
-		return (false);
+		return (free(m->ptr), false);
 	}
 	return (true);
 }

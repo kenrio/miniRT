@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:07:30 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/12 18:12:54 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/19 13:35:01 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,12 @@ t_vec3	vec_scale(t_vec3 v, double k)
 {
 	return (
 		(t_vec3){v.x * k, v.y * k, v.z * k}
+	);
+}
+
+t_vec3	vec_div(t_vec3 v, double k)
+{
+	return (
+		(t_vec3){v.x / k, v.y / k, v.z / k}
 	);
 }
