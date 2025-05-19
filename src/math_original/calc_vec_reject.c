@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pos_sub.c                                          :+:      :+:    :+:   */
+/*   calc_vec_reject.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/11 10:13:19 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/11 10:57:33 by keishii          ###   ########.fr       */
+/*   Created: 2025/05/15 23:10:46 by anya_stella       #+#    #+#             */
+/*   Updated: 2025/05/15 23:18:15 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_vec3	pos_sub(t_pos3 p1, t_pos3 p2)
+t_vec3	vec_reject(t_vec3 v, t_vec3 axis_unit)
 {
-	return (
-		(t_vec3){p1.x - p2.x, p1.y - p2.y, p1.z - p2.z}
-	);
+	return (vec_sub(v, vec_scale(axis_unit, vec_dot(v, axis_unit))));
 }
