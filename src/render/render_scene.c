@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 11:22:21 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:43:12 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	render_scene(t_info *info)
 {
 	int				x;
 	int				y;
-	double			u;
-	double			v;
 	t_ray			ray;
 	unsigned int	color;
 	t_hit			rec;
@@ -31,9 +29,10 @@ void	render_scene(t_info *info)
 		x = 0;
 		while (x < WIN_W)
 		{
-			u = (double)x / (WIN_W - 1);
-			v = 1.0 - (double)y / (WIN_H - 1);
-			ray = make_ray(&info->cam, u, v);
+			ray = make_ray(
+					&info->cam,
+					((double)x / (WIN_W - 1)),
+					(1.0 - (double)y / (WIN_H - 1)));
 			if (hit_scene(&ray, info->objs, &rec) == true)
 				color = rgb_to_uint(rec.rgb);
 			else
@@ -51,7 +50,7 @@ static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec)
 	bool	hit_any;
 	t_hit	temp;
 	double	most_close_d;
-	
+
 	hit_any = false;
 	most_close_d = T_MAX;
 	while (o)
