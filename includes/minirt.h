@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 12:09:06 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:12:18 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -313,6 +313,7 @@ t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 // utils
 char			*get_next_line(int fd);
 double			ft_atof(char *str);
+t_pos3			calc_llc(t_cam *cam);
 
 // debug
 void			print_info(const t_info *info);

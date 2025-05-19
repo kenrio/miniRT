@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_obj.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 15:12:57 by anya_stella       #+#    #+#             */
-/*   Updated: 2025/05/14 16:05:53 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/19 12:48:30 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
 
 // how to use:
 // objs = add_objs_front(info->objs, create_sp())...
@@ -53,6 +52,7 @@ t_obj	*new_obj_sp(t_sphere sp)
 t_obj	*new_obj_pl(t_plane pl)
 {
 	t_obj	*node;
+
 	node = (t_obj *)ft_calloc(1, sizeof(t_obj));
 	if (!node)
 		return (NULL);
@@ -65,6 +65,7 @@ t_obj	*new_obj_pl(t_plane pl)
 t_obj	*new_obj_cy(t_cylinder cy)
 {
 	t_obj	*node;
+
 	node = (t_obj *)ft_calloc(1, sizeof(t_obj));
 	if (!node)
 		return (NULL);

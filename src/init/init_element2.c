@@ -6,56 +6,42 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:00:48 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 11:46:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:47:06 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_sphere	*parse_sphere(char *elem, t_sphere *sp);
-static t_plane *parse_plane(char *elem, t_plane *pl);
-static t_cylinder *parse_cylinder(char *elem, t_cylinder *cy);
+static t_sphere		*parse_sphere(char *elem, t_sphere *sp);
+static t_plane		*parse_plane(char *elem, t_plane *pl);
+static t_cylinder	*parse_cylinder(char *elem, t_cylinder *cy);
 
 void	init_objs(t_info *info, char *elem, t_elem type)
 {
 	t_sphere	sp;
 	t_plane		pl;
 	t_cylinder	cy;
-	
+
 	if (!info || !elem)
-	{
-		info->is_init_success = false;
-		return ;
-	}
+		return ((void)(info && (info->is_init_success = false)));
 	if (type == E_SPHERE)
 	{
 		if (!parse_sphere(elem, &sp))
-		{
-			info->is_init_success = false;
-			return ;
-		}
+			return ((void)(info && (info->is_init_success = false)));
 		info->objs = add_obj_front(info->objs, new_obj_sp(sp));
 	}
 	else if (type == E_PLANE)
 	{
 		if (!parse_plane(elem, &pl))
-		{
-			info->is_init_success = false;
-			return ;
-		}
+			return ((void)(info && (info->is_init_success = false)));
 		info->objs = add_obj_front(info->objs, new_obj_pl(pl));
 	}
 	else if (type == E_CYLINDER)
 	{
 		if (!parse_cylinder(elem, &cy))
-		{
-			info->is_init_success = false;
-			return ;
-		}
+			return ((void)(info && (info->is_init_success = false)));
 		info->objs = add_obj_front(info->objs, new_obj_cy(cy));
 	}
-	else
-		return ;
 }
 
 static t_sphere	*parse_sphere(char *elem, t_sphere *sp)
@@ -68,7 +54,7 @@ static t_sphere	*parse_sphere(char *elem, t_sphere *sp)
 	return (sp);
 }
 
-static t_plane *parse_plane(char *elem, t_plane *pl)
+static t_plane	*parse_plane(char *elem, t_plane *pl)
 {
 	pl->pos = parse_pos3(get_valid_token(elem, 1));
 	pl->vec = vec_normalize(parse_vec3(get_valid_token(elem, 2)));
@@ -81,7 +67,7 @@ static t_plane *parse_plane(char *elem, t_plane *pl)
 	return (pl);
 }
 
-static t_cylinder *parse_cylinder(char *elem, t_cylinder *cy)
+static t_cylinder	*parse_cylinder(char *elem, t_cylinder *cy)
 {
 	cy->pos = parse_pos3(get_valid_token(elem, 1));
 	cy->axis = vec_normalize(parse_vec3(get_valid_token(elem, 2)));

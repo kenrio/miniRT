@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/17 20:33:25 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/19 13:11:53 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ MATH_SRC		:= \
 				calc_vec_reject.c \
 
 UTILS_SRC		:= \
-				calc_screen_vec.c \
+				calc_screen.c \
 				ft_atof.c \
 				get_next_line.c \
 
