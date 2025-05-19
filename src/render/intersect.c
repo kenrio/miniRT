@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 21:02:37 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:36:24 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	}
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_normalize(pos_sub(rec->pos, o->data.sp.pos));
+	rec->n = vec_scale(pos_sub(rec->pos, o->data.sp.pos), 1 / o->data.sp.diameter);
 	rec->rgb = o->data.sp.rgb;
 	return (true);
 }

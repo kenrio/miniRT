@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:00:48 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/14 16:59:20 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/19 11:46:10 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static t_sphere	*parse_sphere(char *elem, t_sphere *sp)
 static t_plane *parse_plane(char *elem, t_plane *pl)
 {
 	pl->pos = parse_pos3(get_valid_token(elem, 1));
-	pl->vec = parse_vec3(get_valid_token(elem, 2));
+	pl->vec = vec_normalize(parse_vec3(get_valid_token(elem, 2)));
 	pl->rgb = parse_rgb3(get_valid_token(elem, 3));
 	if (!validate_rgb(pl->rgb)
 		|| !validate_unit_range(pl->vec.x)
@@ -84,13 +84,13 @@ static t_plane *parse_plane(char *elem, t_plane *pl)
 static t_cylinder *parse_cylinder(char *elem, t_cylinder *cy)
 {
 	cy->pos = parse_pos3(get_valid_token(elem, 1));
-	cy->vec = parse_vec3(get_valid_token(elem, 2));
+	cy->axis = vec_normalize(parse_vec3(get_valid_token(elem, 2)));
 	cy->diameter = parse_double(get_valid_token(elem, 3));
 	cy->height = parse_double(get_valid_token(elem, 4));
 	cy->rgb = parse_rgb3(get_valid_token(elem, 5));
-	if (!validate_unit_range(cy->vec.x)
-		|| !validate_unit_range(cy->vec.y)
-		|| !validate_unit_range(cy->vec.z)
+	if (!validate_unit_range(cy->axis.x)
+		|| !validate_unit_range(cy->axis.y)
+		|| !validate_unit_range(cy->axis.z)
 		|| !validate_rgb(cy->rgb))
 		return (NULL);
 	return (cy);

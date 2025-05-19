@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 21:46:59 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/14 16:44:16 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/19 12:06:36 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	print_plane(const t_plane *p)
 static void	print_cylinder(const t_cylinder *c)
 {
 	print_pos3("pos", c->pos);
-	print_vec3("axis", c->vec);
+	print_vec3("axis", c->axis);
 	printf("diameter=%f height=%f\n", c->diameter, c->height);
 	print_rgb3("rgb", c->rgb);
 }
