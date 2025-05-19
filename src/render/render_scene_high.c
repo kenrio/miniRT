@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:31:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 11:22:06 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:52:34 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@
 //         sx = 0;
 //         while (sx < SQRT_SPP)
 //         {
-//             double rx = ((double)sx + 0.5 + ((double)rand() / RAND_MAX - 0.5) * 0.3) / SQRT_SPP;
-//             double ry = ((double)sy + 0.5 + ((double)rand() / RAND_MAX - 0.5) * 0.3) / SQRT_SPP;
+//             double rx =
+// 				((double)sx + 0.5 + delta()) / SQRT_SPP;
+//             double ry =
+// 				((double)sy + 0.5 + delta()) / SQRT_SPP;
 //             double u = (x + rx) / (WIN_W  - 1);
 //             double v = 1.0 - (y + ry) / (WIN_H - 1);
 //             t_ray ray = make_ray(&info->cam, u, v);
@@ -69,13 +71,18 @@
 //     return (sum);
 // }
 
+// static double	delta()
+// {
+// 	return (((double)rand() / RAND_MAX - 0.5) * 0.3);
+// }
+
 // // rayとobjが衝突するかどうかを判定し、recにぶち込む関数
 // static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec)
 // {
 // 	bool	hit_any;
 // 	t_hit	temp;
 // 	double	most_close_d;
-	
+
 // 	hit_any = false;
 // 	most_close_d = T_MAX;
 // 	while (o)
