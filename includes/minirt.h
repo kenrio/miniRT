@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:12:18 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:33:29 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,6 +294,7 @@ void			put_pixel(int x, int y, unsigned int color, t_img *img);
 t_vec3			vec_add(t_vec3 a, t_vec3 b);
 t_vec3			vec_sub(t_vec3 a, t_vec3 b);
 t_vec3			vec_scale(t_vec3 v, double k);
+t_vec3			vec_div(t_vec3 v, double k);
 double			vec_dot(t_vec3 a, t_vec3 b);
 t_vec3			vec_cross(t_vec3 a, t_vec3 b);
 double			vec_len(t_vec3 v);

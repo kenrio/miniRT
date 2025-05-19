@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:35:22 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 08:17:37 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/19 13:36:05 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ t_ray	make_ray(t_cam *c, double u, double v)
 
 t_pos3	ray_at(t_ray *ray, double distance)
 {
-	return pos_add_vec(ray->origin, vec_scale(ray->direction, distance));
+	return (pos_add_vec(ray->origin, vec_scale(ray->direction, distance)));
 }
