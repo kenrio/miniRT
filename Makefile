@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/16 18:39:48 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/17 20:33:25 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 NAME			:= miniRT
 
 CC				:= cc
-CFLAGS			:= -Wall -Wextra -Werror
+CFLAGS			:= -Wall -Wextra -Werror -O3
 
 SRC_DIR			:= src
 OBJ_DIR			:= obj
@@ -65,6 +65,7 @@ TEST_SRC		:= \
 RENDER_SRC		:= \
 				ray.c \
 				render_scene.c \
+				render_scene_high.c \
 				intersect.c \
 				intersect_cy.c \
 				render_utils.c \

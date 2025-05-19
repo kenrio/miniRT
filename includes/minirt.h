@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/16 20:36:16 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/17 20:35:55 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,15 @@
 
 // t_min, t_max: distance camera to obj
 //  --- macro ---
-# define WIN_W 2048
-# define WIN_H 1024
+# define WIN_W 4096
+# define WIN_H 2048
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
 # define BG_COLOR 0x000000
+
+#define SPP 4            // Samples Per Pixel
+#define SQRT_SPP 2       // √SPP
 
 # define ESC 65307
 
