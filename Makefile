@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
+#    By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/19 13:11:53 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/22 06:32:33 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,8 @@ RENDER_SRC		:= \
 				ray.c \
 				render_scene.c \
 				render_scene_high.c \
-				intersect.c \
+				intersect_plane.c \
+				intersect_sphere.c \
 				intersect_cy.c \
 				render_utils.c \
 
