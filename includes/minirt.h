@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:33:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 05:50:03 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_amb
 {
 	double	intensity;
 	t_rgb3	rgb;
+	bool	is_register;
 }	t_amb;
 
 typedef struct s_light
@@ -156,6 +157,7 @@ typedef struct s_cam
 	double	half_w;
 	double	half_h;
 	t_pos3	llc;
+	bool	is_register;
 }	t_cam;
 
 typedef struct s_light_node
