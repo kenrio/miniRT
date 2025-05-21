@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:33:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 06:55:14 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,6 +276,8 @@ unsigned int	rgb_to_uint(t_rgb3 color);
 bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
+bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
+t_rgb3			calculate_lighting(t_info *info, t_hit *rec);
 
 // validate
 bool			is_valid_start(char c);
