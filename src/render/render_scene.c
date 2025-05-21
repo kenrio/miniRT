@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/20 20:21:22 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/21 14:04:18 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,24 +46,42 @@ bool	is_in_shadow(t_info *info, t_pos3 point, t_pos3 light_pos)
 	return (false);
 }
 
-t_rgb3	calculate_lighting(t_info *info, t_hit *rec, t_vec3 light_dir)
+t_rgb3	calculate_lighting(t_info *info, t_hit *rec)
 {
-	t_rgb3	color_rgb;
-	t_rgb3	ambient;
-	t_rgb3	diffuse;
-	double	brightness;
+	t_rgb3			color_rgb;
+	t_rgb3			ambient;
+	t_rgb3			diffuse;
+	t_rgb3			diffuse_total;
+	double			brightness;
+	t_vec3			light_direction;
+	t_light_node	*light_node;
+	t_light			light;
 
+
+	light_node = info->lights;
 	ambient = apply_light(info->amb.rgb, info->amb.intensity, 1.0);
-	if (is_in_shadow(info, rec->pos, info->lights->value.pos))
-		diffuse = (t_rgb3){0, 0, 0};
-	else
+	diffuse_total = (t_rgb3){0, 0, 0};
+	while (light_node)
 	{
-		brightness = fmax(0, vec_dot(rec->n, light_dir));
-		diffuse = apply_light(rec->rgb, info->lights->value.intensity, brightness);
+		light = light_node->value;
+		light_direction = vec_normalize(pos_sub(light.pos, rec->pos));
+		if (!is_in_shadow(info, rec->pos, light.pos))
+		{
+			brightness = vec_dot(rec->n, light_direction);
+			diffuse = apply_light(rec->rgb, light.intensity, brightness);
+			diffuse.r *= (double)light.rgb.r / 255.0;
+			diffuse.g *= (double)light.rgb.g / 255.0;
+			diffuse.b *= (double)light.rgb.b / 255.0;
+			diffuse_total.r += diffuse.r;
+			diffuse_total.g += diffuse.g;
+			diffuse_total.b += diffuse.b;
+		}
+		light_node = light_node->next;
+
 	}
-	color_rgb.r = fmin(ambient.r + diffuse.r, 255);
-	color_rgb.g = fmin(ambient.g + diffuse.g, 255);
-	color_rgb.b = fmin(ambient.b + diffuse.b, 255);
+	color_rgb.r = fmin(ambient.r + diffuse_total.r, 255);
+	color_rgb.g = fmin(ambient.g + diffuse_total.g, 255);
+	color_rgb.b = fmin(ambient.b + diffuse_total.b, 255);
 	return (color_rgb);
 }
 
@@ -72,7 +90,6 @@ void	render_scene(t_info *info)
 	int				x;
 	int				y;
 	t_ray			ray;
-	t_vec3			light_direction;
 	unsigned int	color;
 	t_hit			rec;
 
@@ -88,12 +105,9 @@ void	render_scene(t_info *info)
 					(1.0 - (double)y / (WIN_H - 1)));
 			if (hit_scene(&ray, info->objs, &rec) == true)
 			{
-				light_direction
-					= vec_normalize(
-						pos_sub(info->lights->value.pos, rec.pos));
 				color
 					= rgb_to_uint(
-						calculate_lighting(info, &rec, light_direction));
+						calculate_lighting(info, &rec));
 			}
 			else
 				color = BG_COLOR;
