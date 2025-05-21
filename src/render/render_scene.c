@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:43:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 06:20:43 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec, t_vec3 light_dir)
 	color_rgb.b = fmin(ambient.b + diffuse.b, 255);
 	return (color_rgb);
 }
+
+
 
 void	render_scene(t_info *info)
 {
