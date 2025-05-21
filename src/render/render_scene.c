@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/21 14:04:18 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/21 19:44:31 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,20 @@ t_rgb3	apply_light(t_rgb3 color, double intensity, double dot_nl)
 	double	brightness;
 
 	brightness = intensity * fmax(0, dot_nl);
-	output_color.r = (unsigned char)fmin(color.r * brightness, 255);
-	output_color.g = (unsigned char)fmin(color.g * brightness, 255);
-	output_color.b = (unsigned char)fmin(color.b * brightness, 255);
+	output_color.r = fmin(color.r * brightness, 255);
+	output_color.g = fmin(color.g * brightness, 255);
+	output_color.b = fmin(color.b * brightness, 255);
 	return (output_color);
 }
 
-bool	is_in_shadow(t_info *info, t_pos3 point, t_pos3 light_pos)
+bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir, t_pos3 light_pos)
 {
 	t_ray	shadow_ray;
 	t_hit	rec;
-	t_vec3	shadow_dir;
 	double	light_dist;
 
-	shadow_dir = vec_normalize(pos_sub(light_pos, point));
-	shadow_ray.origin = pos_add_vec(point, vec_scale(shadow_dir, 0.001));
-	shadow_ray.direction = shadow_dir;
+	shadow_ray.origin = pos_add_vec(point, vec_scale(ray_dir, 0.001));
+	shadow_ray.direction = ray_dir;
 	if (hit_scene(&shadow_ray, info->objs, &rec))
 	{
 		light_dist = vec_len(pos_sub(light_pos, point));
@@ -65,7 +63,7 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec)
 	{
 		light = light_node->value;
 		light_direction = vec_normalize(pos_sub(light.pos, rec->pos));
-		if (!is_in_shadow(info, rec->pos, light.pos))
+		if (!is_in_shadow(info, rec->pos, light_direction, light.pos))
 		{
 			brightness = vec_dot(rec->n, light_direction);
 			diffuse = apply_light(rec->rgb, light.intensity, brightness);
