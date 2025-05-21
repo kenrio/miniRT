@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:59:43 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:43:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/20 20:21:22 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 static bool	hit_obj(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 
-t_rgb3	apply_light(t_rgb3 obj_color, double light_ratio, double dot_nl)
+t_rgb3	apply_light(t_rgb3 color, double intensity, double dot_nl)
 {
 	t_rgb3	output_color;
 	double	brightness;
 
-	brightness = light_ratio * fmax(0, dot_nl);
-	output_color.r = (unsigned char)fmin(obj_color.r * brightness, 255);
-	output_color.g = (unsigned char)fmin(obj_color.g * brightness, 255);
-	output_color.b = (unsigned char)fmin(obj_color.b * brightness, 255);
+	brightness = intensity * fmax(0, dot_nl);
+	output_color.r = (unsigned char)fmin(color.r * brightness, 255);
+	output_color.g = (unsigned char)fmin(color.g * brightness, 255);
+	output_color.b = (unsigned char)fmin(color.b * brightness, 255);
 	return (output_color);
 }
 
