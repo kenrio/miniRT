@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 06:52:36 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/22 07:32:25 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 10:14:36 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,15 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec)
 	t_rgb3			diffuse;
 	t_rgb3			diffuse_total;
 	double			brightness;
-	t_vec3			light_direction;
 	t_light_node	*light_node;
 	t_light			light;
+	t_rgb3			specular;
+	t_vec3			light_direction;
+	t_vec3			view_direction;
 
 
+	// p -> cam
+	view_direction = vec_normalize(pos_sub(info->cam.pos, rec->pos));
 	light_node = info->lights;
 
 	// アンビエント光
@@ -39,6 +43,7 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec)
 	diffuse_total = (t_rgb3){0, 0, 0};// (diffuse =)
 
 	// スペキュラー光
+	specular = (t_rgb3){0, 0, 0};
 	
 	while (light_node)
 	{
@@ -65,13 +70,20 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec)
 			// ↓
 			// 改
 			// diffuse_total += calc_per_diffuse();
+
+			specular = add_rgb(specular, apply_specular(view_direction, light_direction, rec->n, light.intensity));
 		}
 		light_node = light_node->next;
 
 	}
-	color_rgb.r = fmin(ambient.r + diffuse_total.r, 255);
-	color_rgb.g = fmin(ambient.g + diffuse_total.g, 255);
-	color_rgb.b = fmin(ambient.b + diffuse_total.b, 255);
+	color_rgb.r = fmin(ambient.r + diffuse_total.r + specular.r, 255);
+	color_rgb.g = fmin(ambient.g + diffuse_total.g + specular.g, 255);
+	color_rgb.b = fmin(ambient.b + diffuse_total.b + specular.b, 255);
+
+
+
+
+	
 	return (color_rgb);
 }
 

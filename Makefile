@@ -6,7 +6,7 @@
 #    By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/22 07:35:39 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/22 09:23:29 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,12 @@ INIT_SRC		:= \
 MATH_SRC		:= \
 				vector.c \
 				vector2.c \
+				vector3.c \
 				pos_add_vec.c \
 				pos_sub_vec.c \
 				pos.c \
 				quadratic_eq.c \
-				calc_vec_reject.c \
+				rgb.c \
 
 UTILS_SRC		:= \
 				calc_screen.c \
