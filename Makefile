@@ -6,7 +6,7 @@
 #    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/23 18:31:18 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/23 20:36:12 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,11 +71,11 @@ RENDER_SRC		:= \
 				intersect_pl.c \
 				intersect_sp.c \
 				intersect_cy.c \
-				render_utils.c \
 
 LIGHTING_SRC	:= \
 				calc_lighting.c \
 				calc_direct_lighting.c \
+				calc_secondary_lighting.c \
 				apply_light.c \
 				apply_amb.c \
 				apply_diffuse.c \

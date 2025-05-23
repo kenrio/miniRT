@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 18:31:41 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 20:44:21 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
+# define MAX_DEPTH 3
+# define EPS 0.001
+
 # define BG_COLOR 0x000000
 
 #define SPP 4            // Samples Per Pixel
@@ -285,7 +288,6 @@ char			*get_valid_token(char *elem, int idx);
 void			render_scene(t_info *info);
 t_ray			make_ray(t_cam *c, double u, double v);
 t_pos3			ray_at(t_ray *ray, double distance);
-unsigned int	rgb_to_uint(t_rgb3 color);
 bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
@@ -293,8 +295,9 @@ bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 
 // calc_light
-t_rgb3			calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray);
+t_rgb3			calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
 t_rgb3			calc_direct_lighting(t_info *info, t_hit *rec, t_vec3 view_dir);
+t_rgb3			calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 t_rgb3			apply_amb(t_amb amb);
 t_rgb3			apply_specular(t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
@@ -336,6 +339,8 @@ t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
 
 t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			uint_to_rgb(unsigned int color_hex);
+unsigned int	rgb_to_uint(t_rgb3 color);
 
 // utils
 char			*get_next_line(int fd);

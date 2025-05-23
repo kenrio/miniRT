@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:12:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 18:29:48 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 20:44:38 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir, t_pos3 ligh
 	t_hit	rec;
 	double	light_dist;
 
-	shadow_ray.origin = pos_add_vec(point, vec_scale(ray_dir, 0.001));
+	shadow_ray.origin = pos_add_vec(point, vec_scale(ray_dir, EPS));
 	shadow_ray.direction = ray_dir;
 	if (hit_scene(&shadow_ray, info->objs, &rec))
 	{
