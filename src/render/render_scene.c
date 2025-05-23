@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/05/23 20:14:58 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/24 01:06:27 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

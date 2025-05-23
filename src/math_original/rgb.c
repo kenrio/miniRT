@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:16:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 20:35:33 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/24 00:53:57 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,20 @@
 	b = fmin(c1.b + c2.b, 255);
 	return ((t_rgb3){r, g, b});
  }
+
+t_rgb3	add_rgb_simple(t_rgb3 c1, t_rgb3 c2)
+{
+	int r;
+	int g;
+	int b;
+
+	r = c1.r + c2.r;
+	g = c1.g + c2.g;
+	b = c1.b + c2.b;
+	return ((t_rgb3){r, g, b});
+}
+
+
  
  // TODO理解する
  unsigned int	rgb_to_uint(t_rgb3 color)

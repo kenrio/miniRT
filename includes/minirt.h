@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 20:44:21 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/24 01:05:00 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,6 +339,7 @@ t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
 
 t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			uint_to_rgb(unsigned int color_hex);
 unsigned int	rgb_to_uint(t_rgb3 color);
 
