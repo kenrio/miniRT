@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 12:04:33 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 13:32:04 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,17 @@ typedef struct s_light_node
 }	t_light_node;
 
 
+// material
+typedef enum e_mat
+{
+	MAT_DIFFUSE,
+	MAT_MIRROR,
+	MAT_GLASS,
+	MAT_NONE
+}	t_mat;
+
 
 // --- objs ---
-
 typedef struct s_sphere
 {
 	t_pos3	pos;
@@ -209,6 +217,7 @@ typedef struct s_obj
 {
 	t_obj_kind		kind;
 	t_shape			data;
+	t_mat			mat;
 	struct s_obj	*next;
 }	t_obj;
 
@@ -252,6 +261,7 @@ void			init_objs(t_info *info, char *elem, t_elem type);
 
 // init_utils
 double			parse_double(char *token);
+t_mat			parse_material(char *token);
 int				parse_3int(char *token, int idx);
 double			parse_3double(char *token, int idx);
 t_pos3			parse_pos3(char *token);
@@ -261,9 +271,9 @@ t_light_node	*new_light_node(t_pos3 pos, double intensity, t_rgb3 rgb);
 void			clean_light_nodes(t_light_node *head_node);
 t_obj			*add_obj_front(t_obj *head, t_obj *new);
 void			clean_obj_nodes(t_obj *head);
-t_obj			*new_obj_sp(t_sphere sp);
-t_obj			*new_obj_pl(t_plane pl);
-t_obj			*new_obj_cy(t_cylinder cy);
+t_obj			*new_obj_sp(t_sphere sp, t_mat mat);
+t_obj			*new_obj_pl(t_plane pl, t_mat mat);
+t_obj			*new_obj_cy(t_cylinder cy, t_mat mat);
 
 // token
 char			*get_valid_token(char *elem, int idx);
