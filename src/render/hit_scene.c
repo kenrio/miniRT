@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hit_scene.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 06:48:13 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/22 07:35:59 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 16:58:23 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec)
 			hit_any = true;
 			most_close_d = temp.t;
 			*rec = temp;
+			rec->mat = o->mat;
 		}
 		o = o->next;
 	}

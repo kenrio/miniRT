@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 13:32:04 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:31:41 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,15 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 
+// material
+typedef enum e_mat
+{
+	MAT_DIFFUSE,
+	MAT_MIRROR,
+	MAT_GLASS,
+	MAT_NONE
+}	t_mat;
+
 // t   : distance of camera to obj
 // pos : hit_point
 // n   : normal vector
@@ -106,6 +115,7 @@ typedef struct s_hit
 	t_pos3	pos;
 	t_vec3	n;
 	t_rgb3	rgb;
+	t_mat	mat;
 }	t_hit;
 
 // --- elements ---
@@ -165,14 +175,7 @@ typedef struct s_light_node
 }	t_light_node;
 
 
-// material
-typedef enum e_mat
-{
-	MAT_DIFFUSE,
-	MAT_MIRROR,
-	MAT_GLASS,
-	MAT_NONE
-}	t_mat;
+
 
 
 // --- objs ---
@@ -290,8 +293,12 @@ bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 
 // calc_light
-t_rgb3			calculate_lighting(t_info *info, t_hit *rec);
+t_rgb3			calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray);
+t_rgb3			calc_direct_lighting(t_info *info, t_hit *rec, t_vec3 view_dir);
+t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
+t_rgb3			apply_amb(t_amb amb);
 t_rgb3			apply_specular(t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
+t_rgb3			apply_diffuse(t_light *l , t_hit *rec, t_vec3 l_dir);
 
 // validate
 bool			is_valid_start(char c);
@@ -328,7 +335,7 @@ t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
 
-t_rgb3		add_rgb(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
 
 // utils
 char			*get_next_line(int fd);

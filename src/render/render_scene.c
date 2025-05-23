@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/05/23 12:11:44 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 18:06:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	render_scene(t_info *info)
 			{
 				color
 					= rgb_to_uint(
-						calculate_lighting(info, &rec));
+						calculate_lighting(info, &rec, &ray));
 			}
 			else
 				color = BG_COLOR;
