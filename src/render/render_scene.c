@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/05/22 07:29:14 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 12:11:44 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,10 @@ void	render_scene(t_info *info)
 		x = 0;
 		while (x < WIN_W)
 		{
-
-			// rayを打つ
 			ray = make_ray(
 					&info->cam,
 					((double)x / (WIN_W - 1)),
 					(1.0 - (double)y / (WIN_H - 1)));
-
-			// 何かに当たったらrecが更新される
 			if (hit_scene(&ray, info->objs, &rec) == true)
 			{
 				color
