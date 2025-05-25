@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/25 21:22:51 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 08:06:06 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -338,7 +338,7 @@ t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
-t_vec3			vec_refraction(t_vec3 v, t_vec3 n);
+t_vec3			vec_refraction(t_vec3 v, t_vec3 n, double eta);
 
 t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
