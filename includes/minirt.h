@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/25 09:05:58 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 09:48:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,6 +343,7 @@ t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			uint_to_rgb(unsigned int color_hex);
 unsigned int	rgb_to_uint(t_rgb3 color);
+t_rgb3			modulate_rgb(t_rgb3	base, t_rgb3 color);
 
 // utils
 char			*get_next_line(int fd);

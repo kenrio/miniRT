@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_diffuse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 18:10:07 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 19:12:48 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 09:50:27 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ t_rgb3	apply_diffuse(t_light *l , t_hit *rec, t_vec3 l_dir)
 	
 	dotnl = vec_dot(rec->n, l_dir);
 	diffuse = apply_light(rec->rgb, l->intensity, dotnl);
-	diffuse.r *= (double)l->rgb.r / 255.0;
-    diffuse.g *= (double)l->rgb.g / 255.0;
-    diffuse.b *= (double)l->rgb.b / 255.0;
+	diffuse = modulate_rgb(diffuse, l->rgb);
 	return (diffuse);
 }

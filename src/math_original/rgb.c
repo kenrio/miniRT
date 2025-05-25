@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:16:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/24 00:53:57 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/25 09:48:19 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,15 @@ t_rgb3	add_rgb_simple(t_rgb3 c1, t_rgb3 c2)
 	return ((t_rgb3){r, g, b});
 }
 
+t_rgb3	modulate_rgb(t_rgb3	base, t_rgb3 color)
+{
+	base.r *= (double)color.r / 255.0;
+    base.g *= (double)color.g / 255.0;
+    base.b *= (double)color.b / 255.0;
+    return base;
+}
 
- 
+
  // TODO理解する
  unsigned int	rgb_to_uint(t_rgb3 color)
 {
