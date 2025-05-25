@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
+#    By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/23 20:36:12 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/25 21:15:30 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ MATH_SRC		:= \
 				pos.c \
 				quadratic_eq.c \
 				rgb.c \
+				rgb2.c \
 
 UTILS_SRC		:= \
 				calc_screen.c \

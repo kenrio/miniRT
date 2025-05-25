@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 06:52:36 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/25 09:18:06 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 21:07:57 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_rgb3	calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth)
 		
 	// 次に二次レイが必要な場合計算する。ここから計算量が増える(反射と屈折を考える)
 	// この関数は再帰される
-	if (depth < MAX_DEPTH && (rec->mat == MAT_MIRROR || rec->mat == MAT_METAL))
+	if (depth < MAX_DEPTH && (rec->mat == MAT_MIRROR || rec->mat == MAT_METAL || rec->mat == MAT_GLASS))
 		color = add_rgb(color, calc_secondary_lighting(info, rec, in_ray, depth));
 	
 	return (color);
