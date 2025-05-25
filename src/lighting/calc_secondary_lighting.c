@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/25 09:49:38 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 09:59:28 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,12 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 
 		// このままだと鏡面だけなので、metalの場合物質の色を加算
 		if (rec->mat == MAT_METAL)
+		{
 			r_color = modulate_rgb(r_color, rec->rgb);
+			r_color.r *= 0.9;
+			r_color.g *= 0.9;
+			r_color.b *= 0.9;
+		}
 	}
 	else
 	{
