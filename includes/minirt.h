@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/24 01:05:00 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/25 09:05:58 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef enum e_mat
 {
 	MAT_DIFFUSE,
 	MAT_MIRROR,
+	MAT_METAL,
 	MAT_GLASS,
 	MAT_NONE
 }	t_mat;

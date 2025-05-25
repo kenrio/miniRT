@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:47:12 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 13:39:12 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 09:08:55 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_mat	parse_material(char *token)
 	else if (mat_number == 2)
 		output = MAT_MIRROR;
 	else if (mat_number == 3)
+		output = MAT_METAL;
+	else if (mat_number == 4)
 		output = MAT_GLASS;
 	else
 		output = MAT_NONE;
