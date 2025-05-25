@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_secondary_lighting.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/26 08:08:06 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 08:48:54 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,14 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 	// 反射を計算する
 	// recから反射ベクトルに向けて再度rayを発射し、色を取得した後、r_colorに値を入れる
 	// 屈折の場合、このベクトルをまず変える。
-	if (rec->mat == MAT_MIRROR || rec->mat == MAT_METAL)
-		secondary_dir = vec_normalize(vec_reflection(in_ray->direction, rec->n));
+	if (rec->mat == MAT_GLASS)
+	{
+		secondary_dir = vec_normalize(vec_refraction(in_ray->direction, rec->n, 1.4));//TODOmakuro
+		if (vec_is_zero(secondary_dir) == true)
+			secondary_dir = vec_normalize(vec_reflection(in_ray->direction, rec->n));
+	}
 	else
-		secondary_dir = vec_normalize(vec_refraction(in_ray->direction, rec->n, 0.667));//TODOmakuro
+		secondary_dir = vec_normalize(vec_reflection(in_ray->direction, rec->n));
 	secondary_ray = (t_ray){pos_add_vec(rec->pos, vec_scale(secondary_dir, EPS)), secondary_dir};
 
 	// 当たったら、hitしたobjの色を計算する
