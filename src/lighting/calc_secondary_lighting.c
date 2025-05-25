@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/25 09:59:28 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/25 10:13:14 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 
 	// 反射を計算する
 	// recから反射ベクトルに向けて再度rayを発射し、色を取得した後、r_colorに値を入れる
+	// 屈折の場合、このベクトルをまず変える。
 	reflect_vec = vec_normalize(vec_reflection(in_ray->direction, rec->n));
 	reflect_ray = (t_ray){pos_add_vec(rec->pos, vec_scale(reflect_vec, EPS)), reflect_vec};
 
@@ -43,9 +44,5 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 	{
 		r_color = uint_to_rgb(BG_COLOR);
 	}
-
-
-
-	// 屈折を計算する
 	return (r_color);
 }
