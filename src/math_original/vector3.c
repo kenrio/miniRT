@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 23:10:46 by anya_stella       #+#    #+#             */
-/*   Updated: 2025/05/26 08:39:25 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:43:25 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,18 @@ t_vec3	vec_refraction(t_vec3 v, t_vec3 n, double ior)
 {
 	double	cosi;
 	double	cost;
-	double	etai;
-	double	etat;
 	t_vec3	nn;
 	double eta;
 
-	etai = 1.0;
-	etat = ior;
 	nn = n;
+	eta = 1.0 / ior;
 	cosi = -1.0 * vec_dot(v, n);
 	if (cosi < 0.0)
 	{
 		cosi = -cosi;
 		nn = vec_scale(n, -1.0);
-		etai = ior;
-		etat = 1.0;
+		eta = ior / 1.0;
 	}
-	eta = etai / etat;
 	cost = 1 - eta * eta * (1 - cosi * cosi);
 
 	// 全反射

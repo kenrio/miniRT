@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/26 09:56:42 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:42:40 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
-# define MAX_DEPTH 3
+# define MAX_DEPTH 5
 # define EPS 0.001
 # define GLASS_IRT 1.4
 # define METAL_GROSS 0.9
