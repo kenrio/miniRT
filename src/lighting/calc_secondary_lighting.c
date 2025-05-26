@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/26 08:48:54 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 08:54:51 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 	}
 	else
 		secondary_dir = vec_normalize(vec_reflection(in_ray->direction, rec->n));
+
+		
 	secondary_ray = (t_ray){pos_add_vec(rec->pos, vec_scale(secondary_dir, EPS)), secondary_dir};
 
 	// 当たったら、hitしたobjの色を計算する
