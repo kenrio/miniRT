@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/26 08:54:51 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:51:23 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 	// 屈折の場合、このベクトルをまず変える。
 	if (rec->mat == MAT_GLASS)
 	{
-		secondary_dir = vec_normalize(vec_refraction(in_ray->direction, rec->n, 1.4));//TODOmakuro
+		secondary_dir = vec_normalize(vec_refraction(in_ray->direction, rec->n, GLASS_IRT));
 		if (vec_is_zero(secondary_dir) == true)
 			secondary_dir = vec_normalize(vec_reflection(in_ray->direction, rec->n));
 	}
@@ -44,7 +44,7 @@ t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int dept
 		if (rec->mat == MAT_METAL)
 		{
 			r_color = modulate_rgb(r_color, rec->rgb);
-			r_color = multi_rgb(r_color, 0.9);
+			r_color = multi_rgb(r_color, METAL_GROSS);
 		}
 	}
 	else

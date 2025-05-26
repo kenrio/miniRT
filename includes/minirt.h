@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/26 08:40:00 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 09:56:42 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,12 @@
 # define T_MAX  INFINITY
 # define MAX_DEPTH 3
 # define EPS 0.001
+# define GLASS_IRT 1.4
+# define METAL_GROSS 0.9
+# define SP_KS 0.5
+# define SP_SHININESS 0.5
+
+
 
 # define BG_COLOR 0x000000
 
