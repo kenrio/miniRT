@@ -6,11 +6,16 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/27 16:40:38 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/27 18:03:12 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec);
+static t_ray	make_secondary_ray(t_pos3 origin, t_vec3 direction);
+static t_rgb3	calc_secondary_color(t_info *info, t_hit *rec, t_ray *ray,
+					int depth);
 
 // mat == mirror, metal, glassの場合、ここに入る
 // 反射を計算する
@@ -20,35 +25,56 @@
 t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray,
 		int depth)
 {
-	t_rgb3	r_color;
 	t_vec3	secondary_dir;
 	t_ray	secondary_ray;
-	t_hit	next_rec;
+
+	secondary_dir = calc_secondary_direction(in_ray, rec);
+	secondary_ray = make_secondary_ray(rec->pos, secondary_dir);
+	return (calc_secondary_color(info, rec, &secondary_ray, depth));
+}
+
+static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec)
+{
+	t_vec3	dir;
 
 	if (rec->mat == MAT_GLASS)
 	{
-		secondary_dir = vec_normalize(
+		dir = vec_normalize(
 				vec_refraction(in_ray->direction, rec->n, GLASS_IRT));
-		if (vec_is_zero(secondary_dir) == true)
-			secondary_dir = vec_normalize(
+		if (vec_is_zero(dir) == true)
+			dir = vec_normalize(
 					vec_reflection(in_ray->direction, rec->n));
 	}
 	else
-		secondary_dir = vec_normalize(
+		dir = vec_normalize(
 				vec_reflection(in_ray->direction, rec->n));
-	secondary_ray = (t_ray){pos_add_vec(rec->pos,
-			vec_scale(secondary_dir, EPS)), secondary_dir};
-	if (hit_scene(&secondary_ray, info->objs, &next_rec))
+	return (dir);
+}
+
+static t_ray	make_secondary_ray(t_pos3 origin, t_vec3 direction)
+{
+	return (
+		(t_ray){pos_add_vec(origin, vec_scale(direction, EPS)), direction}
+	);
+}
+
+static t_rgb3	calc_secondary_color(t_info *info, t_hit *rec, t_ray *ray,
+					int depth)
+{
+	t_hit	next_rec;
+	t_rgb3	color;
+
+	if (hit_scene(ray, info->objs, &next_rec))
 	{
-		r_color
-			= calculate_lighting(info, &next_rec, &secondary_ray, depth + 1);
+		color
+			= calculate_lighting(info, &next_rec, ray, depth + 1);
 		if (rec->mat == MAT_METAL)
 		{
-			r_color = modulate_rgb(r_color, rec->rgb);
-			r_color = multi_rgb(r_color, METAL_GROSS);
+			color = modulate_rgb(color, rec->rgb);
+			color = multi_rgb(color, METAL_GROSS);
 		}
 	}
 	else
-		r_color = uint_to_rgb(BG_COLOR);
-	return (r_color);
+		color = uint_to_rgb(BG_COLOR);
+	return (color);
 }
