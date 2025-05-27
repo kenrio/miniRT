@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/25 09:48:48 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/26 12:42:40 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,14 @@
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
-# define MAX_DEPTH 3
+# define MAX_DEPTH 5
 # define EPS 0.001
+# define GLASS_IRT 1.4
+# define METAL_GROSS 0.9
+# define SP_KS 0.5
+# define SP_SHININESS 0.5
+
+
 
 # define BG_COLOR 0x000000
 
@@ -340,12 +346,15 @@ t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
+t_vec3			vec_refraction(t_vec3 v, t_vec3 n, double eta);
+bool			vec_is_zero(t_vec3	vec);
 
 t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			uint_to_rgb(unsigned int color_hex);
 unsigned int	rgb_to_uint(t_rgb3 color);
 t_rgb3			modulate_rgb(t_rgb3	base, t_rgb3 color);
+t_rgb3			multi_rgb(t_rgb3 base, double magnification);
 
 // utils
 char			*get_next_line(int fd);
