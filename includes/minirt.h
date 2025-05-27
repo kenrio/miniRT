@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/26 12:42:40 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 17:12:25 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@
 
 // --- memo ---
 
-
 // t_min, t_max: distance camera to obj
 //  --- macro ---
 // # define WIN_W 4096
 // # define WIN_H 2048
 # define WIN_W 2048
 # define WIN_H 1024
-
-
 
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
@@ -46,12 +43,10 @@
 # define SP_KS 0.5
 # define SP_SHININESS 0.5
 
-
-
 # define BG_COLOR 0x000000
 
-#define SPP 4            // Samples Per Pixel
-#define SQRT_SPP 2       // √SPP
+# define SPP 4            // Samples Per Pixel
+# define SQRT_SPP 2       // √SPP
 
 # define ESC 65307
 
@@ -155,7 +150,6 @@ typedef struct s_light
 	t_rgb3	rgb;
 }	t_light;
 
-
 // pos     – camera position (ray origin)
 // forward – unit vector pointing straight ahead from the camera
 // right   – unit vector pointing to the camera’s right
@@ -186,10 +180,6 @@ typedef struct s_light_node
 	struct s_light_node		*next;
 }	t_light_node;
 
-
-
-
-
 // --- objs ---
 typedef struct s_sphere
 {
@@ -214,7 +204,7 @@ typedef struct s_cylinder
 	t_rgb3	rgb;
 }	t_cylinder;
 
-typedef	enum e_obj_kind
+typedef enum e_obj_kind
 {
 	OBJ_SPHERE,
 	OBJ_PLANE,
@@ -236,7 +226,6 @@ typedef struct s_obj
 	struct s_obj	*next;
 }	t_obj;
 
-
 // --- math ---
 typedef struct s_quad_eq
 {
@@ -248,7 +237,6 @@ typedef struct s_quad_eq
 	double	t2;
 }	t_quad_eq;
 
-
 // --- info ---
 typedef struct s_info
 {
@@ -259,10 +247,6 @@ typedef struct s_info
 	bool			is_init_success;
 	t_mlx			mlx;
 }	t_info;
-
-
-
-
 
 // ---functions---
 // init
@@ -299,18 +283,22 @@ t_ray			make_ray(t_cam *c, double u, double v);
 t_pos3			ray_at(t_ray *ray, double distance);
 bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
-bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
+bool			intersect_cylinder(
+					t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 
 // calc_light
-t_rgb3			calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
+t_rgb3			calculate_lighting(
+					t_info *info, t_hit *rec, t_ray *in_ray, int depth);
 t_rgb3			calc_direct_lighting(t_info *info, t_hit *rec, t_vec3 view_dir);
-t_rgb3			calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
+t_rgb3			calc_secondary_lighting(
+					t_info *info, t_hit *rec, t_ray *in_ray, int depth);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 t_rgb3			apply_amb(t_amb amb);
-t_rgb3			apply_specular(t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
-t_rgb3			apply_diffuse(t_light *l , t_hit *rec, t_vec3 l_dir);
+t_rgb3			apply_specular(
+					t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
+t_rgb3			apply_diffuse(t_light *l, t_hit *rec, t_vec3 l_dir);
 
 // validate
 bool			is_valid_start(char c);
