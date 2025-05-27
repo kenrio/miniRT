@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
+#    By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/19 13:11:53 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/22 07:35:39 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,11 +64,19 @@ TEST_SRC		:= \
 
 RENDER_SRC		:= \
 				ray.c \
+				hit_scene.c \
 				render_scene.c \
 				render_scene_high.c \
-				intersect.c \
+				intersect_plane.c \
+				intersect_sphere.c \
 				intersect_cy.c \
 				render_utils.c \
+
+LIGHTING_SRC	:= \
+				calc_lighting.c \
+				calc_amb.c \
+				calc_diffuse.c \
+				calc_specular.c \
 
 
 SRC				:= \
@@ -79,6 +87,7 @@ SRC				:= \
 				$(addprefix utils/, $(UTILS_SRC)) \
 				$(addprefix test/, $(TEST_SRC)) \
 				$(addprefix render/, $(RENDER_SRC)) \
+				$(addprefix lighting/, $(LIGHTING_SRC)) \
 
 OBJ				:= \
 				$(addprefix $(OBJ_DIR)/, \
