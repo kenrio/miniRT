@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/24 01:05:00 by anya_stella      ###   ########.fr       */
+/*   Updated: 2025/05/25 09:48:48 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef enum e_mat
 {
 	MAT_DIFFUSE,
 	MAT_MIRROR,
+	MAT_METAL,
 	MAT_GLASS,
 	MAT_NONE
 }	t_mat;
@@ -344,6 +345,7 @@ t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
 t_rgb3			uint_to_rgb(unsigned int color_hex);
 unsigned int	rgb_to_uint(t_rgb3 color);
+t_rgb3			modulate_rgb(t_rgb3	base, t_rgb3 color);
 
 // utils
 char			*get_next_line(int fd);
