@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:00:48 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 13:43:08 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:26:36 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_objs(t_info *info, char *elem, t_elem type)
 	t_plane		pl;
 	t_cylinder	cy;
 	t_mat		mat;
+
 	if (!info || !elem)
 		return ((void)(info && (info->is_init_success = false)));
 	mat = parse_material(get_valid_token(elem, 1));

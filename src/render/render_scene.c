@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/05/25 17:45:05 by tishihar         ###   ########.fr       */
+/*   Created: 2025/05/27 16:49:55 by keishii           #+#    #+#             */
+/*   Updated: 2025/05/27 16:49:56 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "minirt.h"
 

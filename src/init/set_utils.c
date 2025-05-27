@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:47:12 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/25 09:08:55 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:24:31 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,5 @@ t_mat	parse_material(char *token)
 		output = MAT_NONE;
 	if (output == MAT_NONE)
 		perror("mat type wrong.");
-	return output;
+	return (output);
 }

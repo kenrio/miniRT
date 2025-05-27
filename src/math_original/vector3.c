@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 23:10:46 by anya_stella       #+#    #+#             */
-/*   Updated: 2025/05/26 12:43:25 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:42:46 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_vec3	vec_refraction(t_vec3 v, t_vec3 n, double ior)
 	double	cosi;
 	double	cost;
 	t_vec3	nn;
-	double eta;
+	double	eta;
 
 	nn = n;
 	eta = 1.0 / ior;
@@ -45,11 +45,11 @@ t_vec3	vec_refraction(t_vec3 v, t_vec3 n, double ior)
 		eta = ior / 1.0;
 	}
 	cost = 1 - eta * eta * (1 - cosi * cosi);
-
-	// 全反射
 	if (cost < 0.0)
 		return ((t_vec3){0, 0, 0});
-	return (vec_add(vec_scale(v, eta), vec_scale(nn, (eta * cosi - sqrt(cost)))));
+	return (
+		vec_add(vec_scale(v, eta), vec_scale(nn, (eta * cosi - sqrt(cost))))
+	);
 }
 
 bool	vec_is_zero(t_vec3	vec)

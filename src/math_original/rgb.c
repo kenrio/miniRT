@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:16:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/25 21:23:15 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:45:31 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- #include "minirt.h"
+#include "minirt.h"
 
- t_rgb3	add_rgb(t_rgb3 c1, t_rgb3 c2)
- {
-	int r;
-	int g;
-	int b;
+t_rgb3	add_rgb(t_rgb3 c1, t_rgb3 c2)
+{
+	int	r;
+	int	g;
+	int	b;
 
 	r = fmin(c1.r + c2.r, 255);
 	g = fmin(c1.g + c2.g, 255);
 	b = fmin(c1.b + c2.b, 255);
 	return ((t_rgb3){r, g, b});
- }
+}
 
 t_rgb3	add_rgb_simple(t_rgb3 c1, t_rgb3 c2)
 {
-	int r;
-	int g;
-	int b;
+	int	r;
+	int	g;
+	int	b;
 
 	r = c1.r + c2.r;
 	g = c1.g + c2.g;
@@ -36,8 +36,8 @@ t_rgb3	add_rgb_simple(t_rgb3 c1, t_rgb3 c2)
 	return ((t_rgb3){r, g, b});
 }
 
- // TODO理解する
- unsigned int	rgb_to_uint(t_rgb3 color)
+// TODO理解する
+unsigned int	rgb_to_uint(t_rgb3 color)
 {
 	return (
 		color.r << 16 | color.g << 8 | color.b

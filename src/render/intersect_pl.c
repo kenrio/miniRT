@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_pl.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 12:06:38 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:49:17 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-
 
 // 平面と交わるか
 bool	intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max)

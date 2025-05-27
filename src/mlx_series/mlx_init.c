@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 16:13:06 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/19 13:18:53 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:46:53 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ bool	init_mlx(t_mlx *m, int win_w, int win_h, char *win_title)
 		mlx_destroy_display(m->ptr);
 		return (free(m->ptr), false);
 	}
-	m->img.addr = \
-		(int *)mlx_get_data_addr(
+	m->img.addr = (int *)mlx_get_data_addr(
 			m->img.ptr, &m->img.bpp, &m->img.line_len, &m->img.endian);
 	if (!m->img.addr)
 	{

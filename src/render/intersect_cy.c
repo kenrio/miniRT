@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_cy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:33:17 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 21:02:04 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:49:04 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ static bool	hit_cyl_side(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 		return (false);
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_div(pos_sub(rec->pos, pos_add_vec(cy.pos, vec_scale(cy.axis, axis_h))), cy.diameter / 2);
+	rec->n = vec_div(pos_sub(rec->pos, pos_add_vec(cy.pos,
+					vec_scale(cy.axis, axis_h))), cy.diameter / 2);
 	rec->rgb = cy.rgb;
 	return (true);
 }

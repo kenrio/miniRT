@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_sp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/23 20:57:27 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:47:41 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 	}
 	rec->t = t;
 	rec->pos = ray_at(r, t);
-	rec->n = vec_div(pos_sub(rec->pos, o->data.sp.pos), o->data.sp.diameter / 2);
+	rec->n
+		= vec_div(pos_sub(rec->pos, o->data.sp.pos), o->data.sp.diameter / 2);
 	rec->rgb = o->data.sp.rgb;
 	return (true);
 }

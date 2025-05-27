@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   calc_direct_lighting.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 17:12:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/23 20:44:38 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/27 16:33:24 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir, t_pos3 light_pos);
+static bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir,
+				t_pos3 light_pos);
 
 // calculate direct lighting.
 // for example, diffuse light, specular.
@@ -23,35 +24,28 @@ t_rgb3	calc_direct_lighting(t_info *info, t_hit *rec, t_vec3 view_dir)
 	t_vec3			light_dir;
 	t_rgb3			color;
 
-	color = (t_rgb3){0,0,0};
+	color = (t_rgb3){0, 0, 0};
 	curr = info->lights;
 	while (curr)
 	{
-		// 1つのライトについての寄与を見ていく
-		// スペキュラーと、diffuseをみる
 		light = curr->value;
 		light_dir = vec_normalize(pos_sub(light.pos, rec->pos));
-
 		if (is_in_shadow(info, rec->pos, light_dir, light.pos))
 		{
 			curr = curr->next;
-			continue;
+			continue ;
 		}
-		
-		// ここでdiffuseを計算する
-		color = add_rgb(color, apply_diffuse(&light, rec, light_dir));
-
-		// ここでspecularを計算する
-		color = add_rgb(color, apply_specular(view_dir, light_dir, rec->n, light.intensity));
-
-		
+		color = add_rgb(color,
+				apply_diffuse(&light, rec, light_dir));
+		color = add_rgb(color,
+				apply_specular(view_dir, light_dir, rec->n, light.intensity));
 		curr = curr->next;
 	}
 	return (color);
-	
 }
 
-static bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir, t_pos3 light_pos)
+static bool	is_in_shadow(t_info *info, t_pos3 point, t_vec3 ray_dir,
+			t_pos3 light_pos)
 {
 	t_ray	shadow_ray;
 	t_hit	rec;
