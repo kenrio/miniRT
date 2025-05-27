@@ -6,7 +6,7 @@
 /*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/22 06:55:14 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 09:23:56 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,7 +279,11 @@ bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
+t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
+
+// calc_light
 t_rgb3			calculate_lighting(t_info *info, t_hit *rec);
+t_rgb3			apply_specular(t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
 
 // validate
 bool			is_valid_start(char c);
@@ -314,6 +318,9 @@ void			solve_quad_eq(t_quad_eq *q);
 t_vec3			calc_right_vec(t_vec3 forward);
 t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
+t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
+
+t_rgb3		add_rgb(t_rgb3 c1, t_rgb3 c2);
 
 // utils
 char			*get_next_line(int fd);

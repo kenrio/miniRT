@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_vec_reject.c                                  :+:      :+:    :+:   */
+/*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 23:10:46 by anya_stella       #+#    #+#             */
-/*   Updated: 2025/05/15 23:18:15 by anya_stella      ###   ########.fr       */
+/*   Created: 2025/05/22 09:16:32 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/22 10:13:49 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+ #include "minirt.h"
 
-t_vec3	vec_reject(t_vec3 v, t_vec3 axis_unit)
-{
-	return (vec_sub(v, vec_scale(axis_unit, vec_dot(v, axis_unit))));
-}
+ t_rgb3	add_rgb(t_rgb3 c1, t_rgb3 c2)
+ {
+	int r;
+	int g;
+	int b;
+
+	r = fmin(c1.r + c2.r, 255);
+	g = fmin(c1.g + c2.g, 255);
+	b = fmin(c1.b + c2.b, 255);
+	return ((t_rgb3){r, g, b});
+ }
+ 
