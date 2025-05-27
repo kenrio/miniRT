@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/27 17:12:25 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/27 20:11:25 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # define SP_KS 0.5
 # define SP_SHININESS 0.5
 
-# define BG_COLOR 0x000000
+# define BG_COLOR 0xE4F4F7
 
 # define SPP 4            // Samples Per Pixel
 # define SQRT_SPP 2       // √SPP
