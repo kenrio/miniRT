@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_element1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 17:52:49 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:16:29 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/22 05:56:08 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 // element is formated, "A 0.2 255,255,255"
 void	init_amb(t_info *info, char *elem)
 {
-	if (!info || !elem)
+	if (!info || !elem || info->amb.is_register)
 	{
+		if (info->amb.is_register)
+			perror("amb define again.");
 		info->is_init_success = false;
 		return ;
 	}
@@ -27,12 +29,15 @@ void	init_amb(t_info *info, char *elem)
 		perror("amb validate failed.");
 		info->is_init_success = false;
 	}
+	info->amb.is_register = true;
 }
 
 void	init_cam(t_info *info, char *elem)
 {
-	if (!info || !elem)
+	if (!info || !elem || info->cam.is_register)
 	{
+		if (info->cam.is_register)
+			perror("cam define again.");
 		info->is_init_success = false;
 		return ;
 	}
@@ -51,6 +56,7 @@ void	init_cam(t_info *info, char *elem)
 		|| !validate_unit_range(info->cam.forward.z)
 		|| !validate_rad(info->cam.fov))
 		info->is_init_success = false;
+	info->cam.is_register = true;
 }
 
 void	init_lights(t_info *info, char *elem)

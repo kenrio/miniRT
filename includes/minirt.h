@@ -125,6 +125,7 @@ typedef struct s_amb
 {
 	double	intensity;
 	t_rgb3	rgb;
+	bool	is_register;
 }	t_amb;
 
 typedef struct s_light
@@ -156,6 +157,7 @@ typedef struct s_cam
 	double	half_w;
 	double	half_h;
 	t_pos3	llc;
+	bool	is_register;
 }	t_cam;
 
 typedef struct s_light_node
