@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   render_scene_high.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 20:31:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 14:52:34 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/24 01:06:20 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec);
-// static bool	hit_obj(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 // static t_rgb3  sample_pixel(t_info *info, int x, int y);
+// static double	delta();
 
 // void    render_scene(t_info *info)
 // {
@@ -57,12 +56,11 @@
 //             double v = 1.0 - (y + ry) / (WIN_H - 1);
 //             t_ray ray = make_ray(&info->cam, u, v);
 //             t_hit rec;
-//             t_rgb3 c = (hit_scene(&ray, info->objs, &rec))
-//                            ? rec.rgb
-//                            : (t_rgb3){0,0,0};
-//             sum.r += c.r;
-//             sum.g += c.g;
-//             sum.b += c.b;
+
+// 			if (hit_scene(&ray, info->objs, &rec) == true)
+// 				sum = add_rgb_simple(sum, calculate_lighting(info, &rec, &ray, 0));
+// 			else
+// 				sum = add_rgb_simple(sum, uint_to_rgb(BG_COLOR));
 //             sx++;
 //         }
 //         sy++;
@@ -75,6 +73,12 @@
 // {
 // 	return (((double)rand() / RAND_MAX - 0.5) * 0.3);
 // }
+
+
+
+
+
+
 
 // // rayとobjが衝突するかどうかを判定し、recにぶち込む関数
 // static bool	hit_scene(t_ray *r, t_obj *o, t_hit *rec)

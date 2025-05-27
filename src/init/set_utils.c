@@ -6,7 +6,7 @@
 /*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:47:12 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/09 20:13:14 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/23 13:39:12 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,25 @@ double	parse_3double(char *token, int idx)
 		return (0.0);
 	}
 	return (ft_atof(token));
+}
+
+t_mat	parse_material(char *token)
+{
+	int		mat_number;
+	t_mat	output;
+
+	if (!token)
+		output = MAT_NONE;
+	mat_number = ft_atoi(token);
+	if (mat_number == 1)
+		output = MAT_DIFFUSE;
+	else if (mat_number == 2)
+		output = MAT_MIRROR;
+	else if (mat_number == 3)
+		output = MAT_GLASS;
+	else
+		output = MAT_NONE;
+	if (output == MAT_NONE)
+		perror("mat type wrong.");
+	return output;
 }

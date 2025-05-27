@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_utils.c                                     :+:      :+:    :+:   */
+/*   apply_amb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
+/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/13 19:09:16 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/15 05:50:37 by anya_stella      ###   ########.fr       */
+/*   Created: 2025/05/23 16:25:37 by tishihar          #+#    #+#             */
+/*   Updated: 2025/05/23 16:28:58 by tishihar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-unsigned int	rgb_to_uint(t_rgb3 color)
+t_rgb3	apply_amb(t_amb amb)
 {
-	return (
-		color.r << 16 | color.g << 8 | color.b
-	);
+	return (apply_light(amb.rgb, amb.intensity, 1.0));
 }

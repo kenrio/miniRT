@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+        */
+/*   By: anya_stella <anya_stella@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 13:29:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/22 09:23:56 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/24 01:05:00 by anya_stella      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # define PIE 3.14159265358979
 # define T_MIN  1e-4
 # define T_MAX  INFINITY
+# define MAX_DEPTH 3
+# define EPS 0.001
+
 # define BG_COLOR 0x000000
 
 #define SPP 4            // Samples Per Pixel
@@ -96,6 +99,15 @@ typedef struct s_ray
 	t_vec3	direction;
 }	t_ray;
 
+// material
+typedef enum e_mat
+{
+	MAT_DIFFUSE,
+	MAT_MIRROR,
+	MAT_GLASS,
+	MAT_NONE
+}	t_mat;
+
 // t   : distance of camera to obj
 // pos : hit_point
 // n   : normal vector
@@ -106,6 +118,7 @@ typedef struct s_hit
 	t_pos3	pos;
 	t_vec3	n;
 	t_rgb3	rgb;
+	t_mat	mat;
 }	t_hit;
 
 // --- elements ---
@@ -168,8 +181,9 @@ typedef struct s_light_node
 
 
 
-// --- objs ---
 
+
+// --- objs ---
 typedef struct s_sphere
 {
 	t_pos3	pos;
@@ -211,6 +225,7 @@ typedef struct s_obj
 {
 	t_obj_kind		kind;
 	t_shape			data;
+	t_mat			mat;
 	struct s_obj	*next;
 }	t_obj;
 
@@ -254,6 +269,7 @@ void			init_objs(t_info *info, char *elem, t_elem type);
 
 // init_utils
 double			parse_double(char *token);
+t_mat			parse_material(char *token);
 int				parse_3int(char *token, int idx);
 double			parse_3double(char *token, int idx);
 t_pos3			parse_pos3(char *token);
@@ -263,9 +279,9 @@ t_light_node	*new_light_node(t_pos3 pos, double intensity, t_rgb3 rgb);
 void			clean_light_nodes(t_light_node *head_node);
 t_obj			*add_obj_front(t_obj *head, t_obj *new);
 void			clean_obj_nodes(t_obj *head);
-t_obj			*new_obj_sp(t_sphere sp);
-t_obj			*new_obj_pl(t_plane pl);
-t_obj			*new_obj_cy(t_cylinder cy);
+t_obj			*new_obj_sp(t_sphere sp, t_mat mat);
+t_obj			*new_obj_pl(t_plane pl, t_mat mat);
+t_obj			*new_obj_cy(t_cylinder cy, t_mat mat);
 
 // token
 char			*get_valid_token(char *elem, int idx);
@@ -274,7 +290,6 @@ char			*get_valid_token(char *elem, int idx);
 void			render_scene(t_info *info);
 t_ray			make_ray(t_cam *c, double u, double v);
 t_pos3			ray_at(t_ray *ray, double distance);
-unsigned int	rgb_to_uint(t_rgb3 color);
 bool			intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 bool			intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max);
@@ -282,8 +297,13 @@ bool			hit_scene(t_ray *r, t_obj *o, t_hit *rec);
 t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
 
 // calc_light
-t_rgb3			calculate_lighting(t_info *info, t_hit *rec);
+t_rgb3			calculate_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
+t_rgb3			calc_direct_lighting(t_info *info, t_hit *rec, t_vec3 view_dir);
+t_rgb3			calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray, int depth);
+t_rgb3			apply_light(t_rgb3 color, double intensity, double dot_nl);
+t_rgb3			apply_amb(t_amb amb);
 t_rgb3			apply_specular(t_vec3 v, t_vec3 l, t_vec3 n, double l_intensity);
+t_rgb3			apply_diffuse(t_light *l , t_hit *rec, t_vec3 l_dir);
 
 // validate
 bool			is_valid_start(char c);
@@ -320,7 +340,10 @@ t_vec3			calc_up_vec(t_vec3 right, t_vec3 forward);
 t_vec3			vec_reject(t_vec3 v, t_vec3 axis_unit);
 t_vec3			vec_reflection(t_vec3 v, t_vec3 n);
 
-t_rgb3		add_rgb(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			add_rgb(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			add_rgb_simple(t_rgb3 c1, t_rgb3 c2);
+t_rgb3			uint_to_rgb(unsigned int color_hex);
+unsigned int	rgb_to_uint(t_rgb3 color);
 
 // utils
 char			*get_next_line(int fd);

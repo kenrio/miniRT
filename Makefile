@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tishihar <wingstonetone9.8@gmail.com>      +#+  +:+       +#+         #
+#    By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/04 13:38:18 by keishii           #+#    #+#              #
-#    Updated: 2025/05/22 09:23:29 by tishihar         ###   ########.fr        #
+#    Updated: 2025/05/23 20:36:12 by tishihar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,16 +68,18 @@ RENDER_SRC		:= \
 				hit_scene.c \
 				render_scene.c \
 				render_scene_high.c \
-				intersect_plane.c \
-				intersect_sphere.c \
+				intersect_pl.c \
+				intersect_sp.c \
 				intersect_cy.c \
-				render_utils.c \
 
 LIGHTING_SRC	:= \
 				calc_lighting.c \
-				calc_amb.c \
-				calc_diffuse.c \
-				calc_specular.c \
+				calc_direct_lighting.c \
+				calc_secondary_lighting.c \
+				apply_light.c \
+				apply_amb.c \
+				apply_diffuse.c \
+				apply_specular.c \
 
 
 SRC				:= \
