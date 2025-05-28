@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_elements.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 13:16:37 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 12:30:10 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:49:00 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	init_elements(t_info *info, char *file_name)
 	}
 	close(file_fd);
 	if (info->is_init_success == false)
-		return (perror("initialization info failed..."), false);
+		return (perror("Error\ninitialization info failed..."), false);
 	return (true);
 }
 
