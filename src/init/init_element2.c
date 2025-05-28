@@ -6,12 +6,14 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 14:00:48 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/27 16:26:36 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/27 18:23:35 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+static bool			validate_and_parse_mat(t_info *info, char *elem,
+						t_mat *out_mat);
 static t_sphere		*parse_sphere(char *elem, t_sphere *sp);
 static t_plane		*parse_plane(char *elem, t_plane *pl);
 static t_cylinder	*parse_cylinder(char *elem, t_cylinder *cy);
@@ -23,10 +25,7 @@ void	init_objs(t_info *info, char *elem, t_elem type)
 	t_cylinder	cy;
 	t_mat		mat;
 
-	if (!info || !elem)
-		return ((void)(info && (info->is_init_success = false)));
-	mat = parse_material(get_valid_token(elem, 1));
-	if (mat == MAT_NONE)
+	if (!validate_and_parse_mat(info, elem, &mat))
 		return ((void)(info && (info->is_init_success = false)));
 	if (type == E_SPHERE)
 	{
@@ -46,6 +45,16 @@ void	init_objs(t_info *info, char *elem, t_elem type)
 			return ((void)(info && (info->is_init_success = false)));
 		info->objs = add_obj_front(info->objs, new_obj_cy(cy, mat));
 	}
+}
+
+static bool	validate_and_parse_mat(t_info *info, char *elem, t_mat *out_mat)
+{
+	if (!info || !elem)
+		return (false);
+	*out_mat = parse_material(get_valid_token(elem, 1));
+	if (*out_mat == MAT_NONE)
+		return (false);
+	return (true);
 }
 
 static t_sphere	*parse_sphere(char *elem, t_sphere *sp)
