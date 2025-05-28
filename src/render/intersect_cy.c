@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 18:33:17 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/27 16:49:04 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:22:50 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static bool	hit_cyl_cap_top(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 static bool	hit_cyl_cap_bottom(t_ray *r, t_obj *o, t_hit *rec, double t_max);
 static bool	solve_eq(t_ray *r, t_obj *o, t_quad_eq *quad);
 
-// 円柱と交わるか
 bool	intersect_cylinder(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 {
 	bool				hit_any;

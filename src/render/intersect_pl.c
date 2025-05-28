@@ -6,13 +6,12 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/27 16:49:17 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:22:59 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// 平面と交わるか
 bool	intersect_plane(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 {
 	t_plane	pl;

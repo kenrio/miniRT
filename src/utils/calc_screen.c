@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc_screen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tishihar <tishihar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 15:04:27 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/19 13:21:07 by tishihar         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:23:33 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // if dot of forward_vec. & world_up_vec. is ~= 1,
 // use {1,0,0}
-// 本当は右ねじ統一したかったが、サンプルがこっちが多かったのでこれにした
 t_vec3	calc_right_vec(t_vec3 forward)
 {
 	t_vec3	world_up;

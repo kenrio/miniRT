@@ -6,13 +6,12 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:58:50 by keishii           #+#    #+#             */
-/*   Updated: 2025/05/27 16:47:41 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:23:04 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-// 球と交わるか
 bool	intersect_sphere(t_ray *r, t_obj *o, t_hit *rec, double t_max)
 {
 	t_vec3		oc;

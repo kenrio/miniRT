@@ -6,7 +6,7 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:16:32 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/27 16:45:31 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/28 15:22:21 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_rgb3	add_rgb_simple(t_rgb3 c1, t_rgb3 c2)
 	return ((t_rgb3){r, g, b});
 }
 
-// TODO理解する
 unsigned int	rgb_to_uint(t_rgb3 color)
 {
 	return (
