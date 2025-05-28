@@ -6,14 +6,14 @@
 /*   By: keishii <keishii@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 19:18:14 by tishihar          #+#    #+#             */
-/*   Updated: 2025/05/27 18:03:12 by keishii          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:29:41 by keishii          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec);
-static t_ray	make_secondary_ray(t_pos3 origin, t_vec3 direction);
+// static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec);
+static t_ray	make_secondary_ray(t_ray *in_ray, t_hit *rec);
 static t_rgb3	calc_secondary_color(t_info *info, t_hit *rec, t_ray *ray,
 					int depth);
 
@@ -25,15 +25,13 @@ static t_rgb3	calc_secondary_color(t_info *info, t_hit *rec, t_ray *ray,
 t_rgb3	calc_secondary_lighting(t_info *info, t_hit *rec, t_ray *in_ray,
 		int depth)
 {
-	t_vec3	secondary_dir;
 	t_ray	secondary_ray;
 
-	secondary_dir = calc_secondary_direction(in_ray, rec);
-	secondary_ray = make_secondary_ray(rec->pos, secondary_dir);
+	secondary_ray = make_secondary_ray(in_ray, rec);
 	return (calc_secondary_color(info, rec, &secondary_ray, depth));
 }
 
-static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec)
+static t_ray	make_secondary_ray(t_ray *in_ray, t_hit *rec)
 {
 	t_vec3	dir;
 
@@ -48,13 +46,8 @@ static t_vec3	calc_secondary_direction(t_ray *in_ray, t_hit *rec)
 	else
 		dir = vec_normalize(
 				vec_reflection(in_ray->direction, rec->n));
-	return (dir);
-}
-
-static t_ray	make_secondary_ray(t_pos3 origin, t_vec3 direction)
-{
 	return (
-		(t_ray){pos_add_vec(origin, vec_scale(direction, EPS)), direction}
+		(t_ray){pos_add_vec(rec->pos, vec_scale(dir, EPS)), dir}
 	);
 }
 
