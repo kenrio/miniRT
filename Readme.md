@@ -6,16 +6,16 @@ miniRT is a simple yet powerful ray tracing engine developed as part of the 42 s
 
 Here are a few scenes rendered with miniRT, showcasing different materials and lighting conditions.
 
-![Spheres in several colors](screenshots/Screenshot%202025-05-18%20at%2019.40.47.png)
-*Spheres in several colors.*
-![Spheres, a cylinder and a plane](screenshots/Screenshot%202025-05-20%20at%201.19.19.png)
-*Spheres, a cylinder and a plane.*
 ![Glass and metal spheres in a mirrored room.](screenshots/Screenshot%20from%202025-06-30%2017-20-12.png)
 *Glass and metal spheres in a mirrored room.*
 ![A glass and mirror sphere](screenshots/Screenshot%20from%202025-06-30%2017-20-38.png)
 *A glass and mirror sphere.*
 ![Primary colors of light](screenshots/Screenshot%20from%202025-06-30%2017-21-17.png)
 *Primary colors of light.*
+![Spheres in several colors](screenshots/Screenshot%202025-05-18%20at%2019.40.47.png)
+*Spheres in several colors.*
+![Spheres, a cylinder and a plane](screenshots/Screenshot%202025-05-20%20at%201.19.19.png)
+*Spheres, a cylinder and a plane.*
 
 ## ✨ Features
 
@@ -30,6 +30,17 @@ Here are a few scenes rendered with miniRT, showcasing different materials and l
 - **Camera**: Configurable position, orientation, and vertical Field of View (FOV).
 - **Anti-Aliasing**: Uses multi-sampling (4x SPP) for smoother, higher-quality renders.
 - **Recursive Ray Tracing**: Supports a reflection/refraction depth of up to 5 bounces.
+
+## 🧑‍💻 Contributors
+
+This project was a collaborative effort by:
+
+- **Ken Ishii** ([@kenrio](https://github.com/kenrio))
+- **Tsubasa Ishihara** ([@Anya-Stella](https://github.com/Anya-Stella))
+
+### Development Period
+
+The project was developed from **May 2nd, 2025** to **May 25th, 2025**.
 
 ## 🚀 Getting Started
 
