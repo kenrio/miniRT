@@ -6,7 +6,7 @@ miniRT is a simple yet powerful ray tracing engine developed as part of the 42 s
 
 Here are a few scenes rendered with miniRT, showcasing different materials and lighting conditions.
 
-| A reflective sphere and a cylinder | Glass and metal spheres |
+| sphere in several colors | spheres, cylinder and plane |
 | :---: | :---: |
 | ![ sphere in several colors ](screenshots/Screenshot%202025-05-18%20at%2019.40.47.png) | ![ spheres, cylinder and plane ](screenshots/Screenshot%202025-05-20%20at%201.19.19.png) |
 
