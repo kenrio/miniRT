@@ -57,7 +57,7 @@ Here are a few scenes rendered with miniRT, showcasing different materials and l
 To render a scene, run the executable with the path to a `.rt` scene file as an argument.
 
 ```sh
-./miniRT scene/myakumyaku.rt
+./miniRT scene/test_lights.rt
 ```
 
 Several example scenes are available in the `scene/` directory.
