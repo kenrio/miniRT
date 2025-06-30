@@ -1,6 +1,6 @@
 # miniRT - A Simple Ray Tracer
 
-miniRT is a simple yet powerful ray tracing engine developed as part of the 42 school curriculum. It is written in C and uses the `minilibx` library for window management and pixel plotting. The program can parse a scene description file (`.rt`) and render it, simulating effects like lighting, shadows, reflections, and refractions to produce computer-generated imagery.
+miniRT is a simple ray tracing engine developed as part of the 42 school curriculum. It is written in C and uses the `minilibx` library for window management and pixel plotting. The program can parse a scene description file (`.rt`) and render it, simulating effects like lighting, shadows, reflections, and refractions to produce computer-generated imagery.
 
 ## 📸 Screenshots
 
