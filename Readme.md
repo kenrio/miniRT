@@ -8,7 +8,7 @@ Here are a few scenes rendered with miniRT, showcasing different materials and l
 
 | A reflective sphere and a cylinder | Glass and metal spheres |
 | :---: | :---: |
-| ![A reflective sphere and a cylinder](screenshots/Screenshot%202025-05-18%20at%2019.40.47.png) | ![Glass and metal spheres](screenshots/Screenshot%202025-05-20%20at%201.19.19.png) |
+| ![ sphere in several colors ](screenshots/Screenshot%202025-05-18%20at%2019.40.47.png) | ![ spheres, cylinder and plane ](screenshots/Screenshot%202025-05-20%20at%201.19.19.png) |
 
 ![A scene showcasing multiple objects and lighting effects](screenshots/Screenshot%202025-05-20%20at%201.25.58.png)
 *A scene showcasing multiple objects and lighting effects.*
