@@ -35,8 +35,12 @@ Here are a few scenes rendered with miniRT, showcasing different materials and l
 
 This project was a collaborative effort by:
 
-- **Ken Ishii** ([@kenrio](https://github.com/kenrio))
-- **Tsubasa Ishihara** ([@Anya-Stella](https://github.com/Anya-Stella))
+- **Ken Ishii**
+    - [@kenrio](https://github.com/kenrio)
+	- 42 login: keishii
+- **Tsubasa Ishihara**
+    - [@Anya-Stella](https://github.com/Anya-Stella)
+	- 42 login: tishihar
 
 ### Development Period
 
